@@ -8,6 +8,14 @@ body{
   background-size: cover;
 }
 
+.b{
+  border: 1px solid #000;
+}
+
+.bw{
+  border: 1px solid #FFF;
+}
+
 @media screen and (max-width: 768px){
   body{
     background-size: auto;
