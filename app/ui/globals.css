@@ -8,6 +8,12 @@ body{
   background-size: cover;
 }
 
+@media screen and (max-width: 768px){
+  body{
+    background-size: auto;
+  }
+}
+
 
 /* :root {
   --foreground-rgb: 0, 0, 0;
