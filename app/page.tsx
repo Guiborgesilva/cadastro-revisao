@@ -19,7 +19,19 @@ export default function Home() {
           <p className="text-5xl mt-5"><span className="text-6xl">O</span> SOBRENATURAL?
           </p>
         </div>
-        <button className="text-white w-[358px] h-[46px] rounded-[10px] bw">
+        <button
+          className="
+          text-white
+            w-[358px]
+            h-[46px]
+            rounded-[10px]
+            hover:bg-white
+            hover:text-black
+            transition
+            pointer
+            bw
+          "
+        >
           <span className={roboto.className}>
             QUERO ME INSCREVER!
           </span>
