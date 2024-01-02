@@ -8,7 +8,7 @@ const roboto = Roboto({
 export default function Home() {
   return (
     <>
-      <div className="flex justify-center items-center mt-20 flex-col gap-20">
+      <div className="flex justify-center items-center mt-24 flex-col gap-20">
         <div>
           <img src="/logoSaraIcara.png" alt="Logo da Igreja Sara de Içara" />
         </div>
