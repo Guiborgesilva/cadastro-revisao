@@ -13,10 +13,10 @@ export default function Home() {
           <img src="/logoSaraIcara.png" alt="Logo da Igreja Sara de Içara" />
         </div>
         <div className="text-center text-white">
-          <p className="md:text-5xl sm:text-[32px]">
+          <p className="text-5xl">
             PREPARADO PARA EXPERIMENTAR
           </p>
-          <p className="md:text-5xl sm:text-[32px] md:mt-5 sm:mt-3"><span className="md:text-6xl sm:text-[46px]">O</span> SOBRENATURAL?
+          <p className="text-5xl mt-5"><span className="text-6xl">O</span> SOBRENATURAL?
           </p>
         </div>
         <button className="text-white w-[358px] h-[46px] rounded-[10px] bw">
