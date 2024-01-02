@@ -3,8 +3,8 @@
 export default function Home() {
   return (
     <>
-      <div className="fundoRevisao">
-
+      <div className="flex justify-center mt-4 ml-auto mr-auto w-72">
+        <img src="/logoSaraIcara.png" alt="Logo da Igreja Sara de Içara" />
       </div>
     </>
   )

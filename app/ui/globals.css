@@ -2,13 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-.fundoRevisao{
-  width: 100vw;
-  height: 100vh;
+body{
   background-image: url("/initialBackground.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
+
 
 /* :root {
   --foreground-rgb: 0, 0, 0;
