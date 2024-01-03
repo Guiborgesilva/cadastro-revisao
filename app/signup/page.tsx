@@ -1,4 +1,8 @@
+'use client'
+
 import { mulish } from "../ui/fonts"
+import Select from '@/app/ui/SelectSex'
+import SelectFormLeader from "../ui/SelectLeader"
 
 export default function Signup(){
   return (
@@ -29,41 +33,42 @@ export default function Signup(){
             className="text-black p-2 rounded-[10px]"
             autoFocus
             name="nome"
+            placeholder="Nome completo"
+            type="text"
           />
           <label htmlFor="data">Data de nascimento</label>
           <input
             className="text-black p-2 rounded-[10px]"
             name="data"
+            type="date"
           />
           <label htmlFor="sexo">Sexo</label>
-          <input
-            className="text-black p-2 rounded-[10px]"
-            name="sexo"
-          />
+          <Select />
           <label htmlFor="lider-e-equipe">Líder e Equipe</label>
-          <input
-            className="text-black p-2 rounded-[10px]"
-            name="lider-e-equipe"
-          />
+          <SelectFormLeader />
           <label htmlFor="telefone">Telefone</label>
           <input
             className="text-black p-2 rounded-[10px]"
             name="telefone"
+            type="number"
           />
           <label htmlFor="email">E-mail</label>
           <input
             className="text-black p-2 rounded-[10px]"
             name="email"
+            type="text"
           />
           <label htmlFor="nome-da-mae">Nome da mãe</label>
           <input
             className="text-black p-2 rounded-[10px]"
             name="nome-da-mae"
+            type="text"
           />
           <label htmlFor="nome-do-pai">Nome do pai</label>
           <input
             className="text-black p-2 rounded-[10px]"
             name="nome-do-pai"
+            type="text"
           />
           <button className="
             p-2
