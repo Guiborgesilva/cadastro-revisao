@@ -36,14 +36,16 @@ export default function Signup(){
             className="text-black p-2 rounded-[10px]"
             autoFocus
             name="nome"
-            placeholder="Nome completo"
+            placeholder="Digite seu o nome completo"
             type="text"
+            required
           />
           <label htmlFor="data">Data de nascimento</label>
           <input
             className="text-black p-2 rounded-[10px]"
             name="data"
             type="date"
+            required
           />
           <label htmlFor="sexo">Sexo</label>
           <Select />
@@ -52,27 +54,32 @@ export default function Signup(){
           <label htmlFor="telefone">Telefone</label>
           <IMaskInput
             mask="(00) 00000-0000"
-            placeholder="Digite seu número de telefone"
+            placeholder="(48) 99999-9999"
             className="text-black p-2 rounded-[10px]"
-            type="number"
           />
           <label htmlFor="email">E-mail</label>
           <input
             className="text-black p-2 rounded-[10px]"
             name="email"
-            type="text"
+            type="email"
+            required
+            placeholder="exemplo@exemplo.com"
           />
           <label htmlFor="nome-da-mae">Nome da mãe</label>
           <input
             className="text-black p-2 rounded-[10px]"
             name="nome-da-mae"
             type="text"
+            required
+            placeholder="Digite o nome da sua mãe"
           />
           <label htmlFor="nome-do-pai">Nome do pai</label>
           <input
             className="text-black p-2 rounded-[10px]"
             name="nome-do-pai"
             type="text"
+            required
+            placeholder="Digite o nome do seu pai"
           />
           <button className="
             p-2
