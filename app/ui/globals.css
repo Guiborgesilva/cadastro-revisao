@@ -5,7 +5,7 @@
 body{
   background-image: url("/initialBackground.jpg");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100% 100%;
 }
 
 .b{
@@ -18,7 +18,7 @@ body{
 
 @media screen and (max-width: 768px){
   body{
-    background-size: auto;
+    background-size: 100% 121%;
   }
 }
 

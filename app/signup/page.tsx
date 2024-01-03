@@ -7,22 +7,21 @@ export default function Signup(){
       <div className="
         flex
         justify-center
-        items center
         flex-col
         mr-auto
         ml-auto
         text-white
         gap-10
         rounded-[10px]
-        pl-10
-        pr-10
-        pt-5
-        pb-5
+        p-10
+        xl:mt-8
+        xl:mb-8
+        mt-10
         bg-[#1E1E1E]
         max-w-[562px]
         "
       >
-        <h1 className="text-4xl">Faça a sua inscrição!</h1>
+        <h1 className="text-3xl xl:text-4xl">Faça a sua inscrição!</h1>
         <form action="" className="flex flex-col gap-2">
           <label htmlFor="nome">Nome completo</label>
           <input
