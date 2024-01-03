@@ -17,6 +17,7 @@ export default function Signup(){
         xl:mt-8
         xl:mb-8
         mt-10
+        mb-10
         bg-[#1E1E1E]
         max-w-[562px]
         "
