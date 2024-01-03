@@ -13,13 +13,13 @@ export default function Signup(){
         ml-auto
         text-white
         mt-8
+        mb-8 
         gap-10
         rounded-[10px]
         p-10
-        xl:bg-[#1E1E1E]
-        sm:bg-[#15e]
-        xl:max-w-[562px]
-        md:max-w-[360px]
+        bg-[#1E1E1E]
+        max-w-[562px]
+        bw
         "
       >
         <h1 className="text-4xl">Faça a sua inscrição!</h1>
