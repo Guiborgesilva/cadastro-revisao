@@ -54,6 +54,7 @@ export default function Signup(){
             mask="(00) 00000-0000"
             placeholder="Digite seu número de telefone"
             className="text-black p-2 rounded-[10px]"
+            type="number"
           />
           <label htmlFor="email">E-mail</label>
           <input
