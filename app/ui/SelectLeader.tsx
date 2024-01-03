@@ -2,8 +2,10 @@ import React from 'react'
 import Select from 'react-select'
 
 const options = [
+  {value: 'Pr. Jefferson e Pra. Cíntia | Sara Içara', label: 'Pr. Jefferson e Pra. Cíntia | Sara Içara'},
   {value: 'Antônia e Vinícius | Combate', label: 'Antônia e Vinícius | Combate'},
   {value: 'Guilherme e Isabel | Lions', label: 'Guilherme e Isabel | Lions'},
+  {value: 'Gleice | Atos', label: 'Gleice | Atos'},
   {value: 'Nádia | Alpha', label: 'Nádia | Alpha'},
 ]
 

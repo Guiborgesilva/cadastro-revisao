@@ -3,8 +3,11 @@
 import { mulish } from "../ui/fonts"
 import Select from '@/app/ui/SelectSex'
 import SelectFormLeader from "../ui/SelectLeader"
+import { IMaskInput } from 'react-imask'
 
 export default function Signup(){
+  
+
   return (
     <>
     <section className={mulish.className}>
@@ -47,10 +50,10 @@ export default function Signup(){
           <label htmlFor="lider-e-equipe">Líder e Equipe</label>
           <SelectFormLeader />
           <label htmlFor="telefone">Telefone</label>
-          <input
+          <IMaskInput
+            mask="(00) 00000-0000"
+            placeholder="Digite seu número de telefone"
             className="text-black p-2 rounded-[10px]"
-            name="telefone"
-            type="number"
           />
           <label htmlFor="email">E-mail</label>
           <input
