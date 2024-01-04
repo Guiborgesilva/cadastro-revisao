@@ -21,12 +21,11 @@ export default function Signup(){
         gap-10
         rounded-[10px]
         p-10
-        xl:mt-8
-        xl:mb-8
         mt-10
         mb-10
         bg-[#1E1E1E]
-        max-w-[562px]
+        w-[400px]
+        xl:w-[562px]
         "
       >
         <h1 className="text-3xl xl:text-4xl">Faça a sua inscrição!</h1>
