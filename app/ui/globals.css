@@ -17,9 +17,9 @@ body{
   border: 1px solid #FFF;
 }
 
-@media screen and (max-width: 768px){
+@media screen and (min-width: 300px){
   body{
-    background-size: 200% 121%;
+    background-size: 200vw 121%;
   }
 }
 
