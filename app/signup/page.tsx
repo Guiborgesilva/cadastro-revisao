@@ -26,6 +26,7 @@ export default function Signup(){
         bg-[#1E1E1E]
         w-[400px]
         xl:w-[562px]
+        shadow-2xl
         "
       >
         <h1 className="text-3xl xl:text-4xl">Faça a sua inscrição!</h1>
