@@ -27,7 +27,7 @@ export default async function PessoasTable(){
             return (
               <Table.Body>
                 <Table.Row>
-                  <Table.Cell className="pr-[60px]">{pessoa.nome_pessoa}</Table.Cell>
+                  <Table.Cell key={`${pessoa.id}`} className="pr-[60px]">{pessoa.nome_pessoa}</Table.Cell>
                   <Table.Cell className="pr-14">{pessoa.data_nascimento}</Table.Cell>
                   <Table.Cell className="pr-14">{pessoa.sexo}</Table.Cell>
                   <Table.Cell className="pr-14">{pessoa.lider_equipe}</Table.Cell>
