@@ -25,8 +25,8 @@ export default async function PessoasTable(){
           {people.map((pessoa) => {
             // const dataNascimento = formatDate(pessoa.data_nascimento)
             return (
-              <Table.Body>
-                <Table.Row key={`${pessoa.id}`}>
+              <Table.Body key={`${pessoa.id}`}>
+                <Table.Row>
                   <Table.Cell className="pr-[60px]">{pessoa.nome_pessoa}</Table.Cell>
                   <Table.Cell className="pr-14">{pessoa.data_nascimento}</Table.Cell>
                   <Table.Cell className="pr-14">{pessoa.sexo}</Table.Cell>
