@@ -21,7 +21,7 @@ export default function Home() {
           <p className="text-5xl mt-5"><span className="text-6xl">O</span> SOBRENATURAL?
           </p>
         </div>
-        <Link href={{ pathname:"/signup" }}>
+        <Link href={{ pathname:'/signup' }}>
           <button
             className="
             text-white
@@ -40,6 +40,10 @@ export default function Home() {
             </span>
           </button>
         </Link>
+        <Link
+          href={{ pathname:'/controle' }}
+          className="text-white"
+        >Acesso restrito</Link>
       </div>
     </>
   )

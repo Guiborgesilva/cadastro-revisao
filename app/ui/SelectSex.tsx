@@ -14,9 +14,9 @@ export default function selectFormSex () {
       <Select
         options={options}
         defaultValue={defaultValue[0]}
-        className="
-        text-black
-        "
+        className="text-black"
+        name="sexo"
+        required
       />
     </>
   )

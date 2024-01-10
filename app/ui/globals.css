@@ -17,7 +17,15 @@ body{
   border: 1px solid #FFF;
 }
 
-@media screen and (min-width: 300px){
+input:required:focus{
+  outline: 2px solid #ffa600 !important;
+}
+
+.css-13cymwt-control{
+  outline: 2px solid #ffa600 !important;
+}
+
+@media screen and (max-width: 640px){
   body{
     background-size: 200vw 121%;
   }

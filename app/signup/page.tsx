@@ -4,9 +4,11 @@ import { mulish } from "../ui/fonts"
 import Select from '@/app/ui/SelectSex'
 import SelectFormLeader from "../ui/SelectLeader"
 import { IMaskInput } from 'react-imask'
+import { useFormState } from 'react-dom'
+import { useFormStatus } from 'react-dom'
+import { createPessoa } from '@/app/lib/actions'
 
 export default function Signup(){
-  
 
   return (
     <>
@@ -32,32 +34,37 @@ export default function Signup(){
           "
         >
           <h1 className="text-3xl xl:text-4xl">Faça a sua inscrição!</h1>
-          <form action="" className="flex flex-col gap-2">
-            <label htmlFor="nome">Nome completo</label>
+          <form action={createPessoa} className="flex flex-col gap-2">
+            <label htmlFor="nome_pessoa">Nome completo</label>
             <input
               className="text-black p-2 rounded-[10px]"
               autoFocus
-              name="nome"
+              name="nome_pessoa"
               placeholder="Digite seu o nome completo"
               type="text"
               required
             />
-            <label htmlFor="data">Data de nascimento</label>
-            <input
+            <label htmlFor="data_nascimento">Data de nascimento</label>
+            <IMaskInput
+              id="mask"
+              name="data_nascimento"
+              mask="00/00/0000"
+              placeholder="dd/mm/aaaa"
               className="text-black p-2 rounded-[10px]"
-              name="data"
-              type="date"
               required
             />
             <label htmlFor="sexo">Sexo</label>
             <Select />
-            <label htmlFor="lider-e-equipe">Líder e Equipe</label>
+            <label htmlFor="lider_equipe">Líder e Equipe</label>
             <SelectFormLeader />
             <label htmlFor="telefone">Telefone</label>
             <IMaskInput
+              id="mask"
+              name="telefone"
               mask="(00) 00000-0000"
               placeholder="(48) 99999-9999"
               className="text-black p-2 rounded-[10px]"
+              required
             />
             <label htmlFor="email">E-mail</label>
             <input
@@ -67,31 +74,33 @@ export default function Signup(){
               required
               placeholder="exemplo@exemplo.com"
             />
-            <label htmlFor="nome-da-mae">Nome da mãe</label>
+            <label htmlFor="nome_mae">Nome da mãe</label>
             <input
               className="text-black p-2 rounded-[10px]"
-              name="nome-da-mae"
+              name="nome_mae"
               type="text"
               required
               placeholder="Digite o nome da sua mãe"
             />
-            <label htmlFor="nome-do-pai">Nome do pai</label>
+            <label htmlFor="nome_pai">Nome do pai</label>
             <input
               className="text-black p-2 rounded-[10px]"
-              name="nome-do-pai"
+              name="nome_pai"
               type="text"
               required
               placeholder="Digite o nome do seu pai"
             />
-            <button className="
-              p-2
-              mt-3
-              rounded-[10px]
-              hover:bg-white
-              hover:text-black
-              transition
-              bw
+            <button
+              className="
+                p-2
+                mt-3
+                rounded-[10px]
+                hover:bg-white
+                hover:text-black
+                transition
+                bw
               "
+              type="submit"
             >
               INSCREVER!
             </button>

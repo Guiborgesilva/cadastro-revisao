@@ -17,9 +17,9 @@ export default function SelectFormLeader () {
       <Select
         options={options}
         defaultValue={defaultValue[0]}
-        className="
-        text-black
-        "
+        className="text-black"
+        name="lider_equipe"
+        required
       />
     </>
   )
