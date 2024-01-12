@@ -33,6 +33,20 @@ input:required:focus{
   cursor: pointer;
 }
 
+.voltarContainer{
+  position: relative;
+}
+
+.voltar{
+  position: absolute;
+  top: 1rem;
+  left: 2rem;
+}
+
+.voltar:hover{
+  cursor: pointer;
+}
+
 @media screen and (max-width: 640px){
   body{
     background-size: 200vw 121%;

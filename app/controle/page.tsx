@@ -1,7 +1,8 @@
+'use client'
+
 import { mulish } from '@/app/ui/fonts'
-import Search from '@/app/ui/search'
 import { fetchPessoas } from '@/app/lib/data'
-import { Pessoa } from "../lib/definitions"
+import Link from 'next/link'
 
 function nomeSobrenome(str: string) {
   var arr = str.split(' ');
@@ -34,26 +35,46 @@ export default async function PessoasTable(){
   return (
     <div className="w-full text-white flex justify-center items-center pt-10">
       <div>
-        <h1 className="mb-8 text-xl md:text-5xl text-center">
+        <h1 className="mb-8 text-5xl text-center">
           CONTROLE
         </h1>
         <div className={`
           ${mulish.className}
         bg-[#1E1E1E]
-          p-8 rounded-[10px]
-          w-[562px]
-          flex
-          justify-between
+          px-8 rounded-[10px]
+          pb-8
+          pt-14
+          w-[370px]
+          md:w-[700px]
           grid
-          grid-cols-2
+          grid-cols-1
+          md:grid-cols-2
           gap-2
+          voltarContainer
           `
           }
         >
+          <Link href={{ pathname:'/' }} className="voltar">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3"
+            />
+          </svg>
+
+          </Link>
           {people.map((pessoa) => {
             return (
               <div className="
-                w-[240px]
+                w-full
                 p-2
                 rounded-[10px]
                 bsw
@@ -61,6 +82,7 @@ export default async function PessoasTable(){
                 transition
                 flex
                 "
+                key={pessoa.id}
               >
                 <div className="
                   rounded-full
@@ -79,36 +101,11 @@ export default async function PessoasTable(){
                   <p className="justify-start">
                     {nomeSobrenome(`${pessoa.nome_pessoa}`)}
                   </p>
-                  <p className="text-[13px] justify-end">Guilherme e Isabel | Lions</p>
+                  <p className="text-[13px] justify-end">{pessoa.lider_equipe}</p>
                 </div>
               </div>
             )
           })}
-          {/* <Table.Root className={`${mulish.className} text-left`}>
-          <Table.Header>
-            <Table.Row>
-              <Table.ColumnHeaderCell className="pr-[80px]">Nome completo</Table.ColumnHeaderCell>
-              <Table.ColumnHeaderCell className="pr-14">Data de nascimento</Table.ColumnHeaderCell>
-              <Table.ColumnHeaderCell className="pr-14">Sexo</Table.ColumnHeaderCell>
-              <Table.ColumnHeaderCell className="pr-14">Lider e Equipe</Table.ColumnHeaderCell>
-              <Table.ColumnHeaderCell className="pr-14">Telefone</Table.ColumnHeaderCell>
-            </Table.Row>
-          </Table.Header>
-          {people.map((pessoa) => {
-            // const dataNascimento = formatDate(pessoa.data_nascimento)
-            return (
-              <Table.Body key={`${pessoa.id}`}>
-                <Table.Row>
-                  <Table.Cell className="pr-[60px]">{pessoa.nome_pessoa}</Table.Cell>
-                  <Table.Cell className="pr-14">{pessoa.data_nascimento}</Table.Cell>
-                  <Table.Cell className="pr-14">{pessoa.sexo}</Table.Cell>
-                  <Table.Cell className="pr-14">{pessoa.lider_equipe}</Table.Cell>
-                  <Table.Cell className="pr-14">{pessoa.telefone}</Table.Cell>
-                </Table.Row>
-              </Table.Body>
-            )
-          })}
-          </Table.Root> */}
         </div>
       </div>
     </div>
