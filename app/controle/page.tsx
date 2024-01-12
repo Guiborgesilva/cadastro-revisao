@@ -1,5 +1,3 @@
-'use client'
-
 import { mulish } from '@/app/ui/fonts'
 import { fetchPessoas } from '@/app/lib/data'
 import Link from 'next/link'
