@@ -15,10 +15,8 @@ const FormSchema = z.object({
     email: z.string(),
     nome_mae: z.string(),
     nome_pai: z.string(),
-    date: z.string()
   })
 
-const date = new Date().toLocaleDateString('pt-BR').split('T')[0]
 const CreatePessoa = FormSchema.omit({ id:true, date:true })
 
 export async function createPessoa(formData: FormData){
@@ -42,29 +40,31 @@ export async function createPessoa(formData: FormData){
     nome_pai: formData.get('nome_pai')
   })
 
-  // const dataNascimentoFormatada = new Date().toLocaleDateString('pt-BR')
-
-  await sql`
-    INSERT INTO vidas (
-      nome_pessoa,
-      data_nascimento,
-      sexo,
-      lider_equipe,
-      telefone,
-      email,
-      nome_mae,
-      nome_pai
-    ) VALUES (
-      ${nome_pessoa},
-      ${data_nascimento},
-      ${sexo},
-      ${lider_equipe},
-      ${telefone},
-      ${email},
-      ${nome_mae},
-      ${nome_pai}
-    )
-  `
+  try{
+    await sql`
+      INSERT INTO vidas (
+        nome_pessoa,
+        data_nascimento,
+        sexo,
+        lider_equipe,
+        telefone,
+        email,
+        nome_mae,
+        nome_pai
+      ) VALUES (
+        ${nome_pessoa},
+        ${data_nascimento},
+        ${sexo},
+        ${lider_equipe},
+        ${telefone},
+        ${email},
+        ${nome_mae},
+        ${nome_pai}
+      )
+    `
+  } catch (error) {
+    message: 'Houve um erro no Banco de Dados ao cadastrar essa pessoa!'
+  }
 
   revalidatePath('/signup')
   redirect('/signup')

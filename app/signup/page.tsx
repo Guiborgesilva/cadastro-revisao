@@ -4,8 +4,6 @@ import { mulish } from "../ui/fonts"
 import Select from '@/app/ui/SelectSex'
 import SelectFormLeader from "../ui/SelectLeader"
 import { IMaskInput } from 'react-imask'
-import { useFormState } from 'react-dom'
-import { useFormStatus } from 'react-dom'
 import { createPessoa } from '@/app/lib/actions'
 
 export default function Signup(){
