@@ -57,13 +57,22 @@ export async function createPessoa(formData: FormData){
       redirect('/')
 }
 
-export async function fetchPessoas() {
+const ITEMS_PER_PAGE = 10
+
+export async function fetchPessoas(page: number) {
   try{
     noStore()
-    const { rows } = await sql`SELECT * FROM vidas LIMIT 10`
-    console.log(rows)
+    const offset = (page - 1) * ITEMS_PER_PAGE;
+    const limit = ITEMS_PER_PAGE;
+    const { rows } = await sql`
+      SELECT * FROM vidas
+      ORDER BY created_at
+      LIMIT ${limit} OFFSET ${offset}
+    `
+    // console.log(rows) Mostra o que foi cadastrado no console do servidor
     return rows
   } catch (error) {
     console.error(`Erro de Banco de Dados: ${error}`)
+    return []
   }
 }

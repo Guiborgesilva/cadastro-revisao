@@ -1,12 +1,9 @@
-// import { fetchFilteredPessoas } from '@/app/lib/data'
+'use client'
+
 import Link from 'next/link'
-// import { Suspense } from 'react'
 import { PessoasTable } from "../ui/pessoas/table"
 
-export default async function Page(){
-  // const query = searchParams?.query || ''
-  // const currentPage = Number(searchParams?.page || 1)
-  // const people = await fetchFilteredPessoas(query, currentPage)
+export default function Page(){
   
   return (
     <div className="w-full text-white flex justify-center items-center pt-10">
@@ -44,9 +41,7 @@ export default async function Page(){
             />
           </svg>
           </Link>
-          {/* <Suspense key={query + currentPage} > */}
-            <PessoasTable />
-          {/* </Suspense> */}
+          <PessoasTable />
         </div>
       </div>
     </div>

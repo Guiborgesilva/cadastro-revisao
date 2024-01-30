@@ -1,9 +1,25 @@
 import { mulish } from "../fonts"
 import Search from "../search"
-import { fetchPessoas } from "@/app/lib/actions"
+import { useState, useEffect } from 'react'
+import { fetchPessoas } from '@/app/lib/actions'
+import { QueryResultRow } from '@vercel/postgres'
 
-export async function PessoasTable() {
-  const pessoas = await fetchPessoas()
+async function fetchData(currentPage: number, setPessoas: Function) {
+  try {
+    const data = await fetchPessoas(currentPage);
+    setPessoas(data);
+  } catch (error) {
+    console.error('Erro ao buscar pessoas:', error);
+  }
+}
+
+export function PessoasTable() {
+  const [pessoas, setPessoas] = useState<QueryResultRow[]>([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  
+  useEffect(() => {
+    fetchData(currentPage, setPessoas);
+  }, [currentPage]);
 
   return (
     <>
@@ -45,7 +61,40 @@ export async function PessoasTable() {
         </div>
       )
       })}
-
+      <div
+        className="flex justify-between gap-6 col-span-2 mt-6"
+      >
+        <button
+          onClick={() => setCurrentPage(prevPage => prevPage - 1)}
+          className={`
+            ${mulish.className}
+            text-white
+            w-[100px]
+            h-[46px]
+            rounded-[10px]
+            hover:bg-white
+            hover:text-black
+            transition
+            pointer
+            bw
+          `}
+        >Anterior</button>
+        <button
+          onClick={() => setCurrentPage(prevPage => prevPage + 1)}
+          className={`
+            ${mulish.className}
+            text-white
+            w-[100px]
+            h-[46px]
+            rounded-[10px]
+            hover:bg-white
+            hover:text-black
+            transition
+            pointer
+            bw
+          `}
+        >Próxima</button>
+      </div>
     </>
   );
 }
