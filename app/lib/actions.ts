@@ -5,7 +5,7 @@ import { sql } from '@vercel/postgres'
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 
-const FormSchema = z.object({
+const PessoaSchema = z.object({
     id: z.string(),
     nome_pessoa: z.string(),
     data_nascimento: z.string(),
@@ -15,11 +15,13 @@ const FormSchema = z.object({
     email: z.string(),
     nome_mae: z.string(),
     nome_pai: z.string(),
+    created_at: z.string()
   })
 
-const CreatePessoa = FormSchema.omit({ id:true, date:true })
+const CreatePessoa = PessoaSchema.omit({ id:true, created_at:true })
 
 export async function createPessoa(formData: FormData){
+
   const {
     nome_pessoa,
     data_nascimento,
@@ -39,33 +41,27 @@ export async function createPessoa(formData: FormData){
     nome_mae: formData.get('nome_mae'),
     nome_pai: formData.get('nome_pai')
   })
+  
+  const date = new Date().toISOString()
+  
+  try{    
+    await sql.query(
+      `INSERT INTO vidas (nome_pessoa, data_nascimento, sexo, lider_equipe, telefone, email, nome_mae, nome_pai, created_at) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`,
+      [nome_pessoa, data_nascimento, sexo, lider_equipe, telefone, email, nome_mae, nome_pai, date]
+    )
+      } catch (error) {
+        return console.error(`Erro de Banco de Dados: ${error}`)
+      }
+      revalidatePath('/')
+      redirect('/')
+}
 
+export async function fetchPessoas() {
   try{
-    await sql`
-      INSERT INTO vidas (
-        nome_pessoa,
-        data_nascimento,
-        sexo,
-        lider_equipe,
-        telefone,
-        email,
-        nome_mae,
-        nome_pai
-      ) VALUES (
-        ${nome_pessoa},
-        ${data_nascimento},
-        ${sexo},
-        ${lider_equipe},
-        ${telefone},
-        ${email},
-        ${nome_mae},
-        ${nome_pai}
-      )
-    `
+    const { rows } = await sql`SELECT * FROM vidas LIMIT 10`
+    console.log(rows)
+    return rows
   } catch (error) {
-    message: 'Houve um erro no Banco de Dados ao cadastrar essa pessoa!'
+    console.error(`Erro de Banco de Dados: ${error}`)
   }
-
-  revalidatePath('/signup')
-  redirect('/signup')
 }

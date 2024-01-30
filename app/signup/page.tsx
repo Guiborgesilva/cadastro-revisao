@@ -9,7 +9,6 @@ import { createPessoa } from '@/app/lib/actions'
 export default function Signup(){
 
   return (
-    <>
     <section className={mulish.className}>
       <div className="pl-[2%] pr-[2%]">
         <div className="
@@ -47,6 +46,7 @@ export default function Signup(){
               id="mask"
               name="data_nascimento"
               mask="00/00/0000"
+              type="text"
               placeholder="dd/mm/aaaa"
               className="text-black p-2 rounded-[10px]"
               required
@@ -60,6 +60,7 @@ export default function Signup(){
               id="mask"
               name="telefone"
               mask="(00) 00000-0000"
+              type="tel"
               placeholder="(48) 99999-9999"
               className="text-black p-2 rounded-[10px]"
               required
@@ -106,6 +107,5 @@ export default function Signup(){
         </div>
       </div>
     </section>
-    </>
   )
 }

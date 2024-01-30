@@ -8,7 +8,7 @@ const Heydex = localFont({ src:'./Heydex.ttf' })
 export const metadata: Metadata = {
   title: 'Cadastro para o Revisão de Vidas',
   description: 'App para cadastro de pessoas para o Revisão de Vidas',
-  keywords: 'Revisão de Vidas, Revisão, Sara Nossa Terra, Sara, Igreja, Sobrenatural, Deus'
+  keywords: 'Revisão de Vidas, Revisão, Sara Nossa Terra, Sara, Igreja, Sobrenatural, Deus',
   
 }
 
