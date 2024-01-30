@@ -4,6 +4,7 @@ import { z } from 'zod'
 import { sql } from '@vercel/postgres'
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
+import { unstable_noStore as noStore } from 'next/cache'
 
 const PessoaSchema = z.object({
     id: z.string(),
@@ -58,6 +59,7 @@ export async function createPessoa(formData: FormData){
 
 export async function fetchPessoas() {
   try{
+    noStore()
     const { rows } = await sql`SELECT * FROM vidas LIMIT 10`
     console.log(rows)
     return rows
