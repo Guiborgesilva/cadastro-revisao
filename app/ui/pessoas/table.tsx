@@ -14,12 +14,15 @@ async function fetchData(currentPage: number, setPessoas: Function) {
 }
 
 export function PessoasTable() {
-  const [pessoas, setPessoas] = useState<QueryResultRow[]>([]);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [pessoas, setPessoas] = useState<QueryResultRow[]>([])
+  const [currentPage, setCurrentPage] = useState(1)
   
   useEffect(() => {
     fetchData(currentPage, setPessoas);
-  }, [currentPage]);
+  }, [currentPage])
+
+  const isFirstPage = currentPage === 1
+  const isLastPage = pessoas.length < 6
 
   return (
     <>
@@ -62,38 +65,48 @@ export function PessoasTable() {
       )
       })}
       <div
-        className="flex justify-between gap-6 col-span-2 mt-6"
-      >
-        <button
-          onClick={() => setCurrentPage(prevPage => prevPage - 1)}
-          className={`
-            ${mulish.className}
-            text-white
-            w-[100px]
-            h-[46px]
-            rounded-[10px]
-            hover:bg-white
-            hover:text-black
-            transition
-            pointer
-            bw
-          `}
-        >Anterior</button>
-        <button
-          onClick={() => setCurrentPage(prevPage => prevPage + 1)}
-          className={`
-            ${mulish.className}
-            text-white
-            w-[100px]
-            h-[46px]
-            rounded-[10px]
-            hover:bg-white
-            hover:text-black
-            transition
-            pointer
-            bw
-          `}
-        >Próxima</button>
+        className="
+          flex
+          justify-center
+          gap-6
+          col-span-2
+          mt-6
+          "
+        >
+          {!isFirstPage && (
+            <button
+              onClick={() => setCurrentPage(prevPage => prevPage - 1)}
+              className={`
+                ${mulish.className}
+                text-white
+                w-[100px]
+                h-[46px]
+                rounded-[10px]
+                hover:bg-white
+                hover:text-black
+                transition
+                pointer
+                bw
+              `}
+            >Anterior</button>
+          )}
+          {!isLastPage && (
+            <button
+              onClick={() => setCurrentPage(prevPage => prevPage + 1)}
+              className={`
+                ${mulish.className}
+                text-white
+                w-[100px]
+                h-[46px]
+                rounded-[10px]
+                hover:bg-white
+                hover:text-black
+                transition
+                pointer
+                bw
+              `}
+            >Próxima</button>
+          )}
       </div>
     </>
   );

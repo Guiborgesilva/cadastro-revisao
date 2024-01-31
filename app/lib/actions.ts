@@ -57,7 +57,7 @@ export async function createPessoa(formData: FormData){
       redirect('/')
 }
 
-const ITEMS_PER_PAGE = 10
+const ITEMS_PER_PAGE = 6
 
 export async function fetchPessoas(page: number) {
   try{

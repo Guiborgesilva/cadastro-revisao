@@ -18,8 +18,9 @@ export default function Page(){
           pt-20
           w-[370px]
           md:w-[700px]
-          grid
-          grid-cols-1
+          flex
+          flex-col
+          md:grid
           md:grid-cols-2
           gap-2
           voltarContainer
