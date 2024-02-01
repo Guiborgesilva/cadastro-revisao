@@ -5,9 +5,21 @@ import Select from '@/app/ui/SelectSex'
 import SelectFormLeader from "../ui/SelectLeader"
 import { IMaskInput } from 'react-imask'
 import { createPessoa } from '@/app/lib/actions'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Signup(){
+  const handleSubmit = async (event: any) => {
+    event.preventDefault();
+    const form = event.target;
 
+    try{
+      await createPessoa(form)
+      toast.success('Pessoa cadastrada com sucesso!')
+    } catch (error) {
+      toast.error('Erro ao cadastrar essa pessoa, por favor tente novamente!')
+    }
+  }
   return (
     <section className={mulish.className}>
       <div className="pl-[2%] pr-[2%]">
@@ -106,6 +118,7 @@ export default function Signup(){
           </form>
         </div>
       </div>
+      <ToastContainer />
     </section>
   )
 }

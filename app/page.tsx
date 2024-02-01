@@ -1,9 +1,14 @@
-import { Roboto } from 'next/font/google'
+import { Roboto, Quicksand } from 'next/font/google'
 import Link from 'next/link'
 
 const roboto = Roboto({
   subsets: ['latin'],
   weight: "400"
+})
+
+const quicksand = Quicksand({
+  subsets: ['latin'],
+  weight: "700"
 })
 
 export default function Home() {
@@ -14,7 +19,7 @@ export default function Home() {
         <div>
           <img src="/logoSaraIcara.png" alt="Logo da Igreja Sara de Içara" />
         </div>
-        <div className="text-center text-white">
+        <div className={`text-center text-white ${quicksand.className}`}>
           <p className="text-5xl">
             PREPARADO PARA EXPERIMENTAR
           </p>
@@ -42,7 +47,7 @@ export default function Home() {
         </Link>
         <Link
           href={{ pathname:'/controle' }}
-          className="text-white"
+          className={`text-white ${quicksand.className}`}
         >Acesso restrito</Link>
       </div>
     </>
