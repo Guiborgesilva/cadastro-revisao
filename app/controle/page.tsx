@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+// import { Suspense } from 'react'
 import { PessoasTable } from "../ui/pessoas/table"
 
 export default function Page(){
@@ -42,7 +43,9 @@ export default function Page(){
             />
           </svg>
           </Link>
-          <PessoasTable />
+          {/* <Suspense fallback={<div>Carregando os dados!</div>}> */}
+            <PessoasTable />
+          {/* </Suspense> */}
         </div>
       </div>
     </div>

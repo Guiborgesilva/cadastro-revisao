@@ -20,10 +20,10 @@ export default function Home() {
           <img src="/logoSaraIcara.png" alt="Logo da Igreja Sara de Içara" />
         </div>
         <div className={`text-center text-white ${quicksand.className}`}>
-          <p className="text-5xl">
+          <p className="text-4xl">
             PREPARADO PARA EXPERIMENTAR
           </p>
-          <p className="text-5xl mt-5"><span className="text-6xl">O</span> SOBRENATURAL?
+          <p className="text-4xl mt-5">O SOBRENATURAL?
           </p>
         </div>
         <Link href={{ pathname:'/signup' }}>

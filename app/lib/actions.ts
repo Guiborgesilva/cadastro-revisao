@@ -53,8 +53,8 @@ export async function createPessoa(formData: FormData){
       } catch (error) {
         return console.error(`Erro de Banco de Dados: ${error}`)
       }
-      revalidatePath('/')
-      redirect('/')
+      revalidatePath('/signup')
+      redirect('/signup')
 }
 
 const ITEMS_PER_PAGE = 6

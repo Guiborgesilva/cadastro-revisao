@@ -37,6 +37,13 @@ input:required:focus{
   cursor: pointer;
 }
 
+.inscricao{
+  position: absolute;
+  left: 75%;
+  transform: translateX(-75%);
+  top: 1.2rem;
+}
+
 .voltarContainer{
   position: relative;
 }

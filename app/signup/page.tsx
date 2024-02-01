@@ -7,6 +7,7 @@ import { IMaskInput } from 'react-imask'
 import { createPessoa } from '@/app/lib/actions'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Link from "next/link"
 
 export default function Signup(){
   const handleSubmit = async (event: any) => {
@@ -32,7 +33,9 @@ export default function Signup(){
           text-white
           gap-10
           rounded-[10px]
-          p-10
+          px-10
+          pb-10
+          pt-20
           mt-10
           mb-10
           bg-[#1E1E1E]
@@ -40,9 +43,26 @@ export default function Signup(){
           sm:w-[400px]
           xl:w-[562px]
           shadow-2xl
+          relative
           "
         >
-          <h1 className="text-3xl xl:text-4xl">Faça a sua inscrição!</h1>
+          <Link href={{ pathname:'/' }} className="voltar">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3"
+            />
+          </svg>
+          </Link>
+          <h1 className="w-[240px] text-center text-[1.5rem] md:text-4xl inscricao">Faça a sua inscrição!</h1>
           <form action={createPessoa} className="flex flex-col gap-2">
             <label htmlFor="nome_pessoa">Nome completo</label>
             <input
