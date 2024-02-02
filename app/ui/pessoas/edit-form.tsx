@@ -1,14 +1,20 @@
-'use client'
+'use client';
 
-import { mulish } from "../ui/fonts"
-import { IMaskInput } from 'react-imask'
-import { createPessoa } from '@/app/lib/actions'
-import Select from '@/app/ui/SelectSex'
-import SelectFormLeader from "../ui/SelectLeader"
-import Link from "next/link"
+import { updatePessoa } from "@/app/lib/actions"
+import { Pessoa } from '@/app/lib/definitions';
+import Link from 'next/link';
+import { useFormState } from 'react-dom'
+import { mulish } from "../fonts"
+import { IMaskInput } from "react-imask"
 
-export default function Signup(){
-
+export default function EditPessoaForm({
+  pessoa
+}: {
+  pessoa: Pessoa
+}) {
+  const initialState = { message: null, errors: {} }
+  const updatePessoaWithId = updatePessoa.bind(null, pessoa.id)
+  // const [ state, dispatch ] = useFormState(updatePessoaWithId, initialState)
   return (
     <section className={mulish.className}>
       <div className="pl-[2%] pr-[2%]">
@@ -48,9 +54,9 @@ export default function Signup(){
             />
           </svg>
           </Link>
-          <h1 className="w-full text-center text-[1.2rem] md:text-4xl">Faça a sua inscrição!</h1>
+          <h1 className="w-full text-center text-[1.2rem] md:text-4xl">Editar</h1>
           </div>
-          <form action={createPessoa} className="flex flex-col gap-2">
+          <form action={''} className="flex flex-col gap-2" key={pessoa.id}>
             <label htmlFor="nome_pessoa">Nome completo</label>
             <input
               className="text-black p-2 rounded-[10px]"
@@ -58,6 +64,7 @@ export default function Signup(){
               name="nome_pessoa"
               placeholder="Digite seu o nome completo"
               type="text"
+              value={pessoa.nome_pessoa}
               required
             />
             <label htmlFor="data_nascimento">Data de nascimento</label>
@@ -69,17 +76,55 @@ export default function Signup(){
               placeholder="dd/mm/aaaa"
               className="text-black p-2 rounded-[10px]"
               required
+              value={pessoa.data_nascimento}
             />
             <label htmlFor="sexo">Sexo</label>
-            <Select />
+            <select
+              id="sexo"
+              name="sexo"
+              defaultValue={pessoa.sexo}
+              className="peer block w-full cursor-pointer rounded-md border border-gray-200 p-2 outline-2 text-black"
+            >
+              <option value="" disabled>Selecione uma opção</option>
+              <option value="Feminino">Feminino</option>
+              <option value="Masculino">Masculino</option>
+            </select>
             <label htmlFor="lider_equipe">Líder e Equipe</label>
-            <SelectFormLeader />
+            <select
+              id="lider_equipe"
+              name="lider_equipe"
+              defaultValue={pessoa.lider_equipe}
+              className="peer block w-full cursor-pointer rounded-md border border-gray-200 p-2 outline-2 text-black"
+            >
+              <option value="" disabled>Selecione uma opção</option>
+              <option
+                value="Pr. Jefferson e Pra. Cíntia | Sara Içara">
+                  Pr. Jefferson e Pra. Cíntia | Sara Içara
+              </option>
+              <option
+                value="Maria Antônia e Vinícius | Combate">
+                  Maria Antônia e Vinícius | Combate
+              </option>
+              <option
+                value="Nádia | Alpha">
+                  Nádia | Alpha
+              </option>
+              <option
+                value="Guilherme e Isabel | Invencíveis">
+                  Guilherme e Isabel | Invencíveis
+              </option>
+              <option
+                value="Gleice | Atos">
+                  Gleice | Atos
+              </option>
+            </select>
             <label htmlFor="telefone">Telefone</label>
             <IMaskInput
               id="mask"
               name="telefone"
               mask="(00) 00000-0000"
               type="tel"
+              value={pessoa.telefone}
               placeholder="(48) 99999-9999"
               className="text-black p-2 rounded-[10px]"
               required
@@ -89,6 +134,7 @@ export default function Signup(){
               className="text-black p-2 rounded-[10px]"
               name="email"
               type="email"
+              value={pessoa.email}
               required
               placeholder="exemplo@exemplo.com"
             />
@@ -97,6 +143,7 @@ export default function Signup(){
               className="text-black p-2 rounded-[10px]"
               name="nome_mae"
               type="text"
+              value={pessoa.nome_mae}
               required
               placeholder="Digite o nome da sua mãe"
             />
@@ -105,6 +152,7 @@ export default function Signup(){
               className="text-black p-2 rounded-[10px]"
               name="nome_pai"
               type="text"
+              value={pessoa.nome_pai}
               required
               placeholder="Digite o nome do seu pai"
             />

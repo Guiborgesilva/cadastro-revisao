@@ -21,9 +21,9 @@ export default function Search({ placeholder }: { placeholder: string }) {
   }
 
   return (
-    <div className="relative flex justify-end w-64 text-black search">
+    <div className="w-64 md:w-full text-black relative">
       <label htmlFor="search" className="sr-only">
-        Search
+        Pesquisa
       </label>
       <input
         className={`peer block w-full rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-slate-400 ${mulish.className}`}

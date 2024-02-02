@@ -1,8 +1,8 @@
 import { mulish } from "../fonts"
-import Search from "../search"
 import { useState, useEffect } from 'react'
 import { fetchPessoas } from '@/app/lib/actions'
 import { QueryResultRow } from '@vercel/postgres'
+import Link from 'next/link'
 
 async function fetchData(currentPage: number, setPessoas: Function) {
   try {
@@ -26,42 +26,43 @@ export function PessoasTable() {
 
   return (
     <>
-    <Search placeholder="Procure aqui" />
     {pessoas?.map((pessoa) => {
       return(
-        <div className={`
-          ${mulish.className}
-          w-full
-          p-2
-          rounded-[10px]
-          transition
-          bw
-          bsw
-          card
-          flex
-          `}
-          key={pessoa.id}
-        >
-          <div className="
-            rounded-full
-            size-10
+        <Link href={`/controle/${pessoa.id}/edit`}>
+          <div className={`
+            ${mulish.className}
+            w-full
+            p-2
+            rounded-[10px]
+            transition
             bw
+            bsw
+            card
             flex
-            justify-center
-            items-center
-            "
+            `}
+            key={pessoa.id}
           >
-            <h2 className="text-2xl">
-              {pessoa.nome_pessoa.substring(0,1)}
-            </h2>
+            <div className="
+              rounded-full
+              size-10
+              bw
+              flex
+              justify-center
+              items-center
+              "
+            >
+              <h2 className="text-2xl">
+                {pessoa.nome_pessoa.substring(0,1)}
+              </h2>
+            </div>
+            <div className="ml-3 flex flex-col">
+              <p className="justify-start">
+                {nomeSobrenome(`${pessoa.nome_pessoa}`)}
+              </p>
+              <p className="text-[13px] justify-end">{pessoa.lider_equipe}</p>
+            </div>
           </div>
-          <div className="ml-3 flex flex-col">
-            <p className="justify-start">
-              {nomeSobrenome(`${pessoa.nome_pessoa}`)}
-            </p>
-            <p className="text-[13px] justify-end">{pessoa.lider_equipe}</p>
-          </div>
-        </div>
+        </Link>
       )
       })}
       <div
