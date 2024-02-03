@@ -17,7 +17,7 @@ export default function EditPessoaForm({
   // const [ state, dispatch ] = useFormState(updatePessoaWithId, initialState)
   return (
     <section className={mulish.className}>
-      <div className="pl-[2%] pr-[2%]">
+      <div className="pl-[2%] pr-[2%]" key={pessoa.id}>
         <div className="
           flex
           justify-center
@@ -56,7 +56,7 @@ export default function EditPessoaForm({
           </Link>
           <h1 className="w-full text-center text-[1.2rem] md:text-4xl">Editar</h1>
           </div>
-          <form action={''} className="flex flex-col gap-2" key={pessoa.id}>
+          <form action={''} className="flex flex-col gap-2">
             <label htmlFor="nome_pessoa">Nome completo</label>
             <input
               className="text-black p-2 rounded-[10px]"
