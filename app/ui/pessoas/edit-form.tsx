@@ -64,7 +64,7 @@ export default function EditPessoaForm({
               name="nome_pessoa"
               placeholder="Digite seu o nome completo"
               type="text"
-              value={pessoa.nome_pessoa}
+              defaultValue={pessoa.nome_pessoa}
               required
             />
             <label htmlFor="data_nascimento">Data de nascimento</label>
@@ -76,7 +76,7 @@ export default function EditPessoaForm({
               placeholder="dd/mm/aaaa"
               className="text-black p-2 rounded-[10px]"
               required
-              value={pessoa.data_nascimento}
+              defaultValue={pessoa.data_nascimento}
             />
             <label htmlFor="sexo">Sexo</label>
             <select
@@ -124,7 +124,7 @@ export default function EditPessoaForm({
               name="telefone"
               mask="(00) 00000-0000"
               type="tel"
-              value={pessoa.telefone}
+              defaultValue={pessoa.telefone}
               placeholder="(48) 99999-9999"
               className="text-black p-2 rounded-[10px]"
               required
@@ -134,7 +134,7 @@ export default function EditPessoaForm({
               className="text-black p-2 rounded-[10px]"
               name="email"
               type="email"
-              value={pessoa.email}
+              defaultValue={pessoa.email}
               required
               placeholder="exemplo@exemplo.com"
             />
@@ -143,7 +143,7 @@ export default function EditPessoaForm({
               className="text-black p-2 rounded-[10px]"
               name="nome_mae"
               type="text"
-              value={pessoa.nome_mae}
+              defaultValue={pessoa.nome_mae}
               required
               placeholder="Digite o nome da sua mãe"
             />
@@ -152,7 +152,7 @@ export default function EditPessoaForm({
               className="text-black p-2 rounded-[10px]"
               name="nome_pai"
               type="text"
-              value={pessoa.nome_pai}
+              defaultValue={pessoa.nome_pai}
               required
               placeholder="Digite o nome do seu pai"
             />
@@ -168,7 +168,7 @@ export default function EditPessoaForm({
               "
               type="submit"
             >
-              INSCREVER!
+              SALVAR ALTERAÇÕES
             </button>
           </form>
         </div>

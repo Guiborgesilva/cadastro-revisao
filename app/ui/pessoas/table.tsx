@@ -28,7 +28,7 @@ export function PessoasTable() {
     <>
     {pessoas?.map((pessoa) => {
       return(
-        <Link href={`/controle/${pessoa.id}/edit`}>
+        <Link href={`/controle/${pessoa.id}/edit`} key={pessoa.id}>
           <div className={`
             ${mulish.className}
             w-full
@@ -40,7 +40,6 @@ export function PessoasTable() {
             card
             flex
             `}
-            key={pessoa.id}
           >
             <div className="
               rounded-full
