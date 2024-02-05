@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import localFont from '@next/font/local'
 import './ui/globals.css'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 const Heydex = localFont({ src:'./Heydex.ttf' })
 

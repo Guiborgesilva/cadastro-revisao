@@ -37,42 +37,9 @@ input:required:focus{
   cursor: pointer;
 }
 
-/* .inscricao{
-  position: absolute;
-  left: 75%;
-  transform: translateX(-75%);
-  top: 1.2rem;
-}
-
-.voltarContainer{
-  position: relative;
-}
-
-.voltar{
-  position: absolute;
-  top: 1.5rem;
-  left: 2rem;
-}
-
-.voltar:hover{
-  cursor: pointer;
-} */
-
-/* .search{
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 1.2rem;
-} */
-
 @media screen and (max-width: 768px){
   body{
     background-size: 200vw 121%;
-  }
-
-  .search{
-    left: 70%;
-    transform: translateX(-70%);
   }
 }
  

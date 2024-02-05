@@ -1,32 +1,57 @@
 import { mulish } from "../fonts"
 import { useState, useEffect } from 'react'
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 import { fetchPessoas } from '@/app/lib/actions'
 import { QueryResultRow } from '@vercel/postgres'
 import Link from 'next/link'
 
-async function fetchData(currentPage: number, setPessoas: Function) {
+async function fetchData(currentPage: number, setPessoas: Function, setLoading: Function) {
   try {
+    setLoading(true)
     const data = await fetchPessoas(currentPage);
     setPessoas(data);
   } catch (error) {
     console.error('Erro ao buscar pessoas:', error);
+  } finally {
+    setLoading(false)
   }
 }
 
 export function PessoasTable() {
   const [pessoas, setPessoas] = useState<QueryResultRow[]>([])
+  const [loading, setLoading] = useState(true)
   const [currentPage, setCurrentPage] = useState(1)
   
   useEffect(() => {
-    fetchData(currentPage, setPessoas);
+    fetchData(currentPage, setPessoas, setLoading);
   }, [currentPage])
 
   const isFirstPage = currentPage === 1
   const isLastPage = pessoas.length < 6
 
+  const groupedPessoas = Array.from({ length: Math.ceil(pessoas.length / 3) }, (_, index) =>
+    pessoas.slice(index * 3, index * 3 + 3)
+  )
+
   return (
     <>
-    {pessoas?.map((pessoa) => {
+    {loading ? (
+      <div className="flex flex-col md:flex-row md:gap-2">
+        {Array.from({ length: 2 }, (_, index) => (
+          <div className="flex-1" key={index}>
+            <Skeleton
+              count={3}
+              height={61.5}
+              width={314}
+              baseColor="#a19f9f"
+              highlightColor="#444"
+              borderRadius={10}
+            />
+          </div>
+        ))}
+      </div>
+    ) : (
+    pessoas?.map((pessoa) => {
       return(
         <Link href={`/controle/${pessoa.id}/edit`} key={pessoa.id}>
           <div className={`
@@ -37,7 +62,6 @@ export function PessoasTable() {
             transition
             bw
             bsw
-            card
             flex
             `}
           >
@@ -51,19 +75,19 @@ export function PessoasTable() {
               "
             >
               <h2 className="text-2xl">
-                {pessoa.nome_pessoa.substring(0,1)}
+                {pessoa.nome_pessoa.substring(0,1) || <Skeleton />}
               </h2>
             </div>
             <div className="ml-3 flex flex-col">
               <p className="justify-start">
-                {nomeSobrenome(`${pessoa.nome_pessoa}`)}
+                {nomeSobrenome(`${pessoa.nome_pessoa || <Skeleton />}`)}
               </p>
-              <p className="text-[13px] justify-end">{pessoa.lider_equipe}</p>
+              <p className="text-[13px] justify-end">{pessoa.lider_equipe || <Skeleton />}</p>
             </div>
           </div>
         </Link>
       )
-      })}
+      }))}
       <div
         className="
           flex

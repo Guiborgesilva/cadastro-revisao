@@ -82,7 +82,7 @@ export async function fetchPessoas(page: number) {
     const limit = ITEMS_PER_PAGE;
     const { rows } = await sql`
       SELECT * FROM vidas
-      ORDER BY created_at
+      ORDER BY created_at DESC
       LIMIT ${limit} OFFSET ${offset}
     `
     // console.log(rows) Mostra o que foi cadastrado no console do servidor

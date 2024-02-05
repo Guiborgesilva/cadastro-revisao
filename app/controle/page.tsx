@@ -2,7 +2,6 @@
 
 import Link from 'next/link'
 import { quicksand } from '../ui/fonts'
-// import { Suspense } from 'react'
 import Search from "@/app/ui/search"
 import { PessoasTable } from "../ui/pessoas/table"
 
@@ -50,7 +49,7 @@ export default function Page(){
             gap-2
           "
         >
-          {/* <Suspense fallback={<div>Carregando os dados!</div>}> */}
+          {/* <Suspense fallback={<CardsSkeleton />}> */}
             <PessoasTable />
           {/* </Suspense> */}
         </div>
