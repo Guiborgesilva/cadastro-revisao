@@ -16,7 +16,7 @@ export default function EditPessoaForm({
   const updatePessoaWithId = updatePessoa.bind(null, pessoa.id)
   // const [ state, dispatch ] = useFormState(updatePessoaWithId, initialState)
   return (
-    <section className={mulish.className}>
+    <section className={`{mulish.className}`}>
       <div className="pl-[2%] pr-[2%]" key={pessoa.id}>
         <div className="
           flex
@@ -38,7 +38,7 @@ export default function EditPessoaForm({
           "
         >
           <div className="flex items-center md:gap-4">
-          <Link href={{ pathname:'/' }}>
+          <Link href={{ pathname:'/controle' }}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -54,7 +54,7 @@ export default function EditPessoaForm({
             />
           </svg>
           </Link>
-          <h1 className="w-full text-center text-[1.2rem] md:text-4xl">Editar</h1>
+          <h1 className="w-full text-center text-[1.5rem] md:text-4xl">Edite os dados</h1>
           </div>
           <form action={''} className="flex flex-col gap-2">
             <label htmlFor="nome_pessoa">Nome completo</label>

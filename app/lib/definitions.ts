@@ -5,8 +5,8 @@ export type Pessoa = {
   sexo: string;
   lider_equipe: string;
   telefone: string;
-  email: string;
-  nome_mae: string;
-  nome_pai: string;
-  date: string;
+  email?: string;
+  nome_mae?: string;
+  nome_pai?: string;
+  created_at: string;
 }

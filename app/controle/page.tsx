@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { quicksand } from '../ui/fonts'
 // import { Suspense } from 'react'
 import Search from "@/app/ui/search"
 import { PessoasTable } from "../ui/pessoas/table"
@@ -10,7 +11,7 @@ export default function Page(){
   return (
     <div className="w-full text-white flex justify-center items-center pt-10">
       <div>
-        <h1 className="mb-8 text-5xl text-center">
+        <h1 className={`mb-8 text-5xl text-center font-medium ${quicksand.className}`}>
             CONTROLE
           </h1>
         <div className="
