@@ -38,7 +38,7 @@ export default function Page(){
           />
         </svg>
         </Link>
-        <Search placeholder="Procure aqui" />
+        <Search placeholder="Quem você procura?" />
         </div>
         <div
           className="
@@ -49,9 +49,7 @@ export default function Page(){
             gap-2
           "
         >
-          {/* <Suspense fallback={<CardsSkeleton />}> */}
-            <PessoasTable />
-          {/* </Suspense> */}
+          <PessoasTable />
         </div>
         </div>
       </div>

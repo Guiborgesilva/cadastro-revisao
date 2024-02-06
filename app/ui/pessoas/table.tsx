@@ -42,6 +42,7 @@ export function PessoasTable() {
             <Skeleton
               count={3}
               height={61.5}
+              className="mb-1"
               width={314}
               baseColor="#a19f9f"
               highlightColor="#444"
