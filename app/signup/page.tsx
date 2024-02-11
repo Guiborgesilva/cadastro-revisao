@@ -1,11 +1,8 @@
 'use client'
 
 import { mulish } from "../ui/fonts"
-import { IMaskInput } from 'react-imask'
-import { createPessoa } from '@/app/lib/actions'
-// import Select from '@/app/ui/SelectSex'
-// import SelectFormLeader from "../ui/SelectLeader"
 import Link from "next/link"
+import { SignupForm } from "../ui/components/SignupForm"
 
 export default function Signup(){
 
@@ -50,117 +47,7 @@ export default function Signup(){
           </Link>
           <h1 className="w-full text-center text-[1.3rem] md:text-4xl">Faça a sua inscrição!</h1>
           </div>
-          <form action={createPessoa} className="flex flex-col gap-2">
-            <label htmlFor="nome_pessoa">Nome completo</label>
-            <input
-              className="text-black p-2 rounded-[10px]"
-              autoFocus
-              name="nome_pessoa"
-              placeholder="Digite seu o nome completo"
-              type="text"
-              required
-            />
-            <label htmlFor="data_nascimento">Data de nascimento</label>
-            <IMaskInput
-              id="mask"
-              name="data_nascimento"
-              mask="00/00/0000"
-              type="text"
-              placeholder="dd/mm/aaaa"
-              className="text-black p-2 rounded-[10px]"
-              required
-            />
-            <label htmlFor="sexo">Sexo</label>
-            <select
-              id="sexo"
-              name="sexo"
-              defaultValue="Selecione uma opção"
-              required
-              className="peer block w-full cursor-pointer rounded-md border border-gray-200 p-2 outline-2 text-black"
-            >
-              <option defaultValue="Selecione uma opção" disabled>Selecione uma opção</option>
-              <option value="Feminino">Feminino</option>
-              <option value="Masculino">Masculino</option>
-            </select>
-            <label htmlFor="lider_equipe">Líder e Equipe</label>
-            <select
-              id="lider_equipe"
-              name="lider_equipe"
-              defaultValue="Selecione uma opção"
-              required
-              className="peer block w-full cursor-pointer rounded-md border border-gray-200 p-2 outline-2 text-black"
-            >
-              <option defaultValue="Selecione uma opção" disabled>Selecione uma opção</option>
-              <option
-                value="Pr. Jefferson e Pra. Cíntia | Sara Içara">
-                  Pr. Jefferson e Pra. Cíntia | Sara Içara
-              </option>
-              <option
-                value="Maria Antônia e Vinícius | Combate">
-                  Maria Antônia e Vinícius | Combate
-              </option>
-              <option
-                value="Nádia | Alpha">
-                  Nádia | Alpha
-              </option>
-              <option
-                value="Guilherme e Isabel | Invencíveis">
-                  Guilherme e Isabel | Invencíveis
-              </option>
-              <option
-                value="Gleice | Atos">
-                  Gleice | Atos
-              </option>
-            </select>
-            <label htmlFor="telefone">Telefone</label>
-            <IMaskInput
-              id="mask"
-              name="telefone"
-              mask="(00) 00000-0000"
-              type="tel"
-              placeholder="(48) 99999-9999"
-              className="text-black p-2 rounded-[10px]"
-              required
-            />
-            <label htmlFor="email">E-mail</label>
-            <input
-              className="text-black p-2 rounded-[10px]"
-              name="email"
-              type="email"
-              required
-              placeholder="exemplo@exemplo.com"
-            />
-            <label htmlFor="nome_mae">Nome da mãe</label>
-            <input
-              className="text-black p-2 rounded-[10px]"
-              name="nome_mae"
-              type="text"
-              required
-              placeholder="Digite o nome da sua mãe"
-            />
-            <label htmlFor="nome_pai">Nome do pai</label>
-            <input
-              className="text-black p-2 rounded-[10px]"
-              name="nome_pai"
-              type="text"
-              required
-              placeholder="Digite o nome do seu pai"
-            />
-            <button
-              className="
-                p-2
-                mt-3
-                rounded-[10px]
-                hover:bg-white
-                hover:text-black
-                transition
-                bw
-              "
-              type="submit"
-            >
-              INSCREVER!
-            </button>
-          </form>
+          <SignupForm />
         </div>
       </div>
       {/* <ToastContainer /> */}

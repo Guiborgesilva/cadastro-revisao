@@ -1,5 +1,9 @@
+'use client'
+
 import { Roboto, Quicksand } from 'next/font/google'
+import { useState } from 'react'
 import Link from 'next/link'
+import Sidebar from './ui/components/Sidebar'
 
 const roboto = Roboto({
   subsets: ['latin'],
@@ -12,10 +16,28 @@ const quicksand = Quicksand({
 })
 
 export default function Home() {
+  const [ sidebar, setSidebar ] = useState(false)
+  const showSidebar = () => setSidebar(!sidebar)
 
   return (
     <>
       <div className="flex justify-center items-center mt-24 flex-col gap-24">
+        <div className="menu" onClick={showSidebar}>
+          {sidebar && <Sidebar active={setSidebar} />}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke="currentColor"
+              className="w-6 h-6 text-white cursor-pointer hover:text-black transition-all">
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+              />
+            </svg>
+        </div>
         <div>
           <img src="/logoSaraIcara.png" alt="Logo da Igreja Sara de Içara" />
         </div>
@@ -40,15 +62,11 @@ export default function Home() {
               bw
             "
           >
-            <span className={roboto.className}>
+            <p className={roboto.className}>
               QUERO ME INSCREVER!
-            </span>
+            </p>
           </button>
         </Link>
-        <Link
-          href={{ pathname:'/controle' }}
-          className={`text-white ${quicksand.className}`}
-        >Acesso restrito</Link>
       </div>
     </>
   )

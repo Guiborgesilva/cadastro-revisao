@@ -1,10 +1,6 @@
 import type { Metadata } from 'next'
-import localFont from '@next/font/local'
 import './ui/globals.css'
 import 'react-loading-skeleton/dist/skeleton.css'
-
-const Heydex = localFont({ src:'./Heydex.ttf' })
-
 
 export const metadata: Metadata = {
   title: 'Cadastro para o Revisão de Vidas',
@@ -20,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-br">
-      <body className={Heydex.className}>{children}</body>
+      <body>{children}</body>
     </html>
   )
 }

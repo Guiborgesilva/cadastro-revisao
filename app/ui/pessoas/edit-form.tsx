@@ -3,20 +3,128 @@
 import { updatePessoa } from "@/app/lib/actions"
 import { Pessoa } from '@/app/lib/definitions';
 import Link from 'next/link';
-import { useFormState } from 'react-dom'
+import { useFormState } from 'react-hook-form'
 import { mulish } from "../fonts"
-import { IMaskInput } from "react-imask"
+import { z } from 'zod'
+import { useForm, SubmitHandler, UseFormGetValues } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useEffect } from 'react'
+
+export const pessoaSchema = z.object({
+  id: z.string(),
+  nome_pessoa: z.string()
+    .min(1, 'Por favor, digite seu nome!')
+    .transform(nome_pessoa => {
+      return nome_pessoa.trim().split(' ').map(word => {
+        return word[0].toLocaleUpperCase().concat(word.substring(1))
+      }).join(' ')
+  }),
+  data_nascimento: z.coerce.date().min(new Date('1900-01-01'), {
+    message: 'Por favor, digite uma data de nascimento válida'
+  }),
+  sexo: z.enum(['Feminino', 'Masculino'], {
+    errorMap: () => ({ message: 'Por favor. selecione uma opção!' })
+  }),
+  lider_equipe: z.enum([
+    'Pr. Jefferson e Pra. Cíntia | Sara Içara',
+    'Maria Antônia e Vinícius | Combate',
+    'Nádia | Alpha',
+    'Guilherme e Isabel | Invencíveis',
+    'Gleice | Atos'
+  ], {
+    errorMap: () => ({ message: 'Por favor, selecione uma opção!' })
+  }),
+  telefone: z.string().min(1, 'Por favor, digite seu telefone!').max(15),
+  email: z.string().toLowerCase().email('Por favor, digite um email válido!'),
+  nome_mae: z.string().min(1, 'Por favor, digite o nome da sua mãe!'),
+  nome_pai: z.string().min(1, 'Por favor, digite o nome do seu pai!'),
+  forma_pagamento: z.enum([
+    'Dinheiro',
+    'Cartão de Débito / Crédito',
+    'Pix'
+  ]),
+  created_at: z.date()
+})
+
+export const UpdatePessoa = pessoaSchema.omit({ id:true, created_at:true })
+
+export type FormProps = {
+  nome_pessoa: string,
+  data_nascimento: string,
+  sexo: string,
+  lider_equipe: string,
+  telefone: string,
+  email: string,
+  nome_mae: string,
+  nome_pai: string,
+  forma_pagamento: string
+}
 
 export default function EditPessoaForm({
   pessoa
 }: {
   pessoa: Pessoa
 }) {
-  const initialState = { message: null, errors: {} }
-  const updatePessoaWithId = updatePessoa.bind(null, pessoa.id)
-  // const [ state, dispatch ] = useFormState(updatePessoaWithId, initialState)
+
+  // const onSubmit = async (data) => {
+  //   try{
+  //     await updatePessoa(pessoa.id, formData)
+  //     alert('Cadastro atualizado com sucesso!')
+  //   } catch (error) {
+  //     console.error(`Houve um erro ao atualizar o cadastro: ${error}`)
+  //   }
+  // }
+  
+  const {
+    register,
+    setValue,
+    handleSubmit,
+    watch,
+    formState: {errors}
+  } = useForm<FormProps>({
+    mode: 'all',
+    reValidateMode: 'onChange',
+    resolver: zodResolver(pessoaSchema)
+  })
+
+  // const { dirtyFields, isDirty } = useFormState()
+
+  // useEffect(() => {
+  //   setValue('nome_pessoa', pessoa.nome_pessoa),
+  //   setValue('data_nascimento', pessoa.data_nascimento)
+  //   setValue('sexo', pessoa.sexo)
+  //   setValue('lider_equipe', pessoa.nome_pessoa)
+  //   setValue('telefone', pessoa.telefone)
+  //   setValue('email', pessoa.email)
+  //   setValue('nome_mae', pessoa.nome_mae)
+  //   setValue('nome_pai', pessoa.nome_pai)
+  // }, [pessoa])
+
+  const telefoneValue = watch('telefone')
+
+  const telefoneMask = (value: string) => {
+
+    if(value === pessoa.telefone){
+      return pessoa.telefone
+    }
+    if(!value) return ""
+    value = value.replace(/\D/g,'')
+    value = value.replace(/(\d{2})(\d)/,"($1) $2")
+    value = value.replace(/(\d)(\d{4})$/,"$1-$2")
+    return value
+
+  }
+
+  if(!pessoa.telefone){
+    useEffect(() => {
+      setValue("telefone", telefoneMask(telefoneValue))
+    },[telefoneValue])
+  }
+
+  const updatePessoaWithId = updatePessoa.bind(null, pessoa.id);
+  
   return (
-    <section className={`{mulish.className}`}>
+    <section className={`${mulish.className}`}>
       <div className="pl-[2%] pr-[2%]" key={pessoa.id}>
         <div className="
           flex
@@ -56,32 +164,33 @@ export default function EditPessoaForm({
           </Link>
           <h1 className="w-full text-center text-[1.5rem] md:text-4xl">Edite os dados</h1>
           </div>
-          <form action={''} className="flex flex-col gap-2">
+          <form action={updatePessoaWithId} className="flex flex-col gap-2">
             <label htmlFor="nome_pessoa">Nome completo</label>
             <input
               className="text-black p-2 rounded-[10px]"
               autoFocus
-              name="nome_pessoa"
+              // name="nome_pessoa"
+              {...register('nome_pessoa')}
               placeholder="Digite seu o nome completo"
               type="text"
               defaultValue={pessoa.nome_pessoa}
-              required
             />
+            {<span>{errors.nome_pessoa?.message}</span>}
             <label htmlFor="data_nascimento">Data de nascimento</label>
-            <IMaskInput
-              id="mask"
-              name="data_nascimento"
-              mask="00/00/0000"
-              type="text"
-              placeholder="dd/mm/aaaa"
-              className="text-black p-2 rounded-[10px]"
-              required
+            <input
+              type="date"
+              className="text-black p-2 rounded-lg"
+              maxLength={10}
+              // name="data_nascimento"
+              {...register('data_nascimento')}
               defaultValue={pessoa.data_nascimento}
             />
+            {<span>{errors.data_nascimento?.message}</span>}
             <label htmlFor="sexo">Sexo</label>
             <select
               id="sexo"
-              name="sexo"
+              // name="sexo"
+              {...register('sexo')}
               defaultValue={pessoa.sexo}
               className="peer block w-full cursor-pointer rounded-md border border-gray-200 p-2 outline-2 text-black"
             >
@@ -89,10 +198,12 @@ export default function EditPessoaForm({
               <option value="Feminino">Feminino</option>
               <option value="Masculino">Masculino</option>
             </select>
+            {<span>{errors.sexo?.message}</span>}
             <label htmlFor="lider_equipe">Líder e Equipe</label>
             <select
               id="lider_equipe"
-              name="lider_equipe"
+              // name="lider_equipe"
+              {...register('lider_equipe')}
               defaultValue={pessoa.lider_equipe}
               className="peer block w-full cursor-pointer rounded-md border border-gray-200 p-2 outline-2 text-black"
             >
@@ -118,44 +229,62 @@ export default function EditPessoaForm({
                   Gleice | Atos
               </option>
             </select>
+            {<span>{errors.lider_equipe?.message}</span>}
             <label htmlFor="telefone">Telefone</label>
-            <IMaskInput
-              id="mask"
-              name="telefone"
-              mask="(00) 00000-0000"
+            <input
               type="tel"
+              // name="telefone"
+              {...register('telefone')}
+              maxLength={15}
+              className="text-black p-2 rounded-lg"
+              placeholder="(00) 00000-0000"
               defaultValue={pessoa.telefone}
-              placeholder="(48) 99999-9999"
-              className="text-black p-2 rounded-[10px]"
-              required
             />
+            {<span>{errors.telefone?.message}</span>}
             <label htmlFor="email">E-mail</label>
             <input
-              className="text-black p-2 rounded-[10px]"
-              name="email"
+              className="text-black p-2 rounded-lg"
               type="email"
-              defaultValue={pessoa.email}
-              required
+              // name="email"
+              {...register('email')}
               placeholder="exemplo@exemplo.com"
+              defaultValue={pessoa.email}
             />
+            {<span>{errors.email?.message}</span>}
             <label htmlFor="nome_mae">Nome da mãe</label>
             <input
               className="text-black p-2 rounded-[10px]"
-              name="nome_mae"
+              // name="nome_mae"
+              {...register('nome_mae')}
               type="text"
               defaultValue={pessoa.nome_mae}
               required
               placeholder="Digite o nome da sua mãe"
             />
+            {<span>{errors.nome_mae?.message}</span>}
             <label htmlFor="nome_pai">Nome do pai</label>
             <input
               className="text-black p-2 rounded-[10px]"
-              name="nome_pai"
+              // name="nome_pai"
+              {...register('nome_pai')}
               type="text"
               defaultValue={pessoa.nome_pai}
               required
               placeholder="Digite o nome do seu pai"
             />
+            {<span>{errors.nome_pai?.message}</span>}
+            <label htmlFor="forma_pagamento">Forma de pagamento</label>
+            <select
+              {...register('forma_pagamento')}
+              defaultValue={pessoa.forma_pagamento || 'Selecione uma opção'}
+              className="peer block w-full cursor-pointer rounded-md border border-gray-200 p-2 outline-2 text-black"
+            >
+              <option defaultValue="Selecione uma opção" disabled>Selecione uma opção</option>
+              <option value="Dinheiro">Dinheiro</option>
+              <option value="Cartão de Débito / Crédito">Cartão de Débito / Crédito</option>
+              <option value="Pix">Pix</option>
+            </select>
+            {<span>{errors.forma_pagamento?.message}</span>}
             <button
               className="
                 p-2

@@ -1,6 +1,6 @@
 import { mulish } from "../fonts"
 import { useState, useEffect } from 'react'
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
+import Skeleton from 'react-loading-skeleton'
 import { fetchPessoas } from '@/app/lib/actions'
 import { QueryResultRow } from '@vercel/postgres'
 import Link from 'next/link'
@@ -29,10 +29,6 @@ export function PessoasTable() {
   const isFirstPage = currentPage === 1
   const isLastPage = pessoas.length < 6
 
-  const groupedPessoas = Array.from({ length: Math.ceil(pessoas.length / 3) }, (_, index) =>
-    pessoas.slice(index * 3, index * 3 + 3)
-  )
-
   return (
     <>
     {loading ? (
@@ -44,8 +40,8 @@ export function PessoasTable() {
               height={61.5}
               className="mb-1"
               width={314}
-              baseColor="#a19f9f"
-              highlightColor="#444"
+              baseColor="#b4b4b4"
+              highlightColor="#dadada"
               borderRadius={10}
             />
           </div>
