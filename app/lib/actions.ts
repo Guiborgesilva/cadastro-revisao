@@ -4,8 +4,8 @@ import { sql } from '@vercel/postgres'
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 import { unstable_noStore as noStore } from 'next/cache'
-import { Pessoa } from "./definitions"
-import { UpdatePessoa } from '../ui/pessoas/edit-form'
+import { Pessoa } from './definitions'
+// import { UpdatePessoa } from '../ui/pessoas/edit-form'
 import { z } from 'zod'
 
 export type State = {
@@ -130,6 +130,8 @@ export async function fetchPessoasById(id: string){
   }
 }
 
+const UpdatePessoa = pessoaSchema.omit({ id: true, created_at: true })
+
 export async function updatePessoa(id: string, formData: FormData) {
   const {
     nome_pessoa,
@@ -153,14 +155,14 @@ export async function updatePessoa(id: string, formData: FormData) {
     forma_pagamento: formData.get('forma_pagamento')
   });
 
-  const date = new Date().toISOString();
+  // const date = new Date().toISOString();
  
   try{
     await sql`
       UPDATE vidas
       SET
       nome_pessoa = ${nome_pessoa},
-      data_nascimento = ${date},
+      data_nascimento = ${data_nascimento},
       sexo = ${sexo},
       lider_equipe = ${lider_equipe},
       telefone = ${telefone},

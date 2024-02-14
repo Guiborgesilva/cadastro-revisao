@@ -1,12 +1,11 @@
-'use client';
+'use client'
 
 import { updatePessoa } from "@/app/lib/actions"
-import { Pessoa } from '@/app/lib/definitions';
-import Link from 'next/link';
-import { useFormState } from 'react-hook-form'
+import { Pessoa } from '@/app/lib/definitions'
+import Link from 'next/link'
 import { mulish } from "../fonts"
 import { z } from 'zod'
-import { useForm, SubmitHandler, UseFormGetValues } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useEffect } from 'react'
 
@@ -46,7 +45,7 @@ export const pessoaSchema = z.object({
   created_at: z.date()
 })
 
-export const UpdatePessoa = pessoaSchema.omit({ id:true, created_at:true })
+// export const UpdatePessoa = pessoaSchema.omit({ id:true, created_at:true })
 
 export type FormProps = {
   nome_pessoa: string,
@@ -65,20 +64,10 @@ export default function EditPessoaForm({
 }: {
   pessoa: Pessoa
 }) {
-
-  // const onSubmit = async (data) => {
-  //   try{
-  //     await updatePessoa(pessoa.id, formData)
-  //     alert('Cadastro atualizado com sucesso!')
-  //   } catch (error) {
-  //     console.error(`Houve um erro ao atualizar o cadastro: ${error}`)
-  //   }
-  // }
   
   const {
     register,
     setValue,
-    handleSubmit,
     watch,
     formState: {errors}
   } = useForm<FormProps>({
@@ -86,19 +75,6 @@ export default function EditPessoaForm({
     reValidateMode: 'onChange',
     resolver: zodResolver(pessoaSchema)
   })
-
-  // const { dirtyFields, isDirty } = useFormState()
-
-  // useEffect(() => {
-  //   setValue('nome_pessoa', pessoa.nome_pessoa),
-  //   setValue('data_nascimento', pessoa.data_nascimento)
-  //   setValue('sexo', pessoa.sexo)
-  //   setValue('lider_equipe', pessoa.nome_pessoa)
-  //   setValue('telefone', pessoa.telefone)
-  //   setValue('email', pessoa.email)
-  //   setValue('nome_mae', pessoa.nome_mae)
-  //   setValue('nome_pai', pessoa.nome_pai)
-  // }, [pessoa])
 
   const telefoneValue = watch('telefone')
 
@@ -165,6 +141,7 @@ export default function EditPessoaForm({
           <h1 className="w-full text-center text-[1.5rem] md:text-4xl">Edite os dados</h1>
           </div>
           <form action={updatePessoaWithId} className="flex flex-col gap-2">
+            <input type="hidden" name="id" value={pessoa.id} />
             <label htmlFor="nome_pessoa">Nome completo</label>
             <input
               className="text-black p-2 rounded-[10px]"
