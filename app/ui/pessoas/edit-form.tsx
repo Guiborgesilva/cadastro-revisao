@@ -100,8 +100,8 @@ export default function EditPessoaForm({
   const updatePessoaWithId = updatePessoa.bind(null, pessoa.id);
   
   return (
-    <section className={`${mulish.className}`}>
-      <div className="pl-[2%] pr-[2%]" key={pessoa.id}>
+    <section className={`${mulish.className}`} key={pessoa.id}>
+      <div className="pl-[2%] pr-[2%]">
         <div className="
           flex
           justify-center
