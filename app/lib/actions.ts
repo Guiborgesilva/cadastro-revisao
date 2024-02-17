@@ -5,7 +5,7 @@ import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 import { unstable_noStore as noStore } from 'next/cache'
 import { Pessoa } from './definitions'
-// import { UpdatePessoa } from '../ui/pessoas/edit-form'
+// import PessoasTable from '../ui/pessoas/table'
 import { z } from 'zod'
 
 export type State = {
@@ -93,8 +93,6 @@ export async function createPessoa(formData: FormData){
       redirect('/')
 }
 
-const ITEMS_PER_PAGE = 6
-
 export async function fetchPessoas(page: number) {
   noStore()
   try{
@@ -127,6 +125,75 @@ export async function fetchPessoasById(id: string){
   } catch (error) {
     console.error(`Falha ao buscar os dados dessa Pessoa, erro: ${error}`)
     throw new Error('Falha ao buscar os dados dessa Pessoa.')
+  }
+}
+
+const ITEMS_PER_PAGE = 6
+export async function fetchFilteredPessoas(
+  query: string,
+  currentPage: number
+) {
+  const offset = (currentPage - 1) * ITEMS_PER_PAGE;
+  noStore();
+
+  try {
+    const pessoas = await sql<Pessoa>`
+      SELECT
+        id,
+        nome_pessoa,
+        data_nascimento,
+        sexo,
+        lider_equipe,
+        telefone,
+        email,
+        nome_mae,
+        nome_pai,
+        forma_pagamento
+      FROM vidas AS pessoa
+      WHERE
+        pessoa.nome_pessoa ILIKE ${`%${query}%`} OR
+        pessoa.data_nascimento ILIKE ${`%${query}%`} OR
+        pessoa.sexo ILIKE ${`%${query}%`} OR
+        pessoa.lider_equipe ILIKE ${`%${query}%`} OR
+        pessoa.telefone ILIKE ${`%${query}%`} OR
+        pessoa.email ILIKE ${`%${query}%`} OR
+        pessoa.nome_mae ILIKE ${`%${query}%`} OR
+        pessoa.nome_pai ILIKE ${`%${query}%`} OR
+        pessoa.forma_pagamento ILIKE ${`%${query}%`}
+      ORDER BY nome_pessoa
+      LIMIT ${ITEMS_PER_PAGE} OFFSET ${offset}
+    `;
+
+    return pessoas.rows;
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Falha ao buscar os dados!');
+  }
+}
+
+export async function fetchPessoasPages(query: string) {
+  noStore();
+  try {
+    const count = await sql`
+    SELECT COUNT(*)
+    FROM vidas AS pessoa
+    WHERE
+      pessoa.nome_pessoa ILIKE ${`%${query}%`} OR
+      pessoa.data_nascimento ILIKE ${`%${query}%`} OR
+      pessoa.sexo ILIKE ${`%${query}%`} OR
+      pessoa.lider_equipe ILIKE ${`%${query}%`} OR
+      pessoa.telefone ILIKE ${`%${query}%`} OR
+      pessoa.email ILIKE ${`%${query}%`} OR
+      pessoa.nome_mae ILIKE ${`%${query}%`} OR
+      pessoa.nome_pai ILIKE ${`%${query}%`} OR
+      pessoa.forma_pagamento ILIKE ${`%${query}%`}
+  `;
+
+    const totalPages = Math.ceil(Number(count.rows[0].count) / ITEMS_PER_PAGE);
+    return totalPages;
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Falha ao buscar o número total de pessoas.');
   }
 }
 
@@ -190,6 +257,7 @@ export async function updatePessoa(id: string, formData: FormData) {
 // import { unstable_noStore as noStore } from 'next/cache'
 // import { Pessoa } from "./definitions"
 // import { CreatePessoa, SignupForm, pessoaSchema } from '../ui/components/SignupForm'
+// import { PessoasTable } from '../ui/pessoas/table'
 
 // export type State = {
 //   errors?: {

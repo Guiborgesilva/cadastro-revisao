@@ -91,11 +91,11 @@ export default function EditPessoaForm({
 
   }
 
-  if(!pessoa.telefone){
     useEffect(() => {
-      setValue("telefone", telefoneMask(telefoneValue))
+      if(!pessoa.telefone){
+        setValue("telefone", telefoneMask(telefoneValue))
+      }
     },[telefoneValue])
-  }
 
   const updatePessoaWithId = updatePessoa.bind(null, pessoa.id);
   
