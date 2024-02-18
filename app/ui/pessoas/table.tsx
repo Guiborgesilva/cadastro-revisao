@@ -14,7 +14,8 @@ export default async function PessoasTable({
 
   return (
     <>
-    {pessoas?.map((pessoa) => (
+    {pessoas?.length > 0 ?
+    pessoas?.map((pessoa) => (
         <Link href={`/controle/${pessoa.id}/edit`} key={pessoa.id}>
           <div className={`
             ${mulish.className}
@@ -23,6 +24,7 @@ export default async function PessoasTable({
             rounded-lg
             transition
             bw
+            bsw
             flex
             items-center
             `}
@@ -51,14 +53,28 @@ export default async function PessoasTable({
                   </div>
                 </div>
               </div>
-              <div>
+              {/* <div>
                 <svg xmlns="http://www.w3.org/2000/svg" width="5" viewBox="0 0 128 512"><path fill="#ffffff" d="M64 360a56 56 0 1 0 0 112 56 56 0 1 0 0-112zm0-160a56 56 0 1 0 0 112 56 56 0 1 0 0-112zM120 96A56 56 0 1 0 8 96a56 56 0 1 0 112 0z"/></svg>
-              </div>
+              </div> ÍCONE DE TRÊS PONTINHOS VERTICAIS */}
             </div>
           </div>
         </Link>
       )
-      )}
+      ) :
+      <div
+        className="
+          flex
+          justify-center
+          items-center
+          w-full
+          col-span-2
+          flex-col
+          "
+        >
+        <p>Nenhuma pessoa cadastrada!</p>
+        <Link href={'/signup'}>Clique aqui para começar a cadastrar!</Link>
+      </div>
+      }
     </>
   );
 }

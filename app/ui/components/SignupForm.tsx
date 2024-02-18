@@ -1,7 +1,6 @@
 'use client'
 
 import { useForm } from 'react-hook-form'
-import { useEffect } from 'react'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod';
 import { createPessoa } from '@/app/lib/actions'
@@ -30,7 +29,7 @@ export const pessoaSchema = z.object({
   ], {
     errorMap: () => ({ message: 'Por favor, selecione uma opção!' })
   }),
-  telefone: z.string().min(1, 'Por favor, digite seu telefone!').max(15),
+  telefone: z.string().min(11, 'Por favor, digite seu telefone!').max(11),
   email: z.string().toLowerCase().email('Por favor, digite um email válido!'),
   nome_mae: z.string()
   .min(1, 'Por favor, digite o nome da sua mãe!')
@@ -38,7 +37,7 @@ export const pessoaSchema = z.object({
     return nome_mae.trim().split(' ').map(word => {
       return word[0].toLocaleUpperCase().concat(word.substring(1))
     }).join(' ')
-}),
+  }),
   nome_pai: z.string()
   .min(1, 'Por favor, digite o nome do seu pai!')
   .transform(nome_pai => {
@@ -46,6 +45,12 @@ export const pessoaSchema = z.object({
       return word[0].toLocaleUpperCase().concat(word.substring(1))
     }).join(' ')
   }),
+  nome_contato1: z.string(),
+  telefone_contato1: z.string(),
+  nome_contato2: z.string(),
+  telefone_contato2: z.string(),
+  nome_contato3: z.string(),
+  telefone_contato3: z.string(),
   forma_pagamento: z.enum([
     'Dinheiro',
     'Cartão de Débito / Crédito',
@@ -67,6 +72,12 @@ export type FormProps = {
   email: string,
   nome_mae: string,
   nome_pai: string,
+  nome_contato1: string,
+  telefone_contato1: string,
+  nome_contato2: string,
+  telefone_contato2: string,
+  nome_contato3: string,
+  telefone_contato3: string,
   forma_pagamento: string,
 }
 
@@ -74,29 +85,12 @@ export function SignupForm() {
   
   const {
     register,
-    setValue,
-    watch,
     formState: {errors}
   } = useForm<FormProps>({
     mode: 'all',
     reValidateMode: 'onChange',
     resolver: zodResolver(pessoaSchema)
   })
-
-  const telefoneValue = watch('telefone')
-
-  const telefoneMask = (value: string) => {
-    if(!value) return ""
-    value = value.replace(/\D/g,'')
-    value = value.replace(/(\d{2})(\d)/,"($1) $2")
-    value = value.replace(/(\d)(\d{4})$/,"$1-$2")
-    return value
-  }
-
-  useEffect(() => {
-    setValue("telefone", telefoneMask(telefoneValue))
-  },[telefoneValue])
-
   
   return (
     <form action={createPessoa} className="flex flex-col gap-2">
@@ -104,7 +98,6 @@ export function SignupForm() {
       <input
         className="text-black p-2 rounded-lg"
         autoFocus
-        // name="nome_pessoa"
         {...register('nome_pessoa')}
         placeholder="Digite seu o nome completo"
         type="text"
@@ -115,7 +108,6 @@ export function SignupForm() {
         type="date"
         className="text-black p-2 rounded-lg"
         maxLength={20}
-        // name="data_nascimento"
         {...register('data_nascimento')}
       />
       {<span>{errors.data_nascimento?.message}</span>}
@@ -123,7 +115,6 @@ export function SignupForm() {
       <select
         id="sexo"
         defaultValue="Selecione uma opção"
-        // name="sexo"
         {...register('sexo')}
         className="peer block w-full cursor-pointer rounded-md border border-gray-200 p-2 outline-2 text-black"
       >
@@ -136,7 +127,6 @@ export function SignupForm() {
       <select
         id="lider_equipe"
         defaultValue="Selecione uma opção"
-        // name="lider_equipe"
         {...register('lider_equipe')}
         className="peer block w-full cursor-pointer rounded-md border border-gray-200 p-2 outline-2 text-black"
       >
@@ -166,9 +156,8 @@ export function SignupForm() {
       <label htmlFor="telefone">Telefone</label>
       <input
         type="tel"
-        // name="telefone"
         {...register('telefone')}
-        maxLength={15}
+        maxLength={11}
         className="text-black p-2 rounded-lg"
         placeholder="(00) 00000-0000"
       />
@@ -177,7 +166,6 @@ export function SignupForm() {
       <input
         className="text-black p-2 rounded-lg"
         type="email"
-        // name="email"
         {...register('email')}
         placeholder="exemplo@exemplo.com"
       />
@@ -186,7 +174,6 @@ export function SignupForm() {
       <input
         className="text-black p-2 rounded-lg"
         type="text"
-        // name="nome_mae"
         {...register('nome_mae')}
         placeholder="Digite o nome da sua mãe"
       />
@@ -195,7 +182,6 @@ export function SignupForm() {
       <input
         className="text-black p-2 rounded-lg"
         type="text"
-        // name="nome_pai"
         {...register('nome_pai')}
         placeholder="Digite o nome do seu pai"
       />
@@ -212,6 +198,51 @@ export function SignupForm() {
         <option value="Pix">Pix</option>
       </select>
       {<span>{errors.forma_pagamento?.message}</span>}
+      <label htmlFor="nome_contato1">Nome do primeiro contato</label>
+      <input
+        className="text-black p-2 rounded-lg"
+        type="text"
+        {...register('nome_contato1')}
+        placeholder="Digite o nome do primeiro contato"
+      />
+      <label htmlFor="telefone_contato1">Telefone do primeiro contato</label>
+      <input
+        className="text-black p-2 rounded-lg"
+        type="tel"
+        {...register('telefone_contato1')}
+        placeholder="(00) 00000-0000"
+        maxLength={11}
+      />
+      <label htmlFor="nome_contato2">Nome do segundo contato</label>
+      <input
+        className="text-black p-2 rounded-lg"
+        type="text"
+        {...register('nome_contato2')}
+        placeholder="Digite o nome do segundo contato"
+      />
+      <label htmlFor="telefone_contato2">Telefone do segundo contato</label>
+      <input
+        className="text-black p-2 rounded-lg"
+        type="tel"
+        {...register('telefone_contato2')}
+        placeholder="(00) 00000-0000"
+        maxLength={11}
+      />
+      <label htmlFor="nome_contato3">Nome do terceiro contato</label>
+      <input
+        className="text-black p-2 rounded-lg"
+        type="text"
+        {...register('nome_contato3')}
+        placeholder="Digite o nome do terceiro contato"
+      />
+      <label htmlFor="telefone_contato3">Telefone do terceiro contato</label>
+      <input
+        className="text-black p-2 rounded-lg"
+        type="tel"
+        {...register('telefone_contato3')}
+        placeholder="(00) 00000-0000"
+        maxLength={11}
+      />
       <button
         className="
           p-2

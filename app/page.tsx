@@ -4,6 +4,7 @@ import { Roboto, Quicksand } from 'next/font/google'
 import { useState } from 'react'
 import Link from 'next/link'
 import Sidebar from './ui/components/Sidebar'
+import Image from 'next/image'
 
 const roboto = Roboto({
   subsets: ['latin'],
@@ -39,7 +40,7 @@ export default function Home() {
             </svg>
         </div>
         <div>
-          <img src="/logoSaraIcara.png" alt="Logo da Igreja Sara de Içara" />
+          <Image width={260} height={65} src="/logoSaraIcara.png" alt="Logo da Igreja Sara de Içara" />
         </div>
         <div className={`text-center text-white ${quicksand.className}`}>
           <p className="text-4xl">

@@ -7,7 +7,6 @@ import { mulish } from "../fonts"
 import { z } from 'zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useEffect } from 'react'
 
 export const pessoaSchema = z.object({
   id: z.string(),
@@ -33,10 +32,16 @@ export const pessoaSchema = z.object({
   ], {
     errorMap: () => ({ message: 'Por favor, selecione uma opção!' })
   }),
-  telefone: z.string().min(1, 'Por favor, digite seu telefone!').max(15),
+  telefone: z.string().min(11, 'Por favor, digite seu telefone!').max(11),
   email: z.string().toLowerCase().email('Por favor, digite um email válido!'),
   nome_mae: z.string().min(1, 'Por favor, digite o nome da sua mãe!'),
   nome_pai: z.string().min(1, 'Por favor, digite o nome do seu pai!'),
+  nome_contato1: z.string(),
+  telefone_contato1: z.string(),
+  nome_contato2: z.string(),
+  telefone_contato2: z.string(),
+  nome_contato3: z.string(),
+  telefone_contato3: z.string(),
   forma_pagamento: z.enum([
     'Dinheiro',
     'Cartão de Débito / Crédito',
@@ -44,8 +49,6 @@ export const pessoaSchema = z.object({
   ]),
   created_at: z.date()
 })
-
-// export const UpdatePessoa = pessoaSchema.omit({ id:true, created_at:true })
 
 export type FormProps = {
   nome_pessoa: string,
@@ -56,6 +59,12 @@ export type FormProps = {
   email: string,
   nome_mae: string,
   nome_pai: string,
+  nome_contato1: string,
+  telefone_contato1: string,
+  nome_contato2: string,
+  telefone_contato2: string,
+  nome_contato3: string,
+  telefone_contato3: string,
   forma_pagamento: string
 }
 
@@ -67,35 +76,12 @@ export default function EditPessoaForm({
   
   const {
     register,
-    setValue,
-    watch,
     formState: {errors}
   } = useForm<FormProps>({
     mode: 'all',
     reValidateMode: 'onChange',
     resolver: zodResolver(pessoaSchema)
   })
-
-  const telefoneValue = watch('telefone')
-
-  const telefoneMask = (value: string) => {
-
-    if(value === pessoa.telefone){
-      return pessoa.telefone
-    }
-    if(!value) return ""
-    value = value.replace(/\D/g,'')
-    value = value.replace(/(\d{2})(\d)/,"($1) $2")
-    value = value.replace(/(\d)(\d{4})$/,"$1-$2")
-    return value
-
-  }
-
-    useEffect(() => {
-      if(!pessoa.telefone){
-        setValue("telefone", telefoneMask(telefoneValue))
-      }
-    },[telefoneValue])
 
   const updatePessoaWithId = updatePessoa.bind(null, pessoa.id);
   
@@ -146,7 +132,6 @@ export default function EditPessoaForm({
             <input
               className="text-black p-2 rounded-[10px]"
               autoFocus
-              // name="nome_pessoa"
               {...register('nome_pessoa')}
               placeholder="Digite seu o nome completo"
               type="text"
@@ -158,7 +143,6 @@ export default function EditPessoaForm({
               type="date"
               className="text-black p-2 rounded-lg"
               maxLength={10}
-              // name="data_nascimento"
               {...register('data_nascimento')}
               defaultValue={pessoa.data_nascimento}
             />
@@ -166,7 +150,6 @@ export default function EditPessoaForm({
             <label htmlFor="sexo">Sexo</label>
             <select
               id="sexo"
-              // name="sexo"
               {...register('sexo')}
               defaultValue={pessoa.sexo}
               className="peer block w-full cursor-pointer rounded-md border border-gray-200 p-2 outline-2 text-black"
@@ -179,7 +162,6 @@ export default function EditPessoaForm({
             <label htmlFor="lider_equipe">Líder e Equipe</label>
             <select
               id="lider_equipe"
-              // name="lider_equipe"
               {...register('lider_equipe')}
               defaultValue={pessoa.lider_equipe}
               className="peer block w-full cursor-pointer rounded-md border border-gray-200 p-2 outline-2 text-black"
@@ -210,9 +192,8 @@ export default function EditPessoaForm({
             <label htmlFor="telefone">Telefone</label>
             <input
               type="tel"
-              // name="telefone"
               {...register('telefone')}
-              maxLength={15}
+              maxLength={11}
               className="text-black p-2 rounded-lg"
               placeholder="(00) 00000-0000"
               defaultValue={pessoa.telefone}
@@ -222,7 +203,6 @@ export default function EditPessoaForm({
             <input
               className="text-black p-2 rounded-lg"
               type="email"
-              // name="email"
               {...register('email')}
               placeholder="exemplo@exemplo.com"
               defaultValue={pessoa.email}
@@ -231,7 +211,6 @@ export default function EditPessoaForm({
             <label htmlFor="nome_mae">Nome da mãe</label>
             <input
               className="text-black p-2 rounded-[10px]"
-              // name="nome_mae"
               {...register('nome_mae')}
               type="text"
               defaultValue={pessoa.nome_mae}
@@ -242,7 +221,6 @@ export default function EditPessoaForm({
             <label htmlFor="nome_pai">Nome do pai</label>
             <input
               className="text-black p-2 rounded-[10px]"
-              // name="nome_pai"
               {...register('nome_pai')}
               type="text"
               defaultValue={pessoa.nome_pai}
@@ -262,6 +240,57 @@ export default function EditPessoaForm({
               <option value="Pix">Pix</option>
             </select>
             {<span>{errors.forma_pagamento?.message}</span>}
+            <label htmlFor="nome_contato1">Nome do primeiro contato</label>
+            <input
+              className="text-black p-2 rounded-lg"
+              type="text"
+              {...register('nome_contato1')}
+              placeholder="Digite o nome do primeiro contato"
+              defaultValue={pessoa.nome_contato1 || ''}
+            />
+            <label htmlFor="telefone_contato1">Telefone do primeiro contato</label>
+            <input
+              className="text-black p-2 rounded-lg"
+              type="tel"
+              {...register('telefone_contato1')}
+              placeholder="(00) 00000-0000"
+              defaultValue={pessoa.telefone_contato1 || ''}
+              maxLength={11}
+            />
+            <label htmlFor="nome_contato2">Nome do segundo contato</label>
+            <input
+              className="text-black p-2 rounded-lg"
+              type="text"
+              {...register('nome_contato2')}
+              placeholder="Digite o nome do segundo contato"
+              defaultValue={pessoa.nome_contato2 || ''}
+            />
+            <label htmlFor="telefone_contato2">Telefone do segundo contato</label>
+            <input
+              className="text-black p-2 rounded-lg"
+              type="tel"
+              {...register('telefone_contato2')}
+              placeholder="(00) 00000-0000"
+              defaultValue={pessoa.telefone_contato2 || ''}
+              maxLength={11}
+            />
+            <label htmlFor="nome_contato3">Nome do terceiro contato</label>
+            <input
+              className="text-black p-2 rounded-lg"
+              type="text"
+              {...register('nome_contato3')}
+              placeholder="Digite o nome do terceiro contato"
+              defaultValue={pessoa.nome_contato3 || ''}
+            />
+            <label htmlFor="telefone_contato3">Telefone do terceiro contato</label>
+            <input
+              className="text-black p-2 rounded-lg"
+              type="tel"
+              {...register('telefone_contato3')}
+              placeholder="(00) 00000-0000"
+              defaultValue={pessoa.telefone_contato3 || ''}
+              maxLength={11}
+            />
             <button
               className="
                 p-2

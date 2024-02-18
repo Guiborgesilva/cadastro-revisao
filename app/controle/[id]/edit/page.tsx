@@ -1,5 +1,5 @@
 import { fetchPessoasById } from "@/app/lib/actions";
-import Form from '@/app/ui/pessoas/edit-form'
+import Form from '@/app/ui/pessoas/EditForm'
 
 export default async function Page({ params }: { params: { id: string } }) {
   const id = params.id;

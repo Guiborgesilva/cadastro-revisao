@@ -6,6 +6,8 @@ import { Suspense } from 'react'
 import CardSkeleton from '../ui/components/CardSkeleton'
 import { fetchPessoasPages } from '../lib/actions'
 import Pagination from '../ui/pessoas/pagination'
+// import { signOut } from "@/thingstodo/auth"
+import { PowerIcon } from "@heroicons/react/24/outline"
 
 export default async function Page({
   searchParams,
@@ -23,8 +25,19 @@ export default async function Page({
     <div className="w-full text-white flex justify-center items-center pt-10">
       <div>
         <h1 className={`mb-8 text-5xl text-center font-medium ${quicksand.className}`}>
-            CONTROLE
-          </h1>
+          CONTROLE
+        </h1>
+        {/* <form
+          action={async () => {
+            'use server';
+            await signOut();
+          }}
+        >
+          <button className="flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3">
+            <PowerIcon className="w-6" />
+            <div className="hidden md:block">Sign Out</div>
+          </button>
+        </form> */}
         <div className="
         bg-[#1E1E1E]
           px-8 rounded-[10px]
