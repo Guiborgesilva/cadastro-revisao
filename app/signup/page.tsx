@@ -3,6 +3,8 @@
 import { mulish } from "../ui/fonts"
 import Link from "next/link"
 import { SignupForm } from "../ui/components/SignupForm"
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 export default function Signup(){
 
@@ -50,7 +52,7 @@ export default function Signup(){
           <SignupForm />
         </div>
       </div>
-      {/* <ToastContainer /> */}
+      <ToastContainer />
     </section>
   )
 }

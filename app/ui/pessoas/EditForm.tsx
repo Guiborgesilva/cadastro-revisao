@@ -7,6 +7,9 @@ import { mulish } from "../fonts"
 import { z } from 'zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { normalizePhoneNumber } from '../../lib/utils'
+import { ToastContainer, toast } from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css'
 
 export const pessoaSchema = z.object({
   id: z.string(),
@@ -79,11 +82,12 @@ export default function EditPessoaForm({
     formState: {errors}
   } = useForm<FormProps>({
     mode: 'all',
-    reValidateMode: 'onChange',
+    reValidateMode: 'onSubmit',
     resolver: zodResolver(pessoaSchema)
   })
 
-  const updatePessoaWithId = updatePessoa.bind(null, pessoa.id);
+  const updatePessoaWithId = updatePessoa.bind(null, pessoa.id)
+  const editSuccess = () => toast.success('Pessoa editada com sucesso!')
   
   return (
     <section className={`${mulish.className}`} key={pessoa.id}>
@@ -132,6 +136,7 @@ export default function EditPessoaForm({
             <input
               className="text-black p-2 rounded-[10px]"
               autoFocus
+              required
               {...register('nome_pessoa')}
               placeholder="Digite seu o nome completo"
               type="text"
@@ -141,6 +146,7 @@ export default function EditPessoaForm({
             <label htmlFor="data_nascimento">Data de nascimento</label>
             <input
               type="date"
+              required
               className="text-black p-2 rounded-lg"
               maxLength={10}
               {...register('data_nascimento')}
@@ -150,6 +156,7 @@ export default function EditPessoaForm({
             <label htmlFor="sexo">Sexo</label>
             <select
               id="sexo"
+              required
               {...register('sexo')}
               defaultValue={pessoa.sexo}
               className="peer block w-full cursor-pointer rounded-md border border-gray-200 p-2 outline-2 text-black"
@@ -162,6 +169,7 @@ export default function EditPessoaForm({
             <label htmlFor="lider_equipe">Líder e Equipe</label>
             <select
               id="lider_equipe"
+              required
               {...register('lider_equipe')}
               defaultValue={pessoa.lider_equipe}
               className="peer block w-full cursor-pointer rounded-md border border-gray-200 p-2 outline-2 text-black"
@@ -192,17 +200,19 @@ export default function EditPessoaForm({
             <label htmlFor="telefone">Telefone</label>
             <input
               type="tel"
+              required
               {...register('telefone')}
-              maxLength={11}
+              maxLength={16}
               className="text-black p-2 rounded-lg"
               placeholder="(00) 00000-0000"
-              defaultValue={pessoa.telefone}
+              defaultValue={normalizePhoneNumber(pessoa.telefone)}
             />
             {<span>{errors.telefone?.message}</span>}
             <label htmlFor="email">E-mail</label>
             <input
               className="text-black p-2 rounded-lg"
               type="email"
+              required
               {...register('email')}
               placeholder="exemplo@exemplo.com"
               defaultValue={pessoa.email}
@@ -222,15 +232,16 @@ export default function EditPessoaForm({
             <input
               className="text-black p-2 rounded-[10px]"
               {...register('nome_pai')}
+              required
               type="text"
               defaultValue={pessoa.nome_pai}
-              required
               placeholder="Digite o nome do seu pai"
             />
             {<span>{errors.nome_pai?.message}</span>}
             <label htmlFor="forma_pagamento">Forma de pagamento</label>
             <select
               {...register('forma_pagamento')}
+              required
               defaultValue={pessoa.forma_pagamento || 'Selecione uma opção'}
               className="peer block w-full cursor-pointer rounded-md border border-gray-200 p-2 outline-2 text-black"
             >
@@ -254,8 +265,8 @@ export default function EditPessoaForm({
               type="tel"
               {...register('telefone_contato1')}
               placeholder="(00) 00000-0000"
-              defaultValue={pessoa.telefone_contato1 || ''}
-              maxLength={11}
+              defaultValue={normalizePhoneNumber(pessoa.telefone_contato1) || ''}
+              maxLength={16}
             />
             <label htmlFor="nome_contato2">Nome do segundo contato</label>
             <input
@@ -271,8 +282,8 @@ export default function EditPessoaForm({
               type="tel"
               {...register('telefone_contato2')}
               placeholder="(00) 00000-0000"
-              defaultValue={pessoa.telefone_contato2 || ''}
-              maxLength={11}
+              defaultValue={normalizePhoneNumber(pessoa.telefone_contato2) || ''}
+              maxLength={16}
             />
             <label htmlFor="nome_contato3">Nome do terceiro contato</label>
             <input
@@ -288,10 +299,11 @@ export default function EditPessoaForm({
               type="tel"
               {...register('telefone_contato3')}
               placeholder="(00) 00000-0000"
-              defaultValue={pessoa.telefone_contato3 || ''}
+              defaultValue={normalizePhoneNumber(pessoa.telefone_contato3) || ''}
               maxLength={11}
             />
             <button
+              onClick={editSuccess}
               className="
                 p-2
                 mt-3
@@ -308,7 +320,7 @@ export default function EditPessoaForm({
           </form>
         </div>
       </div>
-      {/* <ToastContainer /> */}
+      <ToastContainer />
     </section>
   )
 }

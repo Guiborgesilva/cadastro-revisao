@@ -328,3 +328,15 @@ export async function updatePessoa(id: string, formData: FormData) {
   revalidatePath('/controle');
   redirect('/controle');
 }
+
+export async function deletePessoa(id: string){
+  try{
+    await sql `DELETE FROM vidas WHERE id = ${id}`
+    revalidatePath('/controle')
+    return { message: 'Pessoa deletada!' }
+  } catch (error) {
+    return{
+      message: 'Erro de Banco de Dados: Falha ao Deletar essa Pessoa!'
+    }
+  }
+}

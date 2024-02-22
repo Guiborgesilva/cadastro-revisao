@@ -4,6 +4,10 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod';
 import { createPessoa } from '@/app/lib/actions'
+import { useEffect } from "react"
+import { normalizePhoneNumber } from "@/app/lib/utils"
+import { ToastContainer, toast } from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css'
 
 export const pessoaSchema = z.object({
   id: z.string(),
@@ -29,7 +33,7 @@ export const pessoaSchema = z.object({
   ], {
     errorMap: () => ({ message: 'Por favor, selecione uma opção!' })
   }),
-  telefone: z.string().min(11, 'Por favor, digite seu telefone!').max(11),
+  telefone: z.string().min(1, 'Por favor, digite seu telefone!').max(16),
   email: z.string().toLowerCase().email('Por favor, digite um email válido!'),
   nome_mae: z.string()
   .min(1, 'Por favor, digite o nome da sua mãe!')
@@ -85,12 +89,37 @@ export function SignupForm() {
   
   const {
     register,
+    watch,
+    setValue,
     formState: {errors}
   } = useForm<FormProps>({
     mode: 'all',
-    reValidateMode: 'onChange',
+    reValidateMode: 'onSubmit',
     resolver: zodResolver(pessoaSchema)
   })
+
+  const telefone = watch('telefone')
+  const telefone_contato1 = watch('telefone_contato1')
+  const telefone_contato2 = watch('telefone_contato2')
+  const telefone_contato3 = watch('telefone_contato3')
+
+  useEffect(() => {
+    setValue('telefone', normalizePhoneNumber(telefone))
+  }, [telefone])
+
+  useEffect(() => {
+    setValue('telefone_contato1', normalizePhoneNumber(telefone_contato1))
+  }, [telefone_contato1])
+
+  useEffect(() => {
+    setValue('telefone_contato2', normalizePhoneNumber(telefone_contato2))
+  }, [telefone_contato2])
+
+  useEffect(() => {
+    setValue('telefone_contato3', normalizePhoneNumber(telefone_contato3))
+  }, [telefone_contato3])
+
+  const cadastroSuccess = () => toast.success('Pessoa cadastrada com sucesso!')
   
   return (
     <form action={createPessoa} className="flex flex-col gap-2">
@@ -98,6 +127,7 @@ export function SignupForm() {
       <input
         className="text-black p-2 rounded-lg"
         autoFocus
+        required
         {...register('nome_pessoa')}
         placeholder="Digite seu o nome completo"
         type="text"
@@ -106,6 +136,7 @@ export function SignupForm() {
       <label htmlFor="data_nascimento">Data de nascimento</label>
       <input
         type="date"
+        required
         className="text-black p-2 rounded-lg"
         maxLength={20}
         {...register('data_nascimento')}
@@ -114,6 +145,7 @@ export function SignupForm() {
       <label htmlFor="sexo">Sexo</label>
       <select
         id="sexo"
+        required
         defaultValue="Selecione uma opção"
         {...register('sexo')}
         className="peer block w-full cursor-pointer rounded-md border border-gray-200 p-2 outline-2 text-black"
@@ -126,6 +158,7 @@ export function SignupForm() {
       <label htmlFor="lider_equipe">Líder e Equipe</label>
       <select
         id="lider_equipe"
+        required
         defaultValue="Selecione uma opção"
         {...register('lider_equipe')}
         className="peer block w-full cursor-pointer rounded-md border border-gray-200 p-2 outline-2 text-black"
@@ -156,16 +189,18 @@ export function SignupForm() {
       <label htmlFor="telefone">Telefone</label>
       <input
         type="tel"
+        required
         {...register('telefone')}
-        maxLength={11}
+        maxLength={16}
         className="text-black p-2 rounded-lg"
-        placeholder="(00) 00000-0000"
+        placeholder="(00) 0 0000-0000"
       />
       {<span>{errors.telefone?.message}</span>}
       <label htmlFor="email">E-mail</label>
       <input
         className="text-black p-2 rounded-lg"
         type="email"
+        required
         {...register('email')}
         placeholder="exemplo@exemplo.com"
       />
@@ -174,6 +209,7 @@ export function SignupForm() {
       <input
         className="text-black p-2 rounded-lg"
         type="text"
+        required
         {...register('nome_mae')}
         placeholder="Digite o nome da sua mãe"
       />
@@ -182,6 +218,7 @@ export function SignupForm() {
       <input
         className="text-black p-2 rounded-lg"
         type="text"
+        required
         {...register('nome_pai')}
         placeholder="Digite o nome do seu pai"
       />
@@ -189,6 +226,7 @@ export function SignupForm() {
       <label htmlFor="forma_pagamento">Forma de pagamento</label>
       <select
         className="text-black p-2 rounded-lg cursor-pointer"
+        required
         defaultValue="Selecione uma opção"
         {...register('forma_pagamento')}
       >
@@ -210,8 +248,8 @@ export function SignupForm() {
         className="text-black p-2 rounded-lg"
         type="tel"
         {...register('telefone_contato1')}
-        placeholder="(00) 00000-0000"
-        maxLength={11}
+        placeholder="(00) 0 0000-0000"
+        maxLength={16}
       />
       <label htmlFor="nome_contato2">Nome do segundo contato</label>
       <input
@@ -225,8 +263,8 @@ export function SignupForm() {
         className="text-black p-2 rounded-lg"
         type="tel"
         {...register('telefone_contato2')}
-        placeholder="(00) 00000-0000"
-        maxLength={11}
+        placeholder="(00) 0 0000-0000"
+        maxLength={16}
       />
       <label htmlFor="nome_contato3">Nome do terceiro contato</label>
       <input
@@ -240,10 +278,11 @@ export function SignupForm() {
         className="text-black p-2 rounded-lg"
         type="tel"
         {...register('telefone_contato3')}
-        placeholder="(00) 00000-0000"
-        maxLength={11}
+        placeholder="(00) 0 0000-0000"
+        maxLength={16}
       />
       <button
+        onClick={cadastroSuccess}
         className="
           p-2
           mt-3
@@ -257,6 +296,7 @@ export function SignupForm() {
       >
         INSCREVER!
       </button>
+      <ToastContainer />
     </form>
   )
 }
