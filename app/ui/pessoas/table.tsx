@@ -73,8 +73,8 @@ export default async function PessoasTable({
           flex-col
           "
         >
-        <p>Nenhuma pessoa cadastrada!</p>
-        <Link href={'/signup'}>Clique aqui para começar a cadastrar!</Link>
+        <p>Nenhuma pessoa encontrada!</p>
+        <Link className="hover:underline" href={'/signup'}>Clique aqui para cadastrar!</Link>
       </div>
       }
     </>
