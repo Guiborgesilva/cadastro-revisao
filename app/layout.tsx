@@ -16,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-br">
-      <body className=" w-screen h-screen overflow-hidden bg-[url('/initialBackground.jpg')] bg-no-repeat bg-center bg-cover">{children}</body>
+      <body className="bg-fixed bg-[url('/initialBackground.jpg')] bg-no-repeat bg-center bg-cover">{children}</body>
     </html>
   )
 }
