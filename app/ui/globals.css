@@ -2,13 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
-  background-image: url("/initialBackground.jpg");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: 100vw 100vh;
-}
-
 .b{
   border: 1px solid #000;
 }
@@ -84,12 +77,6 @@ input:focus{
 
 select > option {
   border-radius: 10px;
-}
-
-@media screen and (max-width: 768px){
-  body{
-    background-size: 200vw 121%;
-  }
 }
  
 @layer base {
