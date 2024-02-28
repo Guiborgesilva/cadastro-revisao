@@ -90,7 +90,7 @@ export default function EditPessoaForm({
   const editSuccess = () => toast.success('Pessoa editada com sucesso!')
   
   return (
-    <section className={`${mulish.className}`} key={pessoa.id}>
+    <section className={`${mulish.className} animate-up`} key={pessoa.id}>
       <div className="pl-[2%] pr-[2%]">
         <div className="
           flex

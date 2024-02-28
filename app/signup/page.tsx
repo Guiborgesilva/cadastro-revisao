@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css'
 export default function Signup(){
 
   return (
-    <section className={mulish.className}>
+    <section className={`${mulish.className} animate-up`}>
       <div className="pl-[2%] pr-[2%]">
         <div className="
           flex
