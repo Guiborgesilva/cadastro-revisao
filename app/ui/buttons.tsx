@@ -21,14 +21,22 @@ export function Button({ children, className, ...rest }: ButtonProps) {
   )
 }
 
-export function UpdatePessoa({ id }: { id: string }) {
+export function UpdatePessoa({ id, nome }: { id: string, nome: string }) {
   return (
     <Link
       href={`/controle/${id}/edit`}
-      className="rounded-md border p-1 hover:bg-gray-100 hover:text-black"
-    >
-      <PencilIcon className="w-5" />
-    </Link>
+      className="
+      p-1
+      cursor-pointer
+      border
+      border-black
+      rounded-md
+      hover:bg-black
+      hover:text-white
+      transition-all
+      w-full
+      "
+    >Editar {nome.split(' ')[0]}</Link>
   )
 }
 
@@ -36,9 +44,21 @@ export function DeletePessoa({ id }: { id: string }) {
   const deletePessoaWithId = deletePessoa.bind(null, id)
   return (
     <form action={deletePessoaWithId}>
-      <button className="rounded-md border p-1 hover:bg-gray-100 hover:text-black">
-        <span className="sr-only">Delete</span>
-        <TrashIcon className="w-5" />
+      <button
+        className="
+          p-1
+          cursor-pointer
+          border
+          border-red-600
+          text-red-600
+          rounded-md
+        hover:bg-red-600
+        hover:text-white
+          transition-all
+          w-24
+        "
+      >
+        Excluir
       </button>
     </form>
   )

@@ -7,7 +7,7 @@ export default function CardSkeleton(){
           <div className="flex-1" key={index}>
             <Skeleton
               count={3}
-              height={100.5}
+              height={61.5}
               className="mb-1"
               width={314}
               baseColor="#b4b4b4"

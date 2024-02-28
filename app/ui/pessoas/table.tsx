@@ -3,6 +3,7 @@ import { fetchFilteredPessoas } from '@/app/lib/actions'
 import Link from 'next/link'
 import { nomeSobrenome } from '@/app/lib/utils'
 import { DeletePessoa, UpdatePessoa } from "../buttons"
+import DotsDropdown from "../components/DotsDropdown"
 
 export default async function PessoasTable({
   query,
@@ -55,10 +56,7 @@ export default async function PessoasTable({
               </div>
             </div>
           </div>
-        </div>
-        <div className="flex w-full justify-between gap-2">
-          <DeletePessoa id={pessoa.id} />
-          <UpdatePessoa id={pessoa.id} />
+          <DotsDropdown id={pessoa.id} nome={pessoa.nome_pessoa} />
         </div>
       </div>
     )
