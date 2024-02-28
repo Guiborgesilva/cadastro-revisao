@@ -51,7 +51,6 @@ input:focus{
   right: -11px;
   z-index: 9;
   background-color: #FFFFFF;
-  animation: fade-in-right 0.5s;
 }
 
 .menu nav ul li{
@@ -77,36 +76,6 @@ input:focus{
 
 select > option {
   border-radius: 10px;
-}
-
-.dropPonta{
-  animation: fade-in 0.5s
-}
-
-.dropCorpo{
-  animation: fade-in 0.5s
-}
-
-@keyframes fade-in{
-  0%{
-    opacity: 0;
-    transform: translateY(10px) scale(0.9) rotate();
-  }
-  100%{
-    opacity: 1;
-    transform: translateY(0px) scale(1) rotate();
-  }
-}
-
-@keyframes fade-in-right{
-  0%{
-    opacity: 0;
-    transform: translateX(10px) scale(0.9);
-  }
-  100%{
-    opacity: 1;
-    transform: translateX(0px) scale(1);
-  }
 }
  
 @layer base {

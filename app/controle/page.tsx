@@ -24,7 +24,7 @@ export default async function Page({
   return (
     <div className="w-full text-white flex justify-center items-center pt-10">
       <div>
-        <h1 className={`mb-8 text-5xl text-center font-medium ${quicksand.className}`}>
+        <h1 className={`mb-8 text-5xl text-center font-medium animate-up ${quicksand.className}`}>
           CONTROLE
         </h1>
         {/* <form
@@ -45,6 +45,7 @@ export default async function Page({
           my-10
           w-[370px]
           md:w-[700px]
+          animate-up
           "
         >
           <div className="flex justify-between md:justify-normal md:gap-10 items-center mb-8">

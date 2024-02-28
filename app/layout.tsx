@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
-import './ui/globals.css'
+import '@/app/ui/globals.css'
 import 'react-loading-skeleton/dist/skeleton.css'
+import '@/app/ui/animations.css'
 
 export const metadata: Metadata = {
   title: 'Cadastro para o Revisão de Vidas',

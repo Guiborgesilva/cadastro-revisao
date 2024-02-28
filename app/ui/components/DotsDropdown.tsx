@@ -35,7 +35,7 @@ export default function DotsDropdown({ id, nome }: { id: string, nome: string })
               rotate-45
               z-[20]
               shadow-lg
-              dropPonta
+              animate-appear
             "
           >
           </div>
@@ -57,7 +57,7 @@ export default function DotsDropdown({ id, nome }: { id: string, nome: string })
               text-center
               gap-4
               p-4
-              dropCorpo
+              animate-appear
             "
           >
             <UpdatePessoa id={id} nome={nome} />
@@ -137,6 +137,7 @@ export default function DotsDropdown({ id, nome }: { id: string, nome: string })
                 flex
                 flex-col
                 justify-between
+                animate-up
               "
             >
               <header>
