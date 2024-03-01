@@ -2,7 +2,6 @@ import { mulish } from "../fonts"
 import { fetchFilteredPessoas } from '@/app/lib/actions'
 import Link from 'next/link'
 import { nomeSobrenome } from '@/app/lib/utils'
-import { DeletePessoa, UpdatePessoa } from "../buttons"
 import DotsDropdown from "../components/DotsDropdown"
 
 export default async function PessoasTable({

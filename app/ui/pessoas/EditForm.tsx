@@ -135,7 +135,6 @@ export default function EditPessoaForm({
             <label htmlFor="nome_pessoa">Nome completo</label>
             <input
               className="text-black p-2 rounded-[10px]"
-              autoFocus
               required
               {...register('nome_pessoa')}
               placeholder="Digite seu o nome completo"

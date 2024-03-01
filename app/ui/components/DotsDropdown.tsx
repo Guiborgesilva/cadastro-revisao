@@ -9,104 +9,95 @@ export default function DotsDropdown({ id, nome }: { id: string, nome: string })
   return (
     <>
       <div className="relative">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 128 512"
-            height="24"
-            width="6"
-            className="cursor-pointer"
-            onClick={() => setIsOpen((prev) => !prev)}
-          >
-            <path
-              fill="#ffffff"
-              d="M64 360a56 56 0 1 0 0 112 56 56 0 1 0 0-112zm0-160a56 56 0 1 0 0 112 56 56 0 1 0 0-112zM120 96A56 56 0 1 0 8 96a56 56 0 1 0 112 0z"
-            />
-          </svg>
-        {isOpen &&
-          <>
-            <div
-            className="
-              absolute
-              top-7
-              left-0
-              translate-x-[-30%]
-              p-2
-              bg-white
-              rotate-45
-              z-[20]
-              shadow-lg
-              animate-appear
-            "
-          >
-          </div>
-          <div
-            className="
-              w-48
-              h-auto
-              bg-white
-              absolute
-              top-9
-              left-0
-              translate-x-[-50%]
-              z-[20]
-              shadow-lg
-              rounded-lg
-              flex
-              flex-col
-              text-black
-              text-center
-              gap-4
-              p-4
-              animate-appear
-            "
-          >
-            <UpdatePessoa id={id} nome={nome} />
-            <p
-              className="
-                p-1
-                cursor-pointer
-                border
-                border-black
-                rounded-md
-              hover:bg-black
-              hover:text-white
-                transition-all
-              "
-            >Exportar {nome.split(' ')[0]}</p>
-            <p
-              className="
-                p-1
-                cursor-pointer
-                border
-                border-black
-                rounded-md
-              hover:bg-black
-              hover:text-white
-                transition-all
-                w-full
-              "
-              onClick={() => {
-                setModalOpen((prev) => !prev)
-                setIsOpen((prev) => !prev)
-              }}
-            >Excluir {nome.split(' ')[0]}</p>
-          </div>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 128 512"
+          height="24"
+          width="6"
+          className="cursor-pointer"
+          onClick={() => setIsOpen((prev) => !prev)}
+        >
+          <path
+            fill="#ffffff"
+            d="M64 360a56 56 0 1 0 0 112 56 56 0 1 0 0-112zm0-160a56 56 0 1 0 0 112 56 56 0 1 0 0-112zM120 96A56 56 0 1 0 8 96a56 56 0 1 0 112 0z"
+          />
+        </svg>
+      </div>
+      {isOpen &&
+        <>
           <div
             onClick={() => setIsOpen((prev) => !prev)}
             className="
-              fixed
+              absolute
               top-0
               bottom-0
               left-0
               right-0
               w-screen
               h-screen
-              z-[19]
+              bg-black
+              bg-opacity-50
+              flex
+              justify-center
+              items-center
+              z-[20]
+              animate-appear
             "
-          ></div>
+          >
+            <div
+              className="
+                w-60
+                h-auto
+                bg-white
+                z-[50]
+                shadow-lg
+                rounded-lg
+                flex
+                flex-col
+                text-black
+                text-center
+                gap-4
+                p-4
+                animate-up
+              "
+            >
+              <h2
+                className="text-[1.5rem]"
+              >
+                Ações
+                <hr />
+              </h2>
+              <UpdatePessoa id={id} nome={nome} />
+              <p
+                className="
+                  p-1
+                  cursor-pointer
+                  border
+                  border-black
+                  rounded-md
+                hover:bg-black
+                hover:text-white
+                  transition-all
+                "
+              >Exportar {nome.split(' ')[0]}</p>
+              <p
+                className="
+                  p-1
+                  cursor-pointer
+                  border
+                  border-black
+                  rounded-md
+                hover:bg-black
+                hover:text-white
+                  transition-all
+                  w-full
+                "
+                onClick={() => setModalOpen((prev) => !prev)}
+              >Excluir {nome.split(' ')[0]}</p>
+            </div>
+          </div>
         </>
-        }
-      </div>
+      }
       {modalOpen &&
         <>
           <div
@@ -124,6 +115,7 @@ export default function DotsDropdown({ id, nome }: { id: string, nome: string })
               flex
               justify-center
               items-center
+              animate-appear
             "
           >
             <div
