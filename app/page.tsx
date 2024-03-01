@@ -19,8 +19,29 @@ export default function Home() {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <>
-      <div className="flex justify-center items-center mt-24 flex-col gap-24">
+    <div
+      className="
+        absolute
+        top-0
+        left-0
+        bottom-0
+        right-0
+        w-screen
+        h-screen
+        flex
+        items-center
+        justify-center
+      "
+    >
+      <div
+        className="
+          flex
+          justify-center
+          items-center
+          flex-col
+          gap-24
+        "
+      >
         <div className="menu">
           {isOpen &&
             <nav className="z-[20] animate-appear">
@@ -129,6 +150,6 @@ export default function Home() {
         ></div>
        </>
       }
-    </>
+    </div>
   )
 }
