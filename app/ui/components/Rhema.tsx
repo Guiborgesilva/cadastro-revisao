@@ -39,6 +39,9 @@ export default function Rhema({
           border-black
           p-8
           bg-[url(/sara-outline-bg.png)]
+          bg-contain
+          bg-no-repeat
+          bg-center
         "
       >  
         <header className="flex flex-col justify-center items-center">
