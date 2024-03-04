@@ -38,6 +38,7 @@ export default function Rhema({
           border-[2px]
           border-black
           p-8
+          bg-[url(/sara-outline-bg.png)]
         "
       >  
         <header className="flex flex-col justify-center items-center">
@@ -144,13 +145,13 @@ export default function Rhema({
             />
             CIDADE
           </p>
-          <Image
+          {/* <Image
             width={35}
             height={55}
             alt="Flame outline"
             src="/sara-outline.png"
             className="pb-[15px]"
-          />
+          /> */}
         </main>
     </section>
     <button
