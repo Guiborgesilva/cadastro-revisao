@@ -5,9 +5,9 @@ import PessoasTable from "@/app/ui/pessoas/table"
 import { Suspense } from 'react'
 import CardSkeleton from '../ui/components/CardSkeleton'
 import { fetchPessoasPages } from '../lib/actions'
-import Pagination from '../ui/pessoas/pagination'
+import Pagination from '../ui/components/pagination'
 // import { signOut } from "@/thingstodo/auth"
-import { PowerIcon } from "@heroicons/react/24/outline"
+// import { PowerIcon } from "@heroicons/react/24/outline"
 
 export default async function Page({
   searchParams,

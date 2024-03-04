@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from "react"
-import { DeletePessoa, UpdatePessoa } from "../buttons"
+import ExportPessoa, { DeletePessoa, UpdatePessoa } from "../buttons"
 
 export default function DotsDropdown({ id, nome }: { id: string, nome: string }) {
   const [isOpen, setIsOpen] = useState(false)
@@ -68,18 +68,7 @@ export default function DotsDropdown({ id, nome }: { id: string, nome: string })
                 <hr />
               </h2>
               <UpdatePessoa id={id} nome={nome} />
-              <p
-                className="
-                  p-1
-                  cursor-pointer
-                  border
-                  border-black
-                  rounded-md
-                hover:bg-black
-                hover:text-white
-                  transition-all
-                "
-              >Exportar {nome.split(' ')[0]}</p>
+              <ExportPessoa id={id} nome={nome} />
               <p
                 className="
                   p-1

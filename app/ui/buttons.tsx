@@ -26,17 +26,36 @@ export function UpdatePessoa({ id, nome }: { id: string, nome: string }) {
     <Link
       href={`/controle/${id}/edit`}
       className="
-      p-1
-      cursor-pointer
-      border
-      border-black
-      rounded-md
-      hover:bg-black
-      hover:text-white
-      transition-all
-      w-full
+        p-1
+        cursor-pointer
+        border
+        border-black
+        rounded-md
+        hover:bg-black
+        hover:text-white
+        transition-all
+        w-full
       "
     >Editar {nome.split(' ')[0]}</Link>
+  )
+}
+
+export default function ExportPessoa({ id, nome }: { id: string, nome: string }){
+  return (
+    <Link
+      href={`/exportacao/${id}/`}
+      className="
+        p-1
+        cursor-pointer
+        border
+        border-black
+        rounded-md
+        hover:bg-black
+        hover:text-white
+        transition-all
+        w-full
+      "
+      >Exportar {nome.split(' ')[0]}</Link>
   )
 }
 
