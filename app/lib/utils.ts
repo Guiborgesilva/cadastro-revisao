@@ -7,8 +7,8 @@ export function normalizePhoneNumber(value: string | undefined) {
   .replace(/(-\d{4})(\d+?)/, '$1')
 }
 
-export function nomeSobrenome(str: string) {
-  var arr = str.split(' ');
+export function nomeSobrenome(nomeCompleto: string) {
+  var arr = nomeCompleto.split(' ');
   if(
     arr[1] == 'de' ||
     arr[1] == 'De' ||

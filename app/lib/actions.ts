@@ -123,7 +123,7 @@ export async function createPessoa(formData: FormData){
     forma_pagamento: formData.get('forma_pagamento')
   })
   
-  const created_at = new Date(Date.now())
+  const created_at = new Date().toISOString().split('T')[0]
   
   try{    
     await sql.query(

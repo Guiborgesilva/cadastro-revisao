@@ -51,7 +51,7 @@ export default async function PessoasTable({
                 <p className="justify-start">
                   {nomeSobrenome(`${pessoa.nome_pessoa}`)}
                 </p>
-                <p className="text-[13px] justify-end">{pessoa.lider_equipe}</p>
+                <p className="text-[13px] justify-end">{pessoa.lider_equipe.split('|')[1]}</p>
               </div>
             </div>
           </div>

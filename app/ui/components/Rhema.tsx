@@ -106,7 +106,7 @@ export default function Rhema({
               text-[1.2rem]
             `}
           >
-            {pessoa.lider_equipe.toLocaleUpperCase().split('| ')[1]}
+            {pessoa.lider_equipe.toLocaleUpperCase().split('|')[1]}
           </p>
           <p
             className={`
