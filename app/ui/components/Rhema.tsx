@@ -6,6 +6,7 @@ import generatePDF from 'react-to-pdf'
 import Image from "next/image"
 import localFont from '@next/font/local'
 import { Montserrat } from '@next/font/google'
+import Link from "next/link"
 
 const montserratB = Montserrat({
   subsets: ['latin'],
@@ -28,7 +29,7 @@ export default function Rhema({
   const rhema = () => document.getElementById('rhema')
 
   return (
-    <>
+    <div className="bg-white h-screen w-screen flex items-center justyify-center flex-col">
       <section
         id="rhema"
         className="
@@ -37,7 +38,7 @@ export default function Rhema({
           h-[auto]
           border-[2px]
           border-black
-          p-8
+          p-4
           bg-[url(/sara-outline-bg.png)]
           bg-contain
           bg-no-repeat
@@ -49,7 +50,7 @@ export default function Rhema({
             className={
               `${Lustra.className}
               text-[5rem]
-              mt-[-50px]
+              mt-[-60px]
             `}
           >
             RHEMA
@@ -71,6 +72,7 @@ export default function Rhema({
             items-center
             gap-6
             mt-8
+            mb-[9px]
           "
         >
           <p
@@ -79,7 +81,7 @@ export default function Rhema({
               text-[1.2rem]
             `}
           >
-            {nomeSobrenome(`${pessoa.nome_pessoa}`)}
+            {nomeSobrenome(`${pessoa.nome_pessoa.toLocaleUpperCase()}`)}
           </p>
           <p
             className={`
@@ -104,7 +106,7 @@ export default function Rhema({
               text-[1.2rem]
             `}
           >
-            {pessoa.lider_equipe.split('| ')[1]}
+            {pessoa.lider_equipe.toLocaleUpperCase().split('| ')[1]}
           </p>
           <p
             className={`
@@ -129,7 +131,7 @@ export default function Rhema({
               text-[1.2rem]
             `}
           >
-            Içara
+            IÇARA
           </p>
           <p
             className={`
@@ -157,21 +159,37 @@ export default function Rhema({
           /> */}
         </main>
     </section>
-    <button
-      onClick={() => generatePDF(rhema)}
-      className="
+    <div className="flex items-center justify-between w-[400px] mt-4">
+      <button
+        onClick={() => generatePDF(rhema)}
+        className="
+          p-2
+          cursor-pointer
+          border
+          border-black
+          rounded-md
+          hover:bg-black
+          hover:text-white
+          text-black
+          transition-all
+        "
+      >Exportar</button>
+      <Link
+        className="
         p-2
-        m-4
         cursor-pointer
         border
-        border-white
+        border-black
         rounded-md
-        hover:bg-white
-        hover:text-black
-        text-white
+        hover:bg-black
+        hover:text-white
+        text-black
         transition-all
       "
-      >Exportar</button>
-    </>
+        href={{ pathname:'/controle' }}>
+        Voltar
+      </Link>
+    </div>
+    </div>
 )
 }
