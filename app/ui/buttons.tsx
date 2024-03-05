@@ -1,6 +1,5 @@
 import clsx from 'clsx'
 import { deletePessoa } from "../lib/actions"
-import { PencilIcon, TrashIcon } from "@heroicons/react/24/outline"
 import Link from "next/link"
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {

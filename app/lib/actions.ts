@@ -199,23 +199,23 @@ export async function fetchFilteredPessoas(
         nome_contato3,
         telefone_contato3,
         forma_pagamento
-      FROM vidas AS pessoa
+      FROM vidas
       WHERE
-        pessoa.nome_pessoa ILIKE ${`%${query}%`} OR
-        pessoa.data_nascimento ILIKE ${`%${query}%`} OR
-        pessoa.sexo ILIKE ${`%${query}%`} OR
-        pessoa.lider_equipe ILIKE ${`%${query}%`} OR
-        pessoa.telefone ILIKE ${`%${query}%`} OR
-        pessoa.email ILIKE ${`%${query}%`} OR
-        pessoa.nome_mae ILIKE ${`%${query}%`} OR
-        pessoa.nome_pai ILIKE ${`%${query}%`} OR
-        pessoa.nome_contato1 ILIKE ${`%${query}%`} OR
-        pessoa.telefone_contato1 ILIKE ${`%${query}%`} OR
-        pessoa.nome_contato2 ILIKE ${`%${query}%`} OR
-        pessoa.telefone_contato2 ILIKE ${`%${query}%`} OR
-        pessoa.nome_contato3 ILIKE ${`%${query}%`} OR
-        pessoa.telefone_contato3 ILIKE ${`%${query}%`} OR
-        pessoa.forma_pagamento ILIKE ${`%${query}%`}
+        vidas.nome_pessoa ILIKE ${`%${query}%`} OR
+        vidas.data_nascimento ILIKE ${`%${query}%`} OR
+        vidas.sexo ILIKE ${`%${query}%`} OR
+        vidas.lider_equipe ILIKE ${`%${query}%`} OR
+        vidas.telefone ILIKE ${`%${query}%`} OR
+        vidas.email ILIKE ${`%${query}%`} OR
+        vidas.nome_mae ILIKE ${`%${query}%`} OR
+        vidas.nome_pai ILIKE ${`%${query}%`} OR
+        vidas.nome_contato1 ILIKE ${`%${query}%`} OR
+        vidas.telefone_contato1 ILIKE ${`%${query}%`} OR
+        vidas.nome_contato2 ILIKE ${`%${query}%`} OR
+        vidas.telefone_contato2 ILIKE ${`%${query}%`} OR
+        vidas.nome_contato3 ILIKE ${`%${query}%`} OR
+        vidas.telefone_contato3 ILIKE ${`%${query}%`} OR
+        vidas.forma_pagamento ILIKE ${`%${query}%`}
       ORDER BY nome_pessoa
       LIMIT ${ITEMS_PER_PAGE} OFFSET ${offset}
     `;
