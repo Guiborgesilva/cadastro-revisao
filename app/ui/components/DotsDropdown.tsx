@@ -8,14 +8,23 @@ export default function DotsDropdown({ id, nome }: { id: string, nome: string })
   const [modalOpen, setModalOpen] = useState(false)
   return (
     <>
-      <div className="relative">
+      <div
+        className="
+          relative
+          py-2
+          px-4
+          rounded-full
+          cursor-pointer
+          active:bg-slate-300
+          transition-all
+        "
+        onClick={() => setIsOpen((prev) => !prev)}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 128 512"
           height="24"
           width="6"
-          className="cursor-pointer"
-          onClick={() => setIsOpen((prev) => !prev)}
         >
           <path
             fill="#ffffff"
