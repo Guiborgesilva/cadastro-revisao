@@ -3,7 +3,6 @@ import { quicksand } from '../ui/fonts'
 import Search from "@/app/ui/search"
 import PessoasTable from "@/app/ui/pessoas/table"
 import { Suspense } from 'react'
-// import CardSkeleton from '../ui/components/CardSkeleton'
 import { fetchPessoasPages } from '../lib/actions'
 import Pagination from '../ui/components/pagination'
 import { CardsSkeleton } from "../ui/skeletons"
