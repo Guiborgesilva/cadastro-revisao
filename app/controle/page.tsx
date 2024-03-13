@@ -3,9 +3,10 @@ import { quicksand } from '../ui/fonts'
 import Search from "@/app/ui/search"
 import PessoasTable from "@/app/ui/pessoas/table"
 import { Suspense } from 'react'
-import CardSkeleton from '../ui/components/CardSkeleton'
+// import CardSkeleton from '../ui/components/CardSkeleton'
 import { fetchPessoasPages } from '../lib/actions'
 import Pagination from '../ui/components/pagination'
+import { CardsSkeleton } from "../ui/skeletons"
 // import { signOut } from "@/thingstodo/auth"
 // import { PowerIcon } from "@heroicons/react/24/outline"
 
@@ -76,7 +77,7 @@ export default async function Page({
             gap-2
           "
         >
-          <Suspense key={query + currentPage} fallback={<CardSkeleton />}>
+          <Suspense key={query + currentPage} fallback={<CardsSkeleton />}>
             <PessoasTable query={query} currentPage={currentPage} />
           </Suspense>
         </div>
