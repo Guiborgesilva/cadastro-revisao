@@ -5,8 +5,7 @@ export default function CardSkeleton() {
       className="
         animate-pulse
         w-[314px]
-        h-[61.5px]
-        p-4
+        p-2
         border
         border-gray-200
         rounded-lg
@@ -18,7 +17,7 @@ export default function CardSkeleton() {
       "
     >
       <div className="flex items-center justify-between w-full">
-          <div className="flex justify-start">
+          <div className="flex justify-start p-2">
             <div className="
               rounded-full
               size-10

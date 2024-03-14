@@ -32,7 +32,7 @@ export default async function PessoasTable({
         key={pessoa.id}
       >
         <div className="flex items-center justify-between w-full">
-          <div className="flex justify-start">
+          <div className="flex justify-start p-2">
             <div className="
               rounded-full
               size-10
