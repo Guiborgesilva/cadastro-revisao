@@ -16,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-br">
-      <body className="bg-fixed bg-[url('/initialBackground.jpg')] bg-no-repeat bg-center bg-cover">{children}</body>
+      <body>{children}</body>
     </html>
   )
 }

@@ -31,6 +31,11 @@ export default function Home() {
         flex
         items-center
         justify-center
+        bg-[url('/initialBackground.jpg')]
+        bg-fixed
+        bg-cover
+        bg-no-repeat
+        bg-center
       "
     >
       <div
