@@ -28,9 +28,9 @@ export default function CardSkeleton() {
               "
             ></div>
             <div className="ml-3">
-              <div className="flex justify-start flex-col gap-4">
-                <p className="justify-start w-44 h-[24px] rounded-md bg-gray-200"></p>
-                <p className="text-[13px] justify-end w-24 rounded-md h-[19.5px] bg-gray-200"></p>
+              <div className="flex justify-start flex-col gap-2">
+                <p className="justify-start w-44 h-3 rounded-md bg-gray-200"></p>
+                <p className="justify-end w-24 rounded-md h-3 bg-gray-200"></p>
               </div>
             </div>
           </div>
