@@ -5,6 +5,7 @@ export default function CardSkeleton() {
       className="
         animate-pulse
         w-full
+        h-[77.5px]
         p-2
         border
         border-gray-200
@@ -36,6 +37,7 @@ export default function CardSkeleton() {
           </div>
           <div
             className="
+              mr-1
               size-7
               bg-gray-200
               rounded-full
