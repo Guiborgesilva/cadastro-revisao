@@ -138,7 +138,7 @@ export default function Home() {
           </button>
         </Link>
       </div>
-      {isOpen && 
+      {isOpen &&
        <>
         <div
           onClick={() => setIsOpen((prev) => !prev)}
