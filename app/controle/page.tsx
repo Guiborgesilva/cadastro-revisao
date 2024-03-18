@@ -42,7 +42,15 @@ export default async function Page({
     >
       <div className="w-full text-white flex justify-center items-center">
         <div>
-          <h1 className={`text-5xl text-center font-medium animate-up ${quicksand.className}`}>
+          <h1
+            className={`
+              text-5xl
+              text-center
+              font-medium
+              animate-up
+              ${quicksand.className}
+            `}
+          >
             CONTROLE
           </h1>
           {/* <form

@@ -133,7 +133,7 @@ export default function Home() {
             "
           >
             <p className={roboto.className}>
-              QUERO ME INSCREVER!
+              INSCRIÇÃO!
             </p>
           </button>
         </Link>
