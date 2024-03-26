@@ -107,7 +107,7 @@ export default async function Page({
               <PessoasTable query={query} currentPage={currentPage} />
             </Suspense>
           </div>
-          <div className="mt-5 flex w-full justify-center">
+          <div className="mt-5 flex w-full justify-center cursor-default">
             <Pagination totalPages={totalPages} />
           </div>
           </div>

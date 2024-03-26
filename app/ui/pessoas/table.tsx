@@ -38,16 +38,23 @@ export default async function PessoasTable({
               rounded-full
               size-10
               bw
-              flex
-              justify-center
-              items-center
+              grid
+              place-items-center
+              bg-white
               "
             >
-              <h2 className="text-2xl">
+              <h2
+                className="
+                  text-2xl
+                  text-black
+                  font-bold
+                  cursor-default
+                "
+              >
                 {pessoa.nome_pessoa.substring(0,1)}
               </h2>
             </div>
-            <div className="ml-3">
+            <div className="ml-3 cursor-default">
               <div className="flex justify-start flex-col">
                 <p className="justify-start">
                   {nomeSobrenome(`${pessoa.nome_pessoa}`)}

@@ -52,29 +52,14 @@ export type State = {
 
 const pessoaSchema = z.object({
   id: z.string(),
-  nome_pessoa: z.string()
-  .transform(nome_pessoa => {
-    return nome_pessoa.trim().split(' ').map(word => {
-      return word[0].toLocaleUpperCase().concat(word.substring(1))
-    }).join(' ')
-  }),
+  nome_pessoa: z.string(),
   data_nascimento: z.string(),
   sexo: z.string(),
   lider_equipe: z.string(),
   telefone: z.string(),
   email: z.string().toLowerCase(),
-  nome_mae: z.string()
-  .transform(nome_mae => {
-    return nome_mae.trim().split(' ').map(word => {
-      return word[0].toLocaleUpperCase().concat(word.substring(1))
-    }).join(' ')
-  }),
-  nome_pai: z.string()
-  .transform(nome_pai => {
-    return nome_pai.trim().split(' ').map(word => {
-      return word[0].toLocaleUpperCase().concat(word.substring(1))
-    }).join(' ')
-  }),
+  nome_mae: z.string(),
+  nome_pai: z.string(),
   nome_contato1: z.string(),
   telefone_contato1: z.string(),
   nome_contato2: z.string(),

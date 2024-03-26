@@ -1,14 +1,27 @@
-export function normalizePhoneNumber(value: string | undefined) {
-  if(!value) return ''
+export function capitalizeFirstLetter(frase: string) {
+  /* FUNÇÃO QUE DEIXA A PRIMEIRA PALAVRA DE CADA FRASE EM MAIÚSCULA' */
+  return frase.replace(/^./, frase[0].toUpperCase());
+}
 
-  return value.replace(/[\D]/g, '')
+export function capitalizarNome(nome: string | undefined) {
+  /* FUNÇÃO REGEX PARA CAPITALIZAR A PRIMEIRA LETRA DE CADA PALAVRA */
+  if(!nome) return ''
+  
+  return nome.toLowerCase().replace(/(?:^|\s)\S/g, l => l.toUpperCase())
+}
+
+export function normalizePhoneNumber(phoneNumber: string | undefined) {
+  /* FUNÇÃO REGEX PARA PADRONIZAR O TELEFONE DIGITADO */
+  if(!phoneNumber) return ''
+
+  return phoneNumber.replace(/[\D]/g, '')
   .replace(/(\d{2})(\d)/, '($1) $2 ')
   .replace(/(\d{4})(\d)/, '$1-$2')
   .replace(/(-\d{4})(\d+?)/, '$1')
 }
 
-export function nomeSobrenome(nomeCompleto: string) {
-  var arr = nomeCompleto.split(' ');
+export function nomeSobrenome(nome: string) {
+  var arr = nome.split(' ');
   if(
     arr[1] == 'de' ||
     arr[1] == 'De' ||

@@ -15,6 +15,7 @@ export default function DotsDropdown({ id, nome }: { id: string, nome: string })
           px-4
           rounded-full
           cursor-pointer
+          hover:bg-slate-600
           active:bg-slate-300
           transition-all
         "

@@ -7,21 +7,21 @@ import { mulish } from "../fonts"
 import { z } from 'zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { normalizePhoneNumber } from '../../lib/utils'
+import { capitalizarNome, normalizePhoneNumber } from '../../lib/utils'
 import { ToastContainer, toast } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css'
 
 export const pessoaSchema = z.object({
   id: z.string(),
-  nome_pessoa: z.string()
-    .min(1, 'Por favor, digite seu nome!')
-    .transform(nome_pessoa => {
-      return nome_pessoa.trim().split(' ').map(word => {
-        return word[0].toLocaleUpperCase().concat(word.substring(1))
-      }).join(' ')
-  }),
-  data_nascimento: z.coerce.date().min(new Date('1900-01-01'), {
-    message: 'Por favor, digite uma data de nascimento válida'
+  nome_pessoa: z.string().min(1, 'Por favor, digite seu nome!'),
+  data_nascimento: z.coerce.date({
+    errorMap: (issue, { defaultError }) => ({
+      message: issue.code ===
+      'invalid_date'
+      ?
+      'Por favor, selecione uma data válida!'
+      : defaultError
+    })
   }),
   sexo: z.enum(['Feminino', 'Masculino'], {
     errorMap: () => ({ message: 'Por favor. selecione uma opção!' })
@@ -152,7 +152,7 @@ export default function EditPessoaForm({
                 {...register('nome_pessoa')}
                 placeholder="Digite seu o nome completo"
                 type="text"
-                defaultValue={pessoa.nome_pessoa}
+                defaultValue={capitalizarNome(pessoa.nome_pessoa)}
               />
               {<span>{errors.nome_pessoa?.message}</span>}
               <label htmlFor="data_nascimento">Data de nascimento</label>
@@ -235,7 +235,7 @@ export default function EditPessoaForm({
                 className="text-black p-2 rounded-[10px]"
                 {...register('nome_mae')}
                 type="text"
-                defaultValue={pessoa.nome_mae}
+                defaultValue={capitalizarNome(pessoa.nome_mae)}
                 required
                 placeholder="Digite o nome da sua mãe"
               />
@@ -246,7 +246,7 @@ export default function EditPessoaForm({
                 {...register('nome_pai')}
                 required
                 type="text"
-                defaultValue={pessoa.nome_pai}
+                defaultValue={capitalizarNome(pessoa.nome_pai)}
                 placeholder="Digite o nome do seu pai"
               />
               {<span>{errors.nome_pai?.message}</span>}
@@ -269,7 +269,7 @@ export default function EditPessoaForm({
                 type="text"
                 {...register('nome_contato1')}
                 placeholder="Digite o nome do primeiro contato"
-                defaultValue={pessoa.nome_contato1 || ''}
+                defaultValue={capitalizarNome(pessoa.nome_contato1) || ''}
               />
               <label htmlFor="telefone_contato1">Telefone do primeiro contato</label>
               <input
@@ -286,7 +286,7 @@ export default function EditPessoaForm({
                 type="text"
                 {...register('nome_contato2')}
                 placeholder="Digite o nome do segundo contato"
-                defaultValue={pessoa.nome_contato2 || ''}
+                defaultValue={capitalizarNome(pessoa.nome_contato2) || ''}
               />
               <label htmlFor="telefone_contato2">Telefone do segundo contato</label>
               <input
@@ -303,7 +303,7 @@ export default function EditPessoaForm({
                 type="text"
                 {...register('nome_contato3')}
                 placeholder="Digite o nome do terceiro contato"
-                defaultValue={pessoa.nome_contato3 || ''}
+                defaultValue={capitalizarNome(pessoa.nome_contato3) || ''}
               />
               <label htmlFor="telefone_contato3">Telefone do terceiro contato</label>
               <input

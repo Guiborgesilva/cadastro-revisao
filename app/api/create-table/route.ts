@@ -8,6 +8,13 @@ export async function GET(request: Request){
 
       return NextResponse.json({ result }, { status: 200 })
   } catch (error) {
+    console.error(error)
     return NextResponse.json({ error }, { status: 500 })
   }
 }
+
+/*
+***** CASO NÃO SEJA POSSÍVEL CRIAR A TABELA POR CAUSA DO UUID *****
+RODAR ESSE CÓDIGO NA QUERY DA VERCEL PRIMEIRO
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp"
+*/

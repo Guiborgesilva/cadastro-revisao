@@ -11,15 +11,15 @@ import 'react-toastify/dist/ReactToastify.css'
 
 export const pessoaSchema = z.object({
   id: z.string(),
-  nome_pessoa: z.string()
-  .min(1, 'Por favor, digite seu nome!')
-  .transform(nome_pessoa => {
-    return nome_pessoa.trim().split(' ').map(word => {
-      return word[0].toLocaleUpperCase().concat(word.substring(1))
-    }).join(' ')
-  }),
-  data_nascimento: z.coerce.date().min(new Date('1900-01-01'), {
-    message: 'Por favor, digite uma data de nascimento válida'
+  nome_pessoa: z.string().min(1, 'Por favor, digite seu nome!'),
+  data_nascimento: z.coerce.date({
+    errorMap: (issue, { defaultError }) => ({
+      message: issue.code ===
+      'invalid_date'
+      ?
+      'Por favor, selecione uma data válida!'
+      : defaultError
+    })
   }),
   sexo: z.enum(['Feminino', 'Masculino'], {
     errorMap: () => ({ message: 'Por favor. selecione uma opção!' })
@@ -35,20 +35,8 @@ export const pessoaSchema = z.object({
   }),
   telefone: z.string().min(1, 'Por favor, digite seu telefone!').max(16),
   email: z.string().toLowerCase().email('Por favor, digite um email válido!'),
-  nome_mae: z.string()
-  .min(1, 'Por favor, digite o nome da sua mãe!')
-  .transform(nome_mae => {
-    return nome_mae.trim().split(' ').map(word => {
-      return word[0].toLocaleUpperCase().concat(word.substring(1))
-    }).join(' ')
-  }),
-  nome_pai: z.string()
-  .min(1, 'Por favor, digite o nome do seu pai!')
-  .transform(nome_pai => {
-    return nome_pai.trim().split(' ').map(word => {
-      return word[0].toLocaleUpperCase().concat(word.substring(1))
-    }).join(' ')
-  }),
+  nome_mae: z.string().min(1, 'Por favor, digite o nome da sua mãe!'),
+  nome_pai: z.string().min(1, 'Por favor, digite o nome do seu pai!'),
   nome_contato1: z.string(),
   telefone_contato1: z.string(),
   nome_contato2: z.string(),
