@@ -3,7 +3,7 @@
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
 import { useSearchParams, usePathname, useRouter } from 'next/navigation'
 import { useDebouncedCallback } from 'use-debounce'
-import { mulish } from "./fonts"
+import { montserrat } from "./fonts"
 
 export default function Search({ placeholder }: { placeholder: string }) {
   const searchParams = useSearchParams()
@@ -27,7 +27,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
         Pesquisa
       </label>
       <input
-        className={`peer block w-full rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500 ${mulish.className}`}
+        className={`peer block w-full rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500 ${montserrat.className}`}
         placeholder={placeholder}
         onChange={(e) => {
           handleSearch(e.target.value)

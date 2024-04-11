@@ -5,7 +5,7 @@ import PessoasTable from "@/app/ui/pessoas/table"
 import { Suspense } from 'react'
 import { fetchPessoasPages } from '../lib/actions'
 import Pagination from '../ui/components/pagination'
-import { CardsSkeleton } from "../ui/skeletons"
+import { CardsSkeleton } from "@/app/ui/components/Skeletons"
 // import { signOut } from "@/thingstodo/auth"
 // import { PowerIcon } from "@heroicons/react/24/outline"
 
@@ -15,29 +15,22 @@ export default async function Page({
       searchParams?: {
       query?: string;
       page?: string;
-    };
+    }
     }) {
-  const query = searchParams?.query || '';
-  const currentPage = Number(searchParams?.page) || 1;
-  const totalPages = await fetchPessoasPages(query);
+  const query = searchParams?.query || ''
+  const currentPage = Number(searchParams?.page) || 1
+  const totalPages = await fetchPessoasPages(query)
 
   return (
-    <div
+    <section
       className="
-        absolute
-        top-0
-        right-0
-        bottom-0
-        left-o
-        bg-[url('/initialBackground.jpg')]
-        bg-fixed
-        bg-cover
-        bg-no-repeat
-        bg-center
         flex
+        flex-col
         justify-center
         items-center
         w-full
+        h-full
+        md:h-screen
       "
     >
       <div className="w-full text-white flex justify-center items-center">
@@ -113,6 +106,6 @@ export default async function Page({
           </div>
         </div>
       </div>
-    </div>
+    </section>
   )
 }

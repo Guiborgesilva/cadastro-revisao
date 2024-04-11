@@ -29,7 +29,7 @@ export function UpdatePessoa({ id, nome }: { id: string, nome: string }) {
         cursor-pointer
         border
         border-black
-        rounded-md
+        rounded
         hover:bg-black
         hover:text-white
         transition-all
@@ -48,7 +48,7 @@ export default function ExportPessoa({ id, nome }: { id: string, nome: string })
         cursor-pointer
         border
         border-black
-        rounded-md
+        rounded
         hover:bg-black
         hover:text-white
         transition-all
@@ -67,11 +67,11 @@ export function DeletePessoa({ id }: { id: string }) {
           p-1
           cursor-pointer
           border
-          border-red-600
-          text-red-600
-          rounded-md
-        hover:bg-red-600
-        hover:text-white
+          bg-red-600
+          text-white
+          rounded
+          hover:bg-red-800
+          hover:text-white
           transition-all
           w-24
         "

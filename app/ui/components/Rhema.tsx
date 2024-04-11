@@ -4,8 +4,8 @@ import { Pessoa } from "@/app/lib/definitions"
 import { nomeSobrenome } from "@/app/lib/utils"
 import generatePDF from 'react-to-pdf'
 import Image from "next/image"
-import localFont from '@next/font/local'
-import { Montserrat } from '@next/font/google'
+import localFont from "next/font/local"
+import { Montserrat } from "next/font/google"
 import Link from "next/link"
 
 const montserratB = Montserrat({

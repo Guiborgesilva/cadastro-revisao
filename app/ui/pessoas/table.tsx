@@ -1,6 +1,6 @@
-import { mulish } from "../fonts"
-import { fetchFilteredPessoas } from '@/app/lib/actions'
 import Link from 'next/link'
+import { montserrat } from "../fonts"
+import { fetchFilteredPessoas } from '@/app/lib/actions'
 import { nomeSobrenome } from '@/app/lib/utils'
 import DotsDropdown from "../components/DotsDropdown"
 
@@ -16,15 +16,16 @@ export default async function PessoasTable({
   return (
     <>
     {pessoas?.length > 0 ?
-    pessoas?.map((pessoa) => (
+    pessoas.map((pessoa) => (
       <div className={`
-        ${mulish.className}
+        ${montserrat.className}
         w-full
         h-[77.5px]
         p-2
         rounded-lg
         transition
-        bw
+        border
+        border-white
         flex
         flex-col
         gap-2

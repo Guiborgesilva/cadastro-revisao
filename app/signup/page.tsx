@@ -1,72 +1,96 @@
 'use client'
 
-import { mulish } from "../ui/fonts"
 import Link from "next/link"
-import { SignupForm } from "../ui/components/SignupForm"
-import { ToastContainer, toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
+import { useState } from "react"
+import { Montserrat } from "next/font/google"
+import { PessoaForm, SignupForm } from "@/app/ui/components/SignupForm"
+import { ModalError, ModalSuccess } from "@/app/ui/components/ModalMessages"
+
+const montserrat = Montserrat({ subsets: ["latin"] })
 
 export default function Signup(){
+  const [showSuccessModal, setShowSuccessModal] = useState(false)
+  const [showErrorModal, setShowErrorModal] = useState(false)
+
+  async function onSubmit(data: PessoaForm) {
+    try{
+      const response = await fetch('/api/register-pessoa', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+
+      if(response.ok) {
+        const responseData = await response.json()
+        console.log('Dados enviados com sucesso!', responseData)
+        setShowSuccessModal(true)
+      } else {
+        setShowErrorModal(true)
+        console.error('Falha ao enviar os dados!')
+      }
+    } catch(error) {
+      setShowErrorModal(true)
+      console.error(`Erro ao enviar os dados!: ${error}`)
+    }
+  }
 
   return (
     <section
       className="
-        bg-[url('/initialBackground.jpg')]
-        bg-fixed
-        bg-cover
-        bg-no-repeat
-        bg-center
         flex
         justify-center
         items-center
         w-full
       "
     >
-      <div className={`${mulish.className} animate-up`}>
-        <div className="px-[2%]">
-          <div className="
-            flex
-            justify-center
-            flex-col
-            mr-auto
-            ml-auto
-            text-white
-            gap-10
-            rounded-[10px]
-            p-10
-            mt-10
-            mb-10
-            bg-[#1E1E1E]
-            w-[320px]
-            sm:w-[400px]
-            xl:w-[562px]
-            shadow-2xl
-            "
-          >
-            <div className="flex items-center md:gap-4">
+      <main
+        className={`
+          ${montserrat.className}
+          w-[400px]
+          md:w-[450px]
+          bg-[#1E1E1E]
+          rounded-lg
+          my-10
+          py-8
+          mx-[2%]
+          text-white
+          flex
+          flex-col
+          justify-center
+          items-center
+          gap-8
+        `}
+      >
+        {showSuccessModal && <ModalSuccess />}
+        {showErrorModal && <ModalError />}
+        <div className="flex justify-between w-[80%]">
+          <div className="flex justify-center items-center">
             <Link href={{ pathname:'/' }}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-6 h-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3"
-              />
-            </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3"
+                />
+              </svg>
             </Link>
-            <h1 className="w-full text-center text-[1.3rem] md:text-4xl">Faça a sua inscrição!</h1>
-            </div>
-            <SignupForm />
           </div>
+          <div className="flex justify-center items-center">
+            <h2 className="w-full text-center text-[1.3rem] md:text-3xl">NOVA INSCRIÇÃO</h2>
+          </div>
+          <div></div>
         </div>
-        <ToastContainer />
-      </div>
+        <SignupForm onSubmit={onSubmit} />
+      </main>
     </section>
   )
 }

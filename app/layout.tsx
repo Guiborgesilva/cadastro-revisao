@@ -16,7 +16,18 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-br">
-      <body className="antialiased">{children}</body>
+      <body
+        className="
+          antialiased
+          bg-[url('/initialBackground.jpg')]
+          bg-cover
+          bg-no-repeat
+          bg-center
+          bg-fixed
+          shadow-lg
+          w-full
+        "
+      >{children}</body>
     </html>
   )
 }

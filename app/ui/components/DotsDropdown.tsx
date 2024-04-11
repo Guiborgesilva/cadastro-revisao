@@ -85,7 +85,7 @@ export default function DotsDropdown({ id, nome }: { id: string, nome: string })
                   cursor-pointer
                   border
                   border-black
-                  rounded-md
+                  rounded
                 hover:bg-black
                 hover:text-white
                   transition-all
@@ -144,7 +144,7 @@ export default function DotsDropdown({ id, nome }: { id: string, nome: string })
                     cursor-pointer
                     border
                     border-black
-                    rounded-md
+                    rounded
                   hover:bg-black
                   hover:text-white
                     transition-all

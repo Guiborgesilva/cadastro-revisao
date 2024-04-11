@@ -1,13 +1,19 @@
 'use client'
 
-import { Roboto, Quicksand } from 'next/font/google'
+import { Quicksand, Montserrat } from 'next/font/google'
 import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import Button from "./ui/components/Buttons"
 
-const roboto = Roboto({
+const montserrat = Montserrat({
   subsets: ['latin'],
   weight: "400"
+})
+
+const montserratB = Montserrat({
+  subsets: ['latin'],
+  weight: "700"
 })
 
 const quicksand = Quicksand({
@@ -21,21 +27,11 @@ export default function Home() {
   return (
     <div
       className="
-        absolute
-        top-0
-        left-0
-        bottom-0
-        right-0
-        w-screen
-        h-screen
         flex
         items-center
         justify-center
-        bg-[url('/initialBackground.jpg')]
-        bg-fixed
-        bg-cover
-        bg-no-repeat
-        bg-center
+        w-screen
+        h-screen
       "
     >
       <div
@@ -118,24 +114,23 @@ export default function Home() {
           </p>
         </div>
         <Link href={{ pathname:'/signup' }}>
-          <button
-            className="
-            text-white
+          <Button
+            content="FAZER INSCRIÇÃO"
+            className={`
+              ${montserratB.className}
               w-[358px]
               h-[46px]
-              rounded-[10px]
-              hover:bg-white
+              rounded-sm
+              text-black
+              font-bold
+              bg-white
+              hover:bg-white/85
               hover:text-black
               transition
               pointer
-              bw
               animate-up
-            "
-          >
-            <p className={roboto.className}>
-              INSCRIÇÃO!
-            </p>
-          </button>
+            `}
+          />
         </Link>
       </div>
       {isOpen &&
