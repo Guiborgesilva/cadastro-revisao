@@ -61,7 +61,6 @@ export function ModalSuccess(){
               <Button
                 className="
                   text-white
-                  border
                   bg-black
                   hover:bg-black/90
                   hover:text-white
