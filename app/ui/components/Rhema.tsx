@@ -157,7 +157,6 @@ export default function Rhema({
         onClick={() => generatePDF(rhema)}
       >
         <Button
-          content="Exportar"
           className="
             text-white
             border
@@ -171,13 +170,12 @@ export default function Rhema({
             items-center
             justify-center
           "
-        />
+        >Exportar</Button>
       </button>
       <Link
         href={{ pathname:'/controle' }}
         >
           <Button
-            content="Voltar"
             className="
               text-white
               border
@@ -191,7 +189,7 @@ export default function Rhema({
               items-center
               justify-center
             "
-          />
+          >Voltar</Button>
         </Link>
     </div>
     </div>

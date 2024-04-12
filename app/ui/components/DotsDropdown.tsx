@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from "react"
-import ExportPessoa, { DeletePessoa, UpdatePessoa } from "@/app/ui/buttons"
+import { ExportPessoa, DeletePessoa, UpdatePessoa } from "@/app/ui/components/Buttons"
 import Button from "@/app/ui/components/Buttons"
 
 export default function DotsDropdown({ id, nome }: { id: string, nome: string }) {
@@ -79,7 +79,7 @@ export default function DotsDropdown({ id, nome }: { id: string, nome: string })
                 <hr />
               </h2>
               <UpdatePessoa id={id} nome={nome} />
-              <ExportPessoa id={id} nome={nome} />
+              <ExportPessoa id={id} nome={nome} /> 
               <p
                 onClick={() => setModalOpen((prev) => !prev)}
               >
