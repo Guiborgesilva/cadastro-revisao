@@ -1,17 +1,11 @@
-import React, { useRef, CSSProperties } from 'react'
-import '../buttons.css' // Importe seu arquivo de estilos CS
+import React, { useRef } from 'react'
+import '@/app/ui/buttons.css' // Importe seu arquivo de estilos CS
 
-type ButtonProps = {
-  className?: string;
-  onClick?: () => void;
-  content: string;
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  children: React.ReactNode;
 }
 
-const Button: React.FC<ButtonProps> = ({
-  className,
-  onClick,
-  content
-}) => {
+const Button: React.FC<ButtonProps> = ({ children, className, ...rest }: ButtonProps) => {
   const buttonRef = useRef<HTMLButtonElement>(null);
 
   const createRipple = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -36,14 +30,15 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
     <button
+      {...rest}
       ref={buttonRef}
       className={`ripple-button ${className}`}
       onClick={(e) => createRipple(e)}
       type="submit"
     >
-      {content}
+      {children}
     </button>
-  );
-};
+  )
+}
 
 export default Button;

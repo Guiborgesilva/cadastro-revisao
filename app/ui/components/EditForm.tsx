@@ -195,7 +195,7 @@ export default function EditPessoaForm({
         maxLength={11}
       />
       <Button
-        content="ATUALIZAR"
+        type="submit"
         className={`
           ${montserratB.className}
           p-2
@@ -203,12 +203,13 @@ export default function EditPessoaForm({
           rounded-sm
           font-bold
           text-black
+          text-center
           bg-white
           hover:bg-white/85
           hover:text-black
           transition-all
         `}
-      />
+      >ATUALIZAR</Button>
     </form>
   )
 }

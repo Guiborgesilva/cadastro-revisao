@@ -1,7 +1,8 @@
 'use client'
 
 import { useState } from "react"
-import ExportPessoa, { DeletePessoa, UpdatePessoa } from "../buttons"
+import ExportPessoa, { DeletePessoa, UpdatePessoa } from "@/app/ui/buttons"
+import Button from "@/app/ui/components/Buttons"
 
 export default function DotsDropdown({ id, nome }: { id: string, nome: string }) {
   const [isOpen, setIsOpen] = useState(false)
@@ -80,19 +81,25 @@ export default function DotsDropdown({ id, nome }: { id: string, nome: string })
               <UpdatePessoa id={id} nome={nome} />
               <ExportPessoa id={id} nome={nome} />
               <p
-                className="
-                  p-1
-                  cursor-pointer
-                  border
-                  border-black
-                  rounded
-                hover:bg-black
-                hover:text-white
-                  transition-all
-                  w-full
-                "
                 onClick={() => setModalOpen((prev) => !prev)}
-              >Excluir {nome.split(' ')[0]}</p>
+              >
+                <Button
+                  className="
+                    text-white
+                    border
+                    bg-black
+                    hover:bg-black/90
+                    hover:text-white
+                    transition-all
+                    w-full
+                    py-1
+                    rounded
+                    flex
+                    items-center
+                    justify-center
+                  "
+                >{`Excluir ${nome.split(' ')[0]}`}</Button>
+              </p>
             </div>
           </div>
         </>
@@ -139,19 +146,25 @@ export default function DotsDropdown({ id, nome }: { id: string, nome: string })
               <main className="flex flex-row justify-center items-center gap-4 pb-1">
                 <DeletePessoa id={id} />
                 <button
-                  className="
-                    p-1
-                    cursor-pointer
-                    border
-                    border-black
-                    rounded
-                  hover:bg-black
-                  hover:text-white
-                    transition-all
-                    w-24
-                  "
                   onClick={() => setModalOpen((prev) => !prev)}
-                >Cancelar</button>
+                >
+                  <Button
+                    className="
+                      text-white
+                      border
+                      bg-black
+                      hover:bg-black/90
+                      hover:text-white
+                      transition-all
+                      w-24
+                      py-1
+                      rounded
+                      flex
+                      items-center
+                      justify-center
+                    "
+                  >Cancelar</Button>
+                </button>
               </main>
             </div>
           </div>

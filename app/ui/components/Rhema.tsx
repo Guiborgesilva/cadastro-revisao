@@ -3,10 +3,10 @@
 import { Pessoa } from "@/app/lib/definitions"
 import { nomeSobrenome } from "@/app/lib/utils"
 import generatePDF from 'react-to-pdf'
-import Image from "next/image"
 import localFont from "next/font/local"
 import { Montserrat } from "next/font/google"
 import Link from "next/link"
+import Button from "@/app/ui/components/Buttons"
 
 const montserratB = Montserrat({
   subsets: ['latin'],
@@ -150,45 +150,49 @@ export default function Rhema({
             />
             CIDADE
           </p>
-          {/* <Image
-            width={35}
-            height={55}
-            alt="Flame outline"
-            src="/sara-outline.png"
-            className="pb-[15px]"
-          /> */}
         </main>
     </section>
     <div className="flex items-center justify-between w-[400px] mt-4">
       <button
         onClick={() => generatePDF(rhema)}
-        className="
-          p-2
-          cursor-pointer
-          border
-          border-black
-          rounded-md
-          hover:bg-black
-          hover:text-white
-          text-black
-          transition-all
-        "
-      >Exportar</button>
+      >
+        <Button
+          content="Exportar"
+          className="
+            text-white
+            border
+            bg-black
+            hover:bg-black/90
+            hover:text-white
+            transition-all
+            p-2
+            rounded
+            flex
+            items-center
+            justify-center
+          "
+        />
+      </button>
       <Link
-        className="
-        p-2
-        cursor-pointer
-        border
-        border-black
-        rounded-md
-        hover:bg-black
-        hover:text-white
-        text-black
-        transition-all
-      "
-        href={{ pathname:'/controle' }}>
-        Voltar
-      </Link>
+        href={{ pathname:'/controle' }}
+        >
+          <Button
+            content="Voltar"
+            className="
+              text-white
+              border
+              bg-black
+              hover:bg-black/90
+              hover:text-white
+              transition-all
+              p-2
+              rounded
+              flex
+              items-center
+              justify-center
+            "
+          />
+        </Link>
     </div>
     </div>
 )

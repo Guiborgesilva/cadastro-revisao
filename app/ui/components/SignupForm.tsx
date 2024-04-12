@@ -3,9 +3,8 @@
 import { z } from 'zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useEffect } from "react"
 import { RegisterPessoa } from "@/app/lib/utils"
-import Button from "./Buttons"
+import Button from "@/app/ui/components/Buttons"
 
 export type PessoaForm = z.infer<typeof RegisterPessoa>
 
@@ -175,7 +174,7 @@ export function SignupForm({
         maxLength={11}
       />
       <Button
-        content="INSCREVER"
+        type="submit"
         className="
           p-2
           mt-4
@@ -186,7 +185,7 @@ export function SignupForm({
           transition-all
           rounded
         "
-      />
+      >INSCREVER</Button>
     </form>
   )
 }

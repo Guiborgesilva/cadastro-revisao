@@ -2,6 +2,7 @@ import {
   AnimationError,
   AnimationSuccess
 } from "@/app/ui/components/AnimationMessages"
+import Button from "@/app/ui/components/Buttons"
 
 
 export function ModalSuccess(){
@@ -20,6 +21,7 @@ export function ModalSuccess(){
           bg-opacity-50
           grid
           place-items-center
+          z-20
         "
       >
         <section
@@ -34,6 +36,7 @@ export function ModalSuccess(){
             items-center
             gap-4
             animate-up
+            z-90
           "
           onClick={(e) => e.stopPropagation()} // Impedir o fechamento do modal quando clicar dentro dele
         >
@@ -54,38 +57,44 @@ export function ModalSuccess(){
           >
             <a
               href={'/'}
-              className="
-                text-black
-                border
-                border-black
-                hover:bg-black
-                hover:text-white
-                transition-all
-                w-[252px]
-                py-1
-                rounded
-                flex
-                items-center
-                justify-center
-              "
-            >Ir para a Home</a>
+            >
+              <Button
+                className="
+                  text-white
+                  border
+                  bg-black
+                  hover:bg-black/90
+                  hover:text-white
+                  transition-all
+                  w-[252px]
+                  py-1
+                  rounded
+                  flex
+                  items-center
+                  justify-center
+                "
+              >Ir para Home</Button>
+            </a>
             <a
               href={'/signup'}
-              className="
-                text-black
-                border
-                border-black
-                hover:bg-black
-                hover:text-white
-                transition-all
-                w-[252px]
-                py-1
-                rounded
-                flex
-                items-center
-                justify-center
-              "
-            >Cadastrar novo revisionista</a>
+            >
+              <Button
+                className="
+                  text-white
+                  border
+                  bg-black
+                  hover:bg-black/90
+                  hover:text-white
+                  transition-all
+                  w-[252px]
+                  py-1
+                  rounded
+                  flex
+                  items-center
+                  justify-center
+                "
+              >Cadastrar novo revisionista</Button>
+            </a>
           </section>
         </section>
       </main>
@@ -109,6 +118,7 @@ export function ModalEditSuccess(){
           bg-opacity-50
           grid
           place-items-center
+          z-20
         "
       >
         <section
@@ -123,6 +133,7 @@ export function ModalEditSuccess(){
             items-center
             gap-4
             animate-up
+            z-90
           "
           onClick={(e) => e.stopPropagation()} // Impedir o fechamento do modal quando clicar dentro dele
         >
@@ -143,38 +154,44 @@ export function ModalEditSuccess(){
           >
             <a
               href={'/'}
-              className="
-                text-black
-                border
-                border-black
-                hover:bg-black
-                hover:text-white
-                transition-all
-                w-[252px]
-                py-1
-                rounded
-                flex
-                items-center
-                justify-center
-              "
-            >Ir para a Home</a>
+            >
+              <Button
+                className="
+                  text-white
+                  border
+                  bg-black
+                  hover:bg-black/90
+                  hover:text-white
+                  transition-all
+                  w-[252px]
+                  py-1
+                  rounded
+                  flex
+                  items-center
+                  justify-center
+                "
+              >Ir para Home</Button>
+            </a>
             <a
               href={'/controle'}
-              className="
-                text-black
-                border
-                border-black
-                hover:bg-black
-                hover:text-white
-                transition-all
-                w-[252px]
-                py-1
-                rounded
-                flex
-                items-center
-                justify-center
-              "
-            >Ir para Controle</a>
+            >
+              <Button
+                className="
+                  text-white
+                  border
+                  bg-black
+                  hover:bg-black/90
+                  hover:text-white
+                  transition-all
+                  w-[252px]
+                  py-1
+                  rounded
+                  flex
+                  items-center
+                  justify-center
+                "
+              >Ir para Controle</Button>
+            </a>
           </section>
         </section>
       </main>
@@ -183,11 +200,6 @@ export function ModalEditSuccess(){
 }
 
 export function ModalError(){
-  const ReloadLink: React.FC = () => {
-    const handleReload = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-      event.preventDefault(); // Evita a navegação padrão para o destino do link
-      window.location.reload(); // Recarrega a página
-    }
   return (
     <>
       <main
@@ -203,6 +215,7 @@ export function ModalError(){
           bg-opacity-50
           grid
           place-items-center
+          z-20
         "
       >
         <section
@@ -217,6 +230,7 @@ export function ModalError(){
             items-center
             gap-8
             animate-up
+            z-90
           "
           onClick={(e) => e.stopPropagation()}
         >
@@ -237,42 +251,48 @@ export function ModalError(){
           >
             <a
               href={'/'}
-              className="
-                text-black
-                border
-                border-black
-                hover:bg-black
-                hover:text-white
-                transition-all
-                w-[252px]
-                py-1
-                rounded
-                flex
-                items-center
-                justify-center
-              "
-            >Ir para a Home</a>
+            >
+              <Button
+                className="
+                  text-white
+                  border
+                  bg-black
+                  hover:bg-black/90
+                  hover:text-white
+                  transition-all
+                  w-[252px]
+                  py-1
+                  rounded
+                  flex
+                  items-center
+                  justify-center
+                "
+              >Ir para Home</Button>
+            </a>
             <a
-              href={'#'}
-              className="
-                text-black
-                border
-                border-black
-                hover:bg-black
-                hover:text-white
-                transition-all
-                w-[252px]
-                py-1
-                rounded
-                flex
-                items-center
-                justify-center
-              "
-              onClick={handleReload}
-            >Tentar novamente</a>
+              href={''}
+              onClick={() => window.location.reload()}
+            >
+              <Button
+                className="
+                  text-white
+                  border
+                  bg-black
+                  hover:bg-black/90
+                  hover:text-white
+                  transition-all
+                  w-[252px]
+                  py-1
+                  rounded
+                  flex
+                  items-center
+                  justify-center
+                "
+              >Tentar novamente</Button>
+            </a>
           </section>
         </section>
       </main>
     </>
   )
-}}
+}

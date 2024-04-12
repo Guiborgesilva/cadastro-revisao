@@ -115,7 +115,6 @@ export default function Home() {
         </div>
         <Link href={{ pathname:'/signup' }}>
           <Button
-            content="FAZER INSCRIÇÃO"
             className={`
               ${montserratB.className}
               w-[358px]
@@ -130,7 +129,7 @@ export default function Home() {
               pointer
               animate-up
             `}
-          />
+          >FAZER INSCRIÇÃO</Button>
         </Link>
       </div>
       {isOpen &&
@@ -145,7 +144,7 @@ export default function Home() {
             right-0
             w-screen
             h-screen
-            z-[1]
+            z-1
           "
         ></div>
        </>
