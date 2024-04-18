@@ -20,7 +20,8 @@ export type Pessoa = {
 
 export type User = {
   id: string;
-  name: string;
+  nome: string;
   email: string;
-  password: string;
-};
+  senha: string;
+  created_at: string;
+}

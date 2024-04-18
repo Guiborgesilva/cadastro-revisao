@@ -22,7 +22,7 @@ export default async function PessoasTable({
         w-full
         h-[77.5px]
         p-2
-        rounded-lg
+        rounded
         transition
         border
         border-white

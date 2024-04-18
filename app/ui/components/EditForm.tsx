@@ -36,7 +36,7 @@ export default function EditPessoaForm({
     >
       <label htmlFor="nome_pessoa">Nome completo</label>
       <input
-        className="text-black p-2 rounded-sm"
+        className="text-black p-2 rounded"
         {...register('nome_pessoa')}
         placeholder="Digite seu o nome completo"
         type="text"
@@ -46,7 +46,7 @@ export default function EditPessoaForm({
       <label htmlFor="data_nascimento">Data de nascimento</label>
       <input
         type="date"
-        className="text-black p-2 rounded-sm"
+        className="text-black p-2 rounded"
         maxLength={10}
         {...register('data_nascimento')}
         defaultValue={pessoa.data_nascimento}
@@ -57,7 +57,7 @@ export default function EditPessoaForm({
         id="sexo"
         {...register('sexo')}
         defaultValue={pessoa.sexo}
-        className="peer block w-full cursor-pointer rounded-sm border border-gray-200 p-2 outline-2 text-black"
+        className="peer block w-full cursor-pointer rounded border border-gray-200 p-2 outline-2 text-black"
       >
         <option value="" disabled>Selecione uma opção</option>
         <option value="Feminino">Feminino</option>
@@ -69,7 +69,7 @@ export default function EditPessoaForm({
         id="lider_equipe"
         {...register('lider_equipe')}
         defaultValue={pessoa.lider_equipe}
-        className="peer block w-full cursor-pointer rounded-sm border border-gray-200 p-2 outline-2 text-black"
+        className="peer block w-full cursor-pointer rounded border border-gray-200 p-2 outline-2 text-black"
       >
         <option value="" disabled>Selecione uma opção</option>
         <option
@@ -99,14 +99,14 @@ export default function EditPessoaForm({
         type="tel"
         {...register('telefone')}
         maxLength={11}
-        className="text-black p-2 rounded-sm"
+        className="text-black p-2 rounded"
         placeholder="48999999999"
         defaultValue={pessoa.telefone}
       />
       {<span className="text-red-500">{errors.telefone?.message}</span>}
       <label htmlFor="email">E-mail</label>
       <input
-        className="text-black p-2 rounded-sm"
+        className="text-black p-2 rounded"
         type="email"
         {...register('email')}
         placeholder="exemplo@exemplo.com"
@@ -115,7 +115,7 @@ export default function EditPessoaForm({
       {<span className="text-red-500">{errors.email?.message}</span>}
       <label htmlFor="nome_mae">Nome da mãe</label>
       <input
-        className="text-black p-2 rounded-sm"
+        className="text-black p-2 rounded"
         {...register('nome_mae')}
         type="text"
         defaultValue={pessoa.nome_mae}
@@ -124,7 +124,7 @@ export default function EditPessoaForm({
       {<span className="text-red-500">{errors.nome_mae?.message}</span>}
       <label htmlFor="nome_pai">Nome do pai</label>
       <input
-        className="text-black p-2 rounded-sm"
+        className="text-black p-2 rounded"
         {...register('nome_pai')}
         type="text"
         defaultValue={pessoa.nome_pai}
@@ -135,7 +135,7 @@ export default function EditPessoaForm({
       <select
         {...register('forma_pagamento')}
         defaultValue={pessoa.forma_pagamento || 'Selecione uma opção'}
-        className="peer block w-full cursor-pointer rounded-sm border border-gray-200 p-2 outline-2 text-black"
+        className="peer block w-full cursor-pointer rounded border border-gray-200 p-2 outline-2 text-black"
       >
         <option defaultValue="Selecione uma opção" disabled>Selecione uma opção</option>
         <option value="Dinheiro">Dinheiro</option>
@@ -145,7 +145,7 @@ export default function EditPessoaForm({
       {<span className="text-red-500">{errors.forma_pagamento?.message}</span>}
       <label htmlFor="nome_contato1">Nome do primeiro contato</label>
       <input
-        className="text-black p-2 rounded-sm"
+        className="text-black p-2 rounded"
         type="text"
         {...register('nome_contato1')}
         placeholder="Digite o nome do primeiro contato"
@@ -153,7 +153,7 @@ export default function EditPessoaForm({
       />
       <label htmlFor="telefone_contato1">Telefone do primeiro contato</label>
       <input
-        className="text-black p-2 rounded-sm"
+        className="text-black p-2 rounded"
         type="tel"
         {...register('telefone_contato1')}
         placeholder="48999999999"
@@ -162,7 +162,7 @@ export default function EditPessoaForm({
       />
       <label htmlFor="nome_contato2">Nome do segundo contato</label>
       <input
-        className="text-black p-2 rounded-sm"
+        className="text-black p-2 rounded"
         type="text"
         {...register('nome_contato2')}
         placeholder="Digite o nome do segundo contato"
@@ -170,7 +170,7 @@ export default function EditPessoaForm({
       />
       <label htmlFor="telefone_contato2">Telefone do segundo contato</label>
       <input
-        className="text-black p-2 rounded-sm"
+        className="text-black p-2 rounded"
         type="tel"
         {...register('telefone_contato2')}
         placeholder="48999999999"
@@ -179,7 +179,7 @@ export default function EditPessoaForm({
       />
       <label htmlFor="nome_contato3">Nome do terceiro contato</label>
       <input
-        className="text-black p-2 rounded-sm"
+        className="text-black p-2 rounded"
         type="text"
         {...register('nome_contato3')}
         placeholder="Digite o nome do terceiro contato"
@@ -187,7 +187,7 @@ export default function EditPessoaForm({
       />
       <label htmlFor="telefone_contato3">Telefone do terceiro contato</label>
       <input
-        className="text-black p-2 rounded-sm"
+        className="text-black p-2 rounded"
         type="tel"
         {...register('telefone_contato3')}
         placeholder="48999999999"
@@ -200,7 +200,7 @@ export default function EditPessoaForm({
           ${montserratB.className}
           p-2
           mt-4
-          rounded-sm
+          rounded
           font-bold
           text-black
           text-center

@@ -10,8 +10,10 @@
   flex: 2;
 }
 
-input:focus{
-  outline: 2px solid #ffa600 !important;
+input:focus,
+input[type="date"]:focus,
+select:focus{
+  outline: 3px solid #ffa600af !important;
 }
 
 .menu{

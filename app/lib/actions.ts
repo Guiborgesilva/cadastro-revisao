@@ -2,30 +2,9 @@
 
 import { sql } from '@vercel/postgres'
 import { revalidatePath } from 'next/cache'
-import { redirect } from 'next/navigation'
 import { unstable_noStore as noStore } from 'next/cache'
 import { Pessoa } from '@/app/lib/definitions'
-// import { AuthError } from 'next-auth'
-// import { signIn } from "@/auth"
 
-// export async function authenticate(
-//   prevState: string | undefined,
-//   formData: FormData
-// ){
-//   try{
-//     await signIn('credentials', formData)
-//   } catch(error){
-//     if(error instanceof AuthError){
-//       switch(error.type) {
-//         case 'CredentialsSignin':
-//           return 'Credenciais inválidas'
-//         default:
-//           return 'Algo de!'
-//       }
-//     }
-//     throw error
-//   }
-// }
 export async function fetchPessoaById(id: string){
   noStore()
   try{

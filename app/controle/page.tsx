@@ -6,8 +6,8 @@ import { Suspense } from 'react'
 import { fetchPessoasPages } from '../lib/actions'
 import Pagination from '../ui/components/pagination'
 import { CardsSkeleton } from "@/app/ui/components/Skeletons"
-// import { signOut } from "@/thingstodo/auth"
-// import { PowerIcon } from "@heroicons/react/24/outline"
+// import { signOut } from "@/auth"
+import { PowerIcon } from "@heroicons/react/24/outline"
 
 export default async function Page({
   searchParams,

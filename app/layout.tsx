@@ -24,8 +24,8 @@ export default function RootLayout({
           bg-no-repeat
           bg-center
           bg-fixed
-          shadow-lg
           w-full
+          h-full
         "
       >{children}</body>
     </html>

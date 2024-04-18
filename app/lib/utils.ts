@@ -130,4 +130,15 @@ export const pessoaSchema = z.object({
   created_at: z.string()
 })
 
+export const userSchema = z.object({
+  id: z.string(),
+  nome: z.string()
+  .min(1, 'Por favor, digite seu nome!')
+  .transform(capitalizarNome),
+  email: z.string().toLowerCase().email('Por favor, digite um email válido!'),
+  senha: z.string().min(6, 'Sua senha precisa ter no mínimo 6 caracteres!'),
+  created_at: z.string()
+})
+
 export const RegisterPessoa = pessoaSchema.omit({ id: true, created_at: true })
+export const RegisterUser = userSchema.omit({ id: true, created_at: true })
