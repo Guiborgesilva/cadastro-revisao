@@ -184,7 +184,7 @@ export function DashboardSkeleton() {
 export function CardCountSkeleton() {
   return (
     <div
-      className={`${shimmer} relative w-[230px] overflow-hidden rounded-xl dark:bg-slate-700 bg-gray-100 p-2 shadow-sm`}>
+      className={`${shimmer} relative md:w-[230px] w-full overflow-hidden rounded-xl dark:bg-slate-700 bg-gray-100 p-2 shadow-sm`}>
       <div className="flex p-4 dark:bg-slate-700 rounded">
         <div className="h-5 w-5 rounded-md bg-gray-200 dark:bg-slate-300" />
         <div className="ml-2 h-6 w-16 rounded-md bg-gray-200 dark:bg-slate-300 text-sm font-medium" />

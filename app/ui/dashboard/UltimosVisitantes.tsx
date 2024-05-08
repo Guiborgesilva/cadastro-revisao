@@ -2,7 +2,7 @@ import { ArrowPathIcon } from "@heroicons/react/24/outline"
 import clsx from "clsx"
 import { inter } from "@/app/ui/fonts"
 import { fetchUltimosVisitantes } from "@/app/lib/data"
-import { initials } from "@/app/lib/utils"
+import { initials, nomeSobrenome } from "@/app/lib/utils"
 
 export default async function UltimosVisitantes() {
   const ultimosVisitantes = await fetchUltimosVisitantes()
@@ -40,7 +40,7 @@ export default async function UltimosVisitantes() {
                   </p>
                   <div className="min-w-0">
                     <p className="truncate text-sm font-normal md:text-base dark:text-white">
-                      {visitante.nome}
+                      {nomeSobrenome(visitante.nome)}
                     </p>
                     <p className="hidden text-sm text-gray-500 dark:text-white/30 sm:block">
                       {visitante.bairro}
