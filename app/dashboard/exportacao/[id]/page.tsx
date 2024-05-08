@@ -1,4 +1,4 @@
-import { fetchRevisionistaById } from "@/app/lib/data"
+import { fetchRevisionistaById } from "@/app/lib/actions"
 import Rhema from "@/app/ui/components/Rhema"
 
 export default async function ExportacaoIndividual({
