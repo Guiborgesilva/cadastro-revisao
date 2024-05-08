@@ -1,35 +1,34 @@
-'use client'
+"use client"
 
-import { Pessoa } from "@/app/lib/definitions"
+import { Revisionista } from "@/app/lib/definitions"
 import { nomeSobrenome } from "@/app/lib/utils"
-import generatePDF from 'react-to-pdf'
+import generatePDF from "react-to-pdf"
 import localFont from "next/font/local"
 import { Montserrat } from "next/font/google"
 import Link from "next/link"
 import Button from "@/app/ui/components/Buttons"
 
 const montserratB = Montserrat({
-  subsets: ['latin'],
-  weight: '800'
+  subsets: ["latin"],
+  weight: "800"
 })
 
 const montserratM = Montserrat({
-  subsets: ['latin'],
-  weight: '500'
+  subsets: ["latin"],
+  weight: "500"
 })
 
-const Lustra = localFont({ src: '../Lustrabold.otf' })
+const Lustra = localFont({ src: "../Lustrabold.otf" })
 
 export default function Rhema({
-  pessoa
-}:{
-  pessoa: Pessoa
-}
-){
-  const rhema = () => document.getElementById('rhema')
+  revisionista
+}: {
+  revisionista: Revisionista
+}) {
+  const rhema = () => document.getElementById("rhema")
 
   return (
-    <div className="bg-white h-screen w-screen flex items-center justyify-center flex-col">
+    <div className="absolute top-0 bottom-0 right-0 left-0 bg-white h-full w-full flex flex-col">
       <section
         id="rhema"
         className="
@@ -43,12 +42,13 @@ export default function Rhema({
           bg-contain
           bg-no-repeat
           bg-center
+          text-black
+          mx-auto
         "
-      >  
+      >
         <header className="flex flex-col justify-center items-center">
           <h1
-            className={
-              `${Lustra.className}
+            className={`${Lustra.className}
               text-[5rem]
               mt-[-60px]
             `}
@@ -62,7 +62,9 @@ export default function Rhema({
               tracking-[.15rem]
               
             `}
-          >REVISÃO DE VIDAS</h2>
+          >
+            REVISÃO DE VIDAS
+          </h2>
         </header>
         <main
           className="
@@ -81,7 +83,7 @@ export default function Rhema({
               text-[1.2rem]
             `}
           >
-            {nomeSobrenome(`${pessoa.nome_pessoa.toLocaleUpperCase()}`)}
+            {nomeSobrenome(`${revisionista.nome_pessoa.toLocaleUpperCase()}`)}
           </p>
           <p
             className={`
@@ -106,7 +108,7 @@ export default function Rhema({
               text-[1.2rem]
             `}
           >
-            {pessoa.lider_equipe.toLocaleUpperCase().split('|')[1]}
+            {revisionista.lider_equipe.toLocaleUpperCase().split("|")[1]}
           </p>
           <p
             className={`
@@ -151,13 +153,11 @@ export default function Rhema({
             CIDADE
           </p>
         </main>
-    </section>
-    <div className="flex items-center justify-between w-[400px] mt-4">
-      <button
-        onClick={() => generatePDF(rhema)}
-      >
-        <Button
-          className="
+      </section>
+      <div className="flex items-center justify-between w-[400px] mt-4 mx-auto">
+        <button onClick={() => generatePDF(rhema)}>
+          <Button
+            className="
             text-white
             border
             bg-black
@@ -170,11 +170,11 @@ export default function Rhema({
             items-center
             justify-center
           "
-        >Exportar</Button>
-      </button>
-      <Link
-        href={{ pathname:'/controle' }}
-        >
+          >
+            Exportar
+          </Button>
+        </button>
+        <Link href={{ pathname: "/dashboard/revisionistas" }}>
           <Button
             className="
               text-white
@@ -189,9 +189,11 @@ export default function Rhema({
               items-center
               justify-center
             "
-          >Voltar</Button>
+          >
+            Voltar
+          </Button>
         </Link>
+      </div>
     </div>
-    </div>
-)
+  )
 }

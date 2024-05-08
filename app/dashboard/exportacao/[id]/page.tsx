@@ -1,0 +1,13 @@
+import { fetchRevisionistaById } from "@/app/lib/data"
+import Rhema from "@/app/ui/components/Rhema"
+
+export default async function ExportacaoIndividual({
+  params
+}: {
+  params: { id: string }
+}) {
+  const id = params.id
+  const [revisionista] = await Promise.all([fetchRevisionistaById(id)])
+
+  return <Rhema revisionista={revisionista} />
+}

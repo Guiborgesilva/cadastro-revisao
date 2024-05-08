@@ -1,0 +1,780 @@
+import {
+  AnimationError,
+  AnimationSuccess
+} from "@/app/ui/messages/AnimationMessages"
+import Button from "@/app/ui/components/Buttons"
+
+export function ModalSuccessRevisionista() {
+  return (
+    <>
+      <main
+        className="
+          fixed
+          top-0
+          right-0
+          bottom-0
+          left-0
+          w-full
+          h-full
+          backdrop-blur-sm
+          bg-black/50
+          grid
+          place-items-center
+          z-20
+        ">
+        <section
+          className="
+            w-[21.25rem]
+            py-8
+            mx-[2%]
+            rounded-lg
+            bg-white
+            flex
+            flex-col
+            items-center
+            gap-4
+            animate-up
+            shadow-md
+            z-90
+          "
+          onClick={(e) => e.stopPropagation()} // Impedir o fechamento do modal quando clicar dentro dele
+        >
+          <header>
+            <h2
+              className="
+              text-green-600
+              text-3xl
+            ">
+              Sucesso!
+            </h2>
+          </header>
+          <AnimationSuccess />
+          <section
+            className="
+              flex
+              flex-col
+              items-center
+              gap-4
+            ">
+            <a href={"/dashboard"}>
+              <Button
+                className="
+                  text-white
+                  bg-black
+                  hover:bg-black/90
+                  hover:text-white
+                  transition-all
+                  w-[252px]
+                  py-1
+                  rounded
+                  flex
+                  items-center
+                  justify-center
+                ">
+                Ir para Home
+              </Button>
+            </a>
+            <a href={"/dashboard/revisionistas/register"}>
+              <Button
+                className="
+                  text-white
+                  border
+                  bg-black
+                  hover:bg-black/90
+                  hover:text-white
+                  transition-all
+                  w-[252px]
+                  py-1
+                  rounded
+                  flex
+                  items-center
+                  justify-center
+                ">
+                Cadastrar novo revisionista
+              </Button>
+            </a>
+          </section>
+        </section>
+      </main>
+    </>
+  )
+}
+
+export function ModalSuccessVisitante() {
+  return (
+    <>
+      <main
+        className="
+          fixed
+          top-0
+          right-0
+          bottom-0
+          left-0
+          w-full
+          h-full
+          backdrop-blur-sm
+          bg-black/50
+          grid
+          place-items-center
+          z-20
+        ">
+        <section
+          className="
+            w-[21.25rem]
+            py-8
+            mx-[2%]
+            rounded-lg
+            bg-white
+            flex
+            flex-col
+            items-center
+            gap-4
+            animate-up
+            shadow-md
+            z-90
+          "
+          onClick={(e) => e.stopPropagation()} // Impedir o fechamento do modal quando clicar dentro dele
+        >
+          <header>
+            <h2
+              className="
+              text-green-600
+              text-3xl
+            ">
+              Sucesso!
+            </h2>
+          </header>
+          <AnimationSuccess />
+          <section
+            className="
+              flex
+              flex-col
+              items-center
+              gap-4
+            ">
+            <a href={"/dashboard"}>
+              <Button
+                className="
+                  text-white
+                  bg-black
+                  hover:bg-black/90
+                  hover:text-white
+                  transition-all
+                  w-[252px]
+                  py-1
+                  rounded
+                  flex
+                  items-center
+                  justify-center
+                ">
+                Ir para Home
+              </Button>
+            </a>
+            <a href={"/dashboard/visitantes/register"}>
+              <Button
+                className="
+                  text-white
+                  border
+                  bg-black
+                  hover:bg-black/90
+                  hover:text-white
+                  transition-all
+                  w-[252px]
+                  py-1
+                  rounded
+                  flex
+                  items-center
+                  justify-center
+                ">
+                Cadastrar novo visitante
+              </Button>
+            </a>
+          </section>
+        </section>
+      </main>
+    </>
+  )
+}
+
+export function ModalCreateUserSuccess() {
+  return (
+    <>
+      <main
+        className="
+          fixed
+          top-0
+          right-0
+          bottom-0
+          left-0
+          w-full
+          h-full
+          backdrop-blur-sm
+          bg-black/50
+          grid
+          place-items-center
+          z-20
+        ">
+        <section
+          className="
+            w-[21.25rem]
+            py-8
+            mx-[2%]
+            rounded-lg
+            bg-white
+            flex
+            flex-col
+            items-center
+            gap-4
+            animate-up
+            shadow-md
+            z-90
+          "
+          onClick={(e) => e.stopPropagation()} // Impedir o fechamento do modal quando clicar dentro dele
+        >
+          <header>
+            <h2
+              className="
+              text-green-600
+              text-3xl
+            ">
+              Sucesso!
+            </h2>
+          </header>
+          <AnimationSuccess />
+          <section
+            className="
+              flex
+              flex-col
+              items-center
+              gap-4
+            ">
+            <a href={"/dashboard/usuarios/register"}>
+              <Button
+                className="
+                  text-white
+                  bg-black
+                  hover:bg-black/90
+                  hover:text-white
+                  transition-all
+                  w-[252px]
+                  py-1
+                  rounded
+                  flex
+                  items-center
+                  justify-center
+                ">
+                Cadastrar novo usuário
+              </Button>
+            </a>
+            <a href={"/dashboard"}>
+              <Button
+                className="
+                  text-white
+                  border
+                  bg-black
+                  hover:bg-black/90
+                  hover:text-white
+                  transition-all
+                  w-[252px]
+                  py-1
+                  rounded
+                  flex
+                  items-center
+                  justify-center
+                ">
+                Ir para Home
+              </Button>
+            </a>
+          </section>
+        </section>
+      </main>
+    </>
+  )
+}
+
+export function ModalEditSuccessRevisionista() {
+  return (
+    <>
+      <main
+        className="
+          fixed
+          top-0
+          right-0
+          bottom-0
+          left-0
+          w-full
+          h-full
+          backdrop-blur-sm
+          bg-black/50
+          grid
+          place-items-center
+          z-20
+        ">
+        <section
+          className="
+            w-[21.25rem]
+            py-8
+            mx-[2%]
+            rounded-lg
+            bg-white
+            flex
+            flex-col
+            items-center
+            gap-4
+            animate-up
+            shadow-md
+            z-90
+          "
+          onClick={(e) => e.stopPropagation()} // Impedir o fechamento do modal quando clicar dentro dele
+        >
+          <header>
+            <h2
+              className="
+              text-green-600
+              text-3xl
+            ">
+              Sucesso!
+            </h2>
+          </header>
+          <AnimationSuccess />
+          <section
+            className="
+              flex
+              flex-col
+              items-center
+              gap-4
+            ">
+            <a href={"/dashboard"}>
+              <Button
+                className="
+                  text-white
+                  border
+                  bg-black
+                  hover:bg-black/90
+                  hover:text-white
+                  transition-all
+                  w-[252px]
+                  py-1
+                  rounded
+                  flex
+                  items-center
+                  justify-center
+                ">
+                Ir para Home
+              </Button>
+            </a>
+            <a href={"/dashboard/revisionistas"}>
+              <Button
+                className="
+                  text-white
+                  border
+                  bg-black
+                  hover:bg-black/90
+                  hover:text-white
+                  transition-all
+                  w-[252px]
+                  py-1
+                  rounded
+                  flex
+                  items-center
+                  justify-center
+                ">
+                Ir para Revisionistas
+              </Button>
+            </a>
+          </section>
+        </section>
+      </main>
+    </>
+  )
+}
+
+export function ModalEditSuccessVisitante() {
+  return (
+    <>
+      <main
+        className="
+          fixed
+          top-0
+          right-0
+          bottom-0
+          left-0
+          w-full
+          h-full
+          backdrop-blur-sm
+          bg-black/50
+          grid
+          place-items-center
+          z-20
+        ">
+        <section
+          className="
+            w-[21.25rem]
+            py-8
+            mx-[2%]
+            rounded-lg
+            bg-white
+            flex
+            flex-col
+            items-center
+            gap-4
+            animate-up
+            shadow-md
+            z-90
+          "
+          onClick={(e) => e.stopPropagation()} // Impedir o fechamento do modal quando clicar dentro dele
+        >
+          <header>
+            <h2
+              className="
+              text-green-600
+              text-3xl
+            ">
+              Sucesso!
+            </h2>
+          </header>
+          <AnimationSuccess />
+          <section
+            className="
+              flex
+              flex-col
+              items-center
+              gap-4
+            ">
+            <a href={"/dashboard"}>
+              <Button
+                className="
+                  text-white
+                  border
+                  bg-black
+                  hover:bg-black/90
+                  hover:text-white
+                  transition-all
+                  w-[252px]
+                  py-1
+                  rounded
+                  flex
+                  items-center
+                  justify-center
+                ">
+                Ir para Home
+              </Button>
+            </a>
+            <a href={"/dashboard/visitantes"}>
+              <Button
+                className="
+                  text-white
+                  border
+                  bg-black
+                  hover:bg-black/90
+                  hover:text-white
+                  transition-all
+                  w-[252px]
+                  py-1
+                  rounded
+                  flex
+                  items-center
+                  justify-center
+                ">
+                Ir para Visitantes
+              </Button>
+            </a>
+          </section>
+        </section>
+      </main>
+    </>
+  )
+}
+
+export function ModalEditSuccessUsuario() {
+  return (
+    <>
+      <main
+        className="
+          fixed
+          top-0
+          right-0
+          bottom-0
+          left-0
+          w-full
+          h-full
+          backdrop-blur-sm
+          bg-black/50
+          grid
+          place-items-center
+          z-20
+        ">
+        <section
+          className="
+            w-[21.25rem]
+            py-8
+            mx-[2%]
+            rounded-lg
+            bg-white
+            flex
+            flex-col
+            items-center
+            gap-4
+            animate-up
+            shadow-md
+            z-90
+          "
+          onClick={(e) => e.stopPropagation()} // Impedir o fechamento do modal quando clicar dentro dele
+        >
+          <header>
+            <h2
+              className="
+              text-green-600
+              text-3xl
+            ">
+              Sucesso!
+            </h2>
+          </header>
+          <AnimationSuccess />
+          <section
+            className="
+              flex
+              flex-col
+              items-center
+              gap-4
+            ">
+            <a href={"/dashboard"}>
+              <Button
+                className="
+                  text-white
+                  border
+                  bg-black
+                  hover:bg-black/90
+                  hover:text-white
+                  transition-all
+                  w-[252px]
+                  py-1
+                  rounded
+                  flex
+                  items-center
+                  justify-center
+                ">
+                Ir para Home
+              </Button>
+            </a>
+            <a href={"/dashboard/usuarios"}>
+              <Button
+                className="
+                  text-white
+                  border
+                  bg-black
+                  hover:bg-black/90
+                  hover:text-white
+                  transition-all
+                  w-[252px]
+                  py-1
+                  rounded
+                  flex
+                  items-center
+                  justify-center
+                ">
+                Ir para Usuários
+              </Button>
+            </a>
+          </section>
+        </section>
+      </main>
+    </>
+  )
+}
+
+export function ModalError() {
+  return (
+    <>
+      <main
+        className="
+          fixed
+          top-0
+          right-0
+          bottom-0
+          left-0
+          w-full
+          h-full
+          backdrop-blur-sm
+          bg-black/50
+          grid
+          place-items-center
+          z-20
+        ">
+        <section
+          className="
+            w-[21.25rem]
+            py-8
+            mx-[2%]
+            rounded-lg
+            bg-white
+            flex
+            flex-col
+            items-center
+            gap-8
+            animate-up
+            shadow-md
+            z-90
+          "
+          onClick={(e) => e.stopPropagation()}>
+          <header>
+            <h2
+              className="
+              text-red-500
+              text-3xl
+            ">
+              Algo deu errado!
+            </h2>
+          </header>
+          <AnimationError />
+          <section
+            className="
+              flex
+              flex-col
+              items-center
+              gap-4
+            ">
+            <a
+              href={""}
+              onClick={() => window.location.reload()}>
+              <Button
+                className="
+                  text-white
+                  border
+                  bg-black
+                  hover:bg-black/90
+                  hover:text-white
+                  transition-all
+                  w-[252px]
+                  py-1
+                  rounded
+                  flex
+                  items-center
+                  justify-center
+                ">
+                Tentar novamente
+              </Button>
+            </a>
+            <a href={"/dashboard"}>
+              <Button
+                className="
+                  text-white
+                  border
+                  bg-black
+                  hover:bg-black/90
+                  hover:text-white
+                  transition-all
+                  w-[252px]
+                  py-1
+                  rounded
+                  flex
+                  items-center
+                  justify-center
+                ">
+                Ir para Home
+              </Button>
+            </a>
+          </section>
+        </section>
+      </main>
+    </>
+  )
+}
+
+export function ModalCreateUserError() {
+  return (
+    <>
+      <main
+        className="
+          fixed
+          top-0
+          right-0
+          bottom-0
+          left-0
+          w-full
+          h-full
+          backdrop-blur-sm
+          bg-black/50
+          grid
+          place-items-center
+          z-20
+        ">
+        <section
+          className="
+            w-[21.25rem]
+            py-8
+            mx-[2%]
+            rounded-lg
+            bg-white
+            flex
+            flex-col
+            items-center
+            gap-8
+            animate-up
+            shadow-md
+            z-90
+          "
+          onClick={(e) => e.stopPropagation()}>
+          <header>
+            <h2
+              className="
+              text-red-500
+              text-3xl
+            ">
+              Algo deu errado!
+            </h2>
+          </header>
+          <AnimationError />
+          <section
+            className="
+              flex
+              flex-col
+              items-center
+              gap-4
+            ">
+            <a
+              href={""}
+              onClick={() => window.location.reload()}>
+              <Button
+                className="
+                  text-white
+                  border
+                  bg-black
+                  hover:bg-black/90
+                  hover:text-white
+                  transition-all
+                  w-[252px]
+                  py-1
+                  rounded
+                  flex
+                  items-center
+                  justify-center
+                ">
+                Tentar novamente
+              </Button>
+            </a>
+            <a href={"/dashboard"}>
+              <Button
+                className="
+                  text-white
+                  border
+                  bg-black
+                  hover:bg-black/90
+                  hover:text-white
+                  transition-all
+                  w-[252px]
+                  py-1
+                  rounded
+                  flex
+                  items-center
+                  justify-center
+                ">
+                Ir para Home
+              </Button>
+            </a>
+          </section>
+        </section>
+      </main>
+    </>
+  )
+}

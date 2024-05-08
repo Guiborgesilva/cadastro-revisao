@@ -1,10 +1,20 @@
-'use client'
+"use client"
 
 import { useState } from "react"
-import { ExportPessoa, DeletePessoa, UpdatePessoa } from "@/app/ui/components/Buttons"
+import {
+  ExportPessoa,
+  DeletePessoa,
+  UpdatePessoa
+} from "@/app/ui/components/Buttons"
 import Button from "@/app/ui/components/Buttons"
 
-export default function DotsDropdown({ id, nome }: { id: string, nome: string }) {
+export default function DotsDropdown({
+  id,
+  nome
+}: {
+  id: string
+  nome: string
+}) {
   const [isOpen, setIsOpen] = useState(false)
   const [modalOpen, setModalOpen] = useState(false)
   return (
@@ -34,7 +44,7 @@ export default function DotsDropdown({ id, nome }: { id: string, nome: string })
           />
         </svg>
       </div>
-      {isOpen &&
+      {isOpen && (
         <>
           <div
             onClick={() => setIsOpen((prev) => !prev)}
@@ -72,17 +82,19 @@ export default function DotsDropdown({ id, nome }: { id: string, nome: string })
                 animate-up
               "
             >
-              <h2
-                className="text-[1.5rem]"
-              >
+              <h2 className="text-[1.5rem]">
                 Ações
                 <hr />
               </h2>
-              <UpdatePessoa id={id} nome={nome} />
-              <ExportPessoa id={id} nome={nome} /> 
-              <p
-                onClick={() => setModalOpen((prev) => !prev)}
-              >
+              <UpdatePessoa
+                id={id}
+                nome={nome}
+              />
+              <ExportPessoa
+                id={id}
+                nome={nome}
+              />
+              <p onClick={() => setModalOpen((prev) => !prev)}>
                 <Button
                   className="
                     text-white
@@ -98,13 +110,13 @@ export default function DotsDropdown({ id, nome }: { id: string, nome: string })
                     items-center
                     justify-center
                   "
-                >{`Excluir ${nome.split(' ')[0]}`}</Button>
+                >{`Excluir ${nome.split(" ")[0]}`}</Button>
               </p>
             </div>
           </div>
         </>
-      }
-      {modalOpen &&
+      )}
+      {modalOpen && (
         <>
           <div
             className="
@@ -139,15 +151,13 @@ export default function DotsDropdown({ id, nome }: { id: string, nome: string })
               "
             >
               <header>
-                <h2
-                  className="text-lg"
-                >Tem certeza que deseja excluir <b>{nome.split(' ')[0]}</b>?</h2>
+                <h2 className="text-lg">
+                  Tem certeza que deseja excluir <b>{nome.split(" ")[0]}</b>?
+                </h2>
               </header>
               <main className="flex flex-row justify-center items-center gap-4 pb-1">
                 <DeletePessoa id={id} />
-                <button
-                  onClick={() => setModalOpen((prev) => !prev)}
-                >
+                <button onClick={() => setModalOpen((prev) => !prev)}>
                   <Button
                     className="
                       text-white
@@ -163,13 +173,15 @@ export default function DotsDropdown({ id, nome }: { id: string, nome: string })
                       items-center
                       justify-center
                     "
-                  >Cancelar</Button>
+                  >
+                    Cancelar
+                  </Button>
                 </button>
               </main>
             </div>
           </div>
         </>
-      }
+      )}
     </>
   )
 }

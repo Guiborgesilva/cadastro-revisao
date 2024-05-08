@@ -1,37 +1,55 @@
-'use server'
+"use server"
 
-import { sql } from '@vercel/postgres'
-import { revalidatePath } from 'next/cache'
-import { unstable_noStore as noStore } from 'next/cache'
-import { Pessoa } from '@/app/lib/definitions'
+import { sql } from "@vercel/postgres"
+import { unstable_noStore as noStore } from "next/cache"
+import { Revisionista, Usuario, Visitante } from "@/app/lib/definitions"
+import { signIn } from "@/auth"
+import { AuthError } from "next-auth"
+import { revalidatePath } from "next/cache"
 
-export async function fetchPessoaById(id: string){
-  noStore()
-  try{
-    const data = await sql<Pessoa>`
-      SELECT * FROM vidas WHERE id = ${id}
-    `
-    const pessoa = data.rows.map((pessoa) => ({
-      ...pessoa
-    }))
-
-    return pessoa[0]
+export async function authenticate(
+  prevState: string | undefined,
+  formData: FormData
+) {
+  try {
+    await signIn("credentials", formData)
+    return "success"
   } catch (error) {
-    console.error(`Falha ao buscar os dados dessa Pessoa, erro: ${error}`)
-    throw new Error('Falha ao buscar os dados dessa Pessoa.')
+    if (error instanceof AuthError) {
+      switch (error.type) {
+        case "CredentialsSignin":
+          return "invalid"
+        default:
+          return "error"
+      }
+    }
+    throw error
   }
 }
 
+// export const userSchema = z.object({
+//   id: z.string(),
+//   nome: z
+//     .string()
+//     .min(1, 'Por favor, digite seu nome!')
+//     .transform(capitalizarNome),
+//   email: z.string().toLowerCase().email('Por favor, digite um email válido!'),
+//   senha: z.string().min(6, 'Sua senha precisa ter no mínimo 6 caracteres!'),
+//   created_at: z.string(),
+// })
+
+// export const RegisterUser = userSchema.omit({ id: true, created_at: true })
+
 const ITEMS_PER_PAGE = 6
-export async function fetchFilteredPessoas(
+export async function fetchFilteredRevisionistas(
   query: string,
   currentPage: number
 ) {
-  const offset = (currentPage - 1) * ITEMS_PER_PAGE;
-  noStore();
+  const offset = (currentPage - 1) * ITEMS_PER_PAGE
+  noStore()
 
   try {
-    const pessoas = await sql<Pessoa>`
+    const revisionistas = await sql<Revisionista>`
       SELECT
         id,
         nome_pessoa,
@@ -51,72 +69,186 @@ export async function fetchFilteredPessoas(
         forma_pagamento
       FROM vidas
       WHERE
-        vidas.nome_pessoa ILIKE ${`%${query}%`} OR
-        vidas.data_nascimento::text ILIKE ${`%${query}%`} OR
-        vidas.sexo ILIKE ${`%${query}%`} OR
-        vidas.lider_equipe ILIKE ${`%${query}%`} OR
-        vidas.telefone::text ILIKE ${`%${query}%`} OR
-        vidas.email ILIKE ${`%${query}%`} OR
-        vidas.nome_mae ILIKE ${`%${query}%`} OR
-        vidas.nome_pai ILIKE ${`%${query}%`} OR
-        vidas.nome_contato1 ILIKE ${`%${query}%`} OR
-        vidas.telefone_contato1 ILIKE ${`%${query}%`} OR
-        vidas.nome_contato2 ILIKE ${`%${query}%`} OR
-        vidas.telefone_contato2 ILIKE ${`%${query}%`} OR
-        vidas.nome_contato3 ILIKE ${`%${query}%`} OR
-        vidas.telefone_contato3 ILIKE ${`%${query}%`} OR
-        vidas.forma_pagamento ILIKE ${`%${query}%`}
+        nome_pessoa ILIKE ${`%${query}%`} OR
+        data_nascimento::text ILIKE ${`%${query}%`} OR
+        sexo ILIKE ${`%${query}%`} OR
+        lider_equipe ILIKE ${`%${query}%`} OR
+        telefone::text ILIKE ${`%${query}%`} OR
+        email ILIKE ${`%${query}%`} OR
+        nome_mae ILIKE ${`%${query}%`} OR
+        nome_pai ILIKE ${`%${query}%`} OR
+        nome_contato1 ILIKE ${`%${query}%`} OR
+        telefone_contato1 ILIKE ${`%${query}%`} OR
+        nome_contato2 ILIKE ${`%${query}%`} OR
+        telefone_contato2 ILIKE ${`%${query}%`} OR
+        nome_contato3 ILIKE ${`%${query}%`} OR
+        telefone_contato3 ILIKE ${`%${query}%`} OR
+        forma_pagamento ILIKE ${`%${query}%`}
       ORDER BY created_at DESC
       LIMIT ${ITEMS_PER_PAGE} OFFSET ${offset}
-    `;
-
-    return pessoas.rows;
+    `
+    return revisionistas.rows
   } catch (error) {
-    console.error('Database Error:', error);
-    throw new Error('Falha ao buscar os dados!');
+    console.error("Database Error:", error)
+    throw new Error("Falha ao buscar os dados!")
   }
 }
 
-export async function fetchPessoasPages(query: string) {
-  noStore();
+export async function fetchRevisionistaById(id: string) {
+  noStore()
   try {
-    const count = await sql`
-    SELECT COUNT(*)
-    FROM vidas
-    WHERE
-      vidas.nome_pessoa ILIKE ${`%${query}%`} OR
-      vidas.data_nascimento::text ILIKE ${`%${query}%`} OR
-      vidas.sexo ILIKE ${`%${query}%`} OR
-      vidas.lider_equipe ILIKE ${`%${query}%`} OR
-      vidas.telefone::text ILIKE ${`%${query}%`} OR
-      vidas.email ILIKE ${`%${query}%`} OR
-      vidas.nome_mae ILIKE ${`%${query}%`} OR
-      vidas.nome_pai ILIKE ${`%${query}%`} OR
-      vidas.nome_contato1 ILIKE ${`%${query}%`} OR
-      vidas.telefone_contato1 ILIKE ${`%${query}%`} OR
-      vidas.nome_contato2 ILIKE ${`%${query}%`} OR
-      vidas.telefone_contato2 ILIKE ${`%${query}%`} OR
-      vidas.nome_contato3 ILIKE ${`%${query}%`} OR
-      vidas.telefone_contato3 ILIKE ${`%${query}%`} OR
-      vidas.forma_pagamento ILIKE ${`%${query}%`}
-  `
+    const data = await sql<Revisionista>`
+      SELECT * FROM vidas WHERE id = ${id}
+    `
+    const revisionista = data.rows.map((revisionista) => ({
+      ...revisionista
+    }))
 
-    const totalPages = Math.ceil(Number(count.rows[0].count) / ITEMS_PER_PAGE);
-    return totalPages;
+    return revisionista[0]
   } catch (error) {
-    console.error('Database Error:', error);
-    throw new Error('Falha ao buscar o número total de pessoas.');
+    console.error(`Falha ao buscar os dados desse Revisionista, erro: ${error}`)
+    throw new Error("Falha ao buscar os dados desse Revisionista.")
   }
 }
 
-export async function deletePessoa(id: string){
-  try{
-    await sql `DELETE FROM vidas WHERE id = ${id}`
-    revalidatePath('/controle')
-    return { message: 'Pessoa deletada!' }
+export async function fetchFilteredVisitantes(
+  query: string,
+  currentPage: number
+) {
+  const offset = (currentPage - 1) * ITEMS_PER_PAGE
+  noStore()
+
+  try {
+    const visitantes = await sql<Visitante>`
+      SELECT
+        id,
+        nome,
+        data_nascimento,
+        sexo,
+        telefone,
+        endereco,
+        bairro,
+        quem_convidou,
+        como_conheceu,
+        data_visita,
+        tipo_culto
+      FROM visitantes
+      WHERE
+        nome ILIKE ${`%${query}%`} OR
+        data_nascimento::text ILIKE ${`%${query}%`} OR
+        sexo ILIKE ${`%${query}%`} OR
+        telefone::text ILIKE ${`%${query}%`} OR
+        endereco ILIKE ${`%${query}%`} OR
+        bairro ILIKE ${`%${query}%`} OR
+        quem_convidou ILIKE ${`%${query}%`} OR
+        como_conheceu ILIKE ${`%${query}%`} OR
+        data_visita::text ILIKE ${`%${query}%`} OR
+        tipo_culto ILIKE ${`%${query}%`}
+      ORDER BY created_at DESC
+      LIMIT ${ITEMS_PER_PAGE} OFFSET ${offset}
+    `
+    return visitantes.rows
   } catch (error) {
-    return{
-      message: 'Erro de Banco de Dados: Falha ao Deletar essa Pessoa!'
+    console.error("Database Error:", error)
+    throw new Error("Falha ao buscar os dados!")
+  }
+}
+
+export async function fetchVisitanteById(id: string) {
+  noStore()
+  try {
+    const data = await sql<Visitante>`
+      SELECT * FROM visitantes WHERE id = ${id}
+    `
+    const visitante = data.rows.map((visitante) => ({
+      ...visitante
+    }))
+
+    return visitante[0]
+  } catch (error) {
+    console.error(`Falha ao buscar os dados desse Visitante, erro: ${error}`)
+    throw new Error("Falha ao buscar os dados desse Visitante.")
+  }
+}
+
+export async function fetchFilteredUsuarios(
+  query: string,
+  currentPage: number
+) {
+  const offset = (currentPage - 1) * ITEMS_PER_PAGE
+  noStore()
+
+  try {
+    const data = await sql<Usuario>`
+      SELECT
+        id,
+        name,
+        email,
+        password
+      FROM users
+      WHERE
+        name ILIKE ${`%${query}%`} OR
+        email ILIKE ${`%${query}%`} OR
+        password ILIKE ${`%${query}%`}
+      ORDER BY created_at DESC
+      LIMIT ${ITEMS_PER_PAGE} OFFSET ${offset}
+    `
+    return data.rows
+  } catch (error) {
+    console.error("Database Error:", error)
+    throw new Error("Falha ao buscar os dados!")
+  }
+}
+
+export async function fetchUsuarioById(id: string) {
+  noStore()
+  try {
+    const data = await sql<Usuario>`
+      SELECT * FROM users WHERE id = ${id}
+    `
+    const usuario = data.rows.map((usuario) => ({
+      ...usuario
+    }))
+
+    return usuario[0]
+  } catch (error) {
+    console.error(`Falha ao buscar os dados desse Usuário, erro: ${error}`)
+    throw new Error("Falha ao buscar os dados desse Usuário.")
+  }
+}
+
+export async function deleteRevisionista(id: string) {
+  try {
+    await sql`DELETE FROM vidas WHERE id = ${id}`
+    revalidatePath("/dashboard/revisionistas")
+    return { message: "Revisionista deletado!" }
+  } catch (error) {
+    return {
+      message: "Erro de Banco de Dados: Falha ao Deletar esse Revisionista!"
+    }
+  }
+}
+
+export async function deleteVisitante(id: string) {
+  try {
+    await sql`DELETE FROM visitantes WHERE id = ${id}`
+    revalidatePath("/dashboard/visitantes")
+    return { message: "Visitante deletado!" }
+  } catch (error) {
+    return {
+      message: "Erro de Banco de Dados: Falha ao Deletar esse Visitante!"
+    }
+  }
+}
+
+export async function deleteUsuario(id: string) {
+  try {
+    await sql`DELETE FROM users WHERE id = ${id}`
+    revalidatePath("/dashboard/usuarios")
+    return { message: "Usuário deletado!" }
+  } catch (error) {
+    return {
+      message: "Erro de Banco de Dados: Falha ao Deletar esse Usuário!"
     }
   }
 }

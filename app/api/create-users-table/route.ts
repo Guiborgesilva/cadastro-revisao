@@ -1,12 +1,12 @@
-import { sql } from '@vercel/postgres'
-import { NextResponse } from 'next/server'
+import { sql } from "@vercel/postgres"
+import { NextResponse } from "next/server"
 
-export async function GET(request: Request){
-  try{
+export async function GET(request: Request) {
+  try {
     const createTable =
-      await sql`CREATE TABLE IF NOT EXISTS users (id UUID DEFAULT uuid_generate_v4() PRIMARY KEY, nome varchar(255), email TEXT NOT NULL UNIQUE, senha TEXT NOT NULL, created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL)`
+      await sql`CREATE TABLE IF NOT EXISTS users (id UUID DEFAULT uuid_generate_v4() PRIMARY KEY, name varchar(255), email TEXT NOT NULL UNIQUE, password TEXT NOT NULL, created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP)`
 
-      return NextResponse.json({ createTable }, { status: 200 })
+    return NextResponse.json({ createTable }, { status: 200 })
   } catch (error) {
     console.error(error)
     return NextResponse.json({ error }, { status: 500 })

@@ -1,23 +1,24 @@
-import Link from 'next/link'
+import Link from "next/link"
 import { montserrat } from "../fonts"
-import { fetchFilteredPessoas } from '@/app/lib/actions'
-import { nomeSobrenome } from '@/app/lib/utils'
+import { fetchFilteredRevisionistas } from "@/app/lib/actions"
+import { nomeSobrenome } from "@/app/lib/utils"
 import DotsDropdown from "../components/DotsDropdown"
 
 export default async function PessoasTable({
   query,
-  currentPage,
+  currentPage
 }: {
   query: string
   currentPage: number
 }) {
-  const pessoas = await fetchFilteredPessoas(query, currentPage);
+  const revisionistas = await fetchFilteredRevisionistas(query, currentPage)
 
   return (
     <>
-    {pessoas?.length > 0 ?
-    pessoas.map((pessoa) => (
-      <div className={`
+      {revisionistas?.length > 0 ? (
+        revisionistas.map((revisionista) => (
+          <div
+            className={`
         ${montserrat.className}
         w-full
         h-[77.5px]
@@ -31,11 +32,12 @@ export default async function PessoasTable({
         gap-2
         items-center
         `}
-        key={pessoa.id}
-      >
-        <div className="flex items-center justify-between w-full">
-          <div className="flex justify-start p-2">
-            <div className="
+            key={revisionista.id}
+          >
+            <div className="flex items-center justify-between w-full">
+              <div className="flex justify-start p-2">
+                <div
+                  className="
               rounded-full
               size-10
               bw
@@ -43,34 +45,39 @@ export default async function PessoasTable({
               place-items-center
               bg-white
               "
-            >
-              <h2
-                className="
+                >
+                  <h2
+                    className="
                   text-2xl
                   text-black
                   font-bold
                   cursor-default
                 "
-              >
-                {pessoa.nome_pessoa.substring(0,1)}
-              </h2>
-            </div>
-            <div className="ml-3 cursor-default">
-              <div className="flex justify-start flex-col">
-                <p className="justify-start">
-                  {nomeSobrenome(`${pessoa.nome_pessoa}`)}
-                </p>
-                <p className="text-[13px] justify-end">{pessoa.lider_equipe.split('|')[1]}</p>
+                  >
+                    {revisionista.nome_pessoa.substring(0, 1)}
+                  </h2>
+                </div>
+                <div className="ml-3 cursor-default">
+                  <div className="flex justify-start flex-col">
+                    <p className="justify-start">
+                      {nomeSobrenome(`${revisionista.nome_pessoa}`)}
+                    </p>
+                    <p className="text-[13px] justify-end">
+                      {revisionista.lider_equipe.split("|")[1]}
+                    </p>
+                  </div>
+                </div>
               </div>
+              <DotsDropdown
+                id={revisionista.id}
+                nome={revisionista.nome_pessoa}
+              />
             </div>
           </div>
-          <DotsDropdown id={pessoa.id} nome={pessoa.nome_pessoa} />
-        </div>
-      </div>
-    )
-    ) :
-      <div
-        className="
+        ))
+      ) : (
+        <div
+          className="
           flex
           justify-center
           items-center
@@ -79,10 +86,15 @@ export default async function PessoasTable({
           flex-col
           "
         >
-        <p>Nenhuma pessoa encontrada!</p>
-        <Link className="hover:underline" href={'/signup'}>Clique aqui para cadastrar!</Link>
-      </div>
-      }
+          <p>Nenhuma pessoa encontrada!</p>
+          <Link
+            className="hover:underline"
+            href={"/signup"}
+          >
+            Clique aqui para cadastrar!
+          </Link>
+        </div>
+      )}
     </>
   )
 }
