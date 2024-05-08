@@ -5,10 +5,11 @@ import "@/app/ui/animations.css"
 import { Providers } from "@/app/providers"
 
 export const metadata: Metadata = {
-  title: "Cadastro para o Revisão de Vidas",
-  description: "App para cadastro de pessoas para o Revisão de Vidas",
+  title: "Sara Nossa Terra de Içara",
+  description:
+    "App de controle interno de Revisionistas e Visitantes da Sara de Içara.",
   keywords:
-    "Revisão de Vidas, Revisão, Sara Nossa Terra, Sara, Igreja, Sobrenatural, Deus, Maravilhoso"
+    "Revisão de Vidas, Revisão, Sara Nossa Terra, Sara, Igreja, Sobrenatural, Deus, Maravilhoso, Visitantes, Revelação"
 }
 
 export default function RootLayout({
@@ -19,8 +20,7 @@ export default function RootLayout({
   return (
     <html
       lang="pt-br"
-      suppressHydrationWarning
-    >
+      suppressHydrationWarning>
       <body className={`${inter.className} bg-white dark:bg-slate-900`}>
         <Providers>{children}</Providers>
       </body>
