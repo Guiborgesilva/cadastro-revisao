@@ -7,6 +7,7 @@ import localFont from "next/font/local"
 import { Montserrat } from "next/font/google"
 import Link from "next/link"
 import Button from "@/app/ui/components/Buttons"
+import { DocumentTextIcon } from "@heroicons/react/24/solid"
 
 const montserratB = Montserrat({
   subsets: ["latin"],
@@ -20,15 +21,14 @@ const montserratM = Montserrat({
 
 const Lustra = localFont({ src: "../Lustrabold.otf" })
 
+const rhema = () => document.getElementById("rhema")
 export default function Rhema({
   revisionista
 }: {
   revisionista: Revisionista
 }) {
-  const rhema = () => document.getElementById("rhema")
-
   return (
-    <div className="absolute top-0 bottom-0 right-0 left-0 bg-white h-full w-full flex flex-col">
+    <>
       <section
         id="rhema"
         className="
@@ -44,15 +44,14 @@ export default function Rhema({
           bg-center
           text-black
           mx-auto
-        "
-      >
+
+        ">
         <header className="flex flex-col justify-center items-center">
           <h1
             className={`${Lustra.className}
               text-[5rem]
               mt-[-60px]
-            `}
-          >
+            `}>
             RHEMA
           </h1>
           <h2
@@ -61,8 +60,7 @@ export default function Rhema({
               text-[1.8rem]
               tracking-[.15rem]
               
-            `}
-          >
+            `}>
             REVISÃO DE VIDAS
           </h2>
         </header>
@@ -75,15 +73,13 @@ export default function Rhema({
             gap-6
             mt-8
             mb-[9px]
-          "
-        >
+          ">
           <p
             className={`
               ${montserratM.className}
-              text-[1.2rem]
-            `}
-          >
-            {nomeSobrenome(`${revisionista.nome_pessoa.toLocaleUpperCase()}`)}
+              text-xl
+            `}>
+            {nomeSobrenome(`${revisionista.nome_pessoa}`).toLocaleUpperCase()}
           </p>
           <p
             className={`
@@ -91,8 +87,7 @@ export default function Rhema({
             text-[1.4rem]
             tracking-[.40rem]
             mt-[-10px]
-            `}
-          >
+            `}>
             <hr
               className="
                 bg-black
@@ -106,8 +101,7 @@ export default function Rhema({
             className={`
               ${montserratM.className}
               text-[1.2rem]
-            `}
-          >
+            `}>
             {revisionista.lider_equipe.toLocaleUpperCase().split("|")[1]}
           </p>
           <p
@@ -116,8 +110,7 @@ export default function Rhema({
               text-[1.4rem]
               tracking-[.40rem]
               mt-[-10px]
-            `}
-          >
+            `}>
             <hr
               className="
                 bg-black
@@ -131,8 +124,7 @@ export default function Rhema({
             className={`
               ${montserratM.className}
               text-[1.2rem]
-            `}
-          >
+            `}>
             IÇARA
           </p>
           <p
@@ -141,8 +133,7 @@ export default function Rhema({
               text-[1.4rem]
               tracking-[.40rem]
               mt-[-10px]
-            `}
-          >
+            `}>
             <hr
               className="
                 bg-black
@@ -155,25 +146,7 @@ export default function Rhema({
         </main>
       </section>
       <div className="flex items-center justify-between w-[400px] mt-4 mx-auto">
-        <button onClick={() => generatePDF(rhema)}>
-          <Button
-            className="
-            text-white
-            border
-            bg-black
-            hover:bg-black/90
-            hover:text-white
-            transition-all
-            p-2
-            rounded
-            flex
-            items-center
-            justify-center
-          "
-          >
-            Exportar
-          </Button>
-        </button>
+        <ExportButton />
         <Link href={{ pathname: "/dashboard/revisionistas" }}>
           <Button
             className="
@@ -188,12 +161,31 @@ export default function Rhema({
               flex
               items-center
               justify-center
-            "
-          >
+            ">
             Voltar
           </Button>
         </Link>
       </div>
-    </div>
+    </>
+  )
+}
+
+export function ExportButton() {
+  return (
+    <Button
+      onClick={() => generatePDF(rhema)}
+      className="text-white
+      border
+      bg-black
+      hover:bg-black/90
+      hover:text-white
+      transition-all
+      p-2
+      rounded
+      flex
+      items-center
+      justify-center">
+      Exportar
+    </Button>
   )
 }

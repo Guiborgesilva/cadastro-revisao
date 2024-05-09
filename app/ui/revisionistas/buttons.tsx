@@ -13,16 +13,6 @@ export function UpdateRevisionista({ id }: { id: string }) {
   )
 }
 
-export function ExportRevisionista({ id }: { id: string }) {
-  return (
-    <Link href={`/dashboard/exportacao/${id}`}>
-      <Button className="rounded-md border p-2 hover:bg-gray-100 dark:bg-green-800 dark:hover:bg-green-900 dark:border-none">
-        <DocumentTextIcon className="w-5" />
-      </Button>
-    </Link>
-  )
-}
-
 export function DeleteRevisionista({ id }: { id: string }) {
   const deleteRevisionistaWithId = deleteRevisionista.bind(null, id)
   return (
@@ -31,5 +21,15 @@ export function DeleteRevisionista({ id }: { id: string }) {
         Excluir
       </Button>
     </form>
+  )
+}
+
+export function ExportRevisionista({ id }: { id: string }) {
+  return (
+    <Link href={`/dashboard/exportacao/${id}`}>
+      <Button className="rounded-md border p-2 hover:bg-gray-100 dark:bg-green-800 dark:hover:bg-green-900 dark:border-none">
+        <DocumentTextIcon className="w-5" />
+      </Button>
+    </Link>
   )
 }

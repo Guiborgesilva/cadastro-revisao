@@ -26,22 +26,22 @@ export function normalizePhoneNumber(phoneNumber: string | undefined) {
 export function nomeSobrenome(nome: string) {
   var arr = nome.split(" ")
   if (
-    arr[1] == "de" ||
-    arr[1] == "De" ||
-    arr[1] == "da" ||
-    arr[1] == "Da" ||
-    arr[1] == "do" ||
-    arr[1] == "Do" ||
-    arr[1] == "das" ||
-    arr[1] == "Das" ||
-    arr[1] == "dos" ||
-    arr[1] == "Dos"
+    arr[1] === "de" ||
+    arr[1] === "De" ||
+    arr[1] === "da" ||
+    arr[1] === "Da" ||
+    arr[1] === "do" ||
+    arr[1] === "Do" ||
+    arr[1] === "das" ||
+    arr[1] === "Das" ||
+    arr[1] === "dos" ||
+    arr[1] === "Dos"
   ) {
-    return arr[0] + " " + arr[1] + " " + arr[2]
-  } else if (arr[1] == null || arr[1] == undefined) {
+    return `${arr[0]} ${arr[1]} ${arr[2]}`
+  } else if (arr[1] === null || arr[1] === undefined) {
     return arr[0]
   } else {
-    return arr[0] + " " + arr[1]
+    return `${arr[0]} ${arr[1]}`
   }
 }
 
