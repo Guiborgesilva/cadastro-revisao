@@ -6,8 +6,18 @@ import Button from "@/app/ui/components/Buttons"
 export function UpdateRevisionista({ id }: { id: string }) {
   return (
     <Link href={`/dashboard/revisionistas/${id}/edit`}>
-      <Button className="rounded-md border p-2 hover:bg-gray-100 dark:bg-blue-800 dark:hover:bg-blue-900 dark:border-none">
+      <Button className="rounded border size-9 hover:bg-gray-100 dark:hover:bg-gray-500 dark:border-gray-300 dark:text-gray-100 border-gray-400 text-gray-800 grid place-items-center">
         <PencilIcon className="w-5" />
+      </Button>
+    </Link>
+  )
+}
+
+export function ExportRevisionista({ id }: { id: string }) {
+  return (
+    <Link href={`/dashboard/exportacao/${id}`}>
+      <Button className="rounded border size-9 hover:bg-gray-100 dark:hover:bg-gray-500 dark:border-gray-300 dark:text-gray-100 border-gray-400 text-gray-800 grid place-items-center">
+        <DocumentTextIcon className="w-5" />
       </Button>
     </Link>
   )
@@ -21,15 +31,5 @@ export function DeleteRevisionista({ id }: { id: string }) {
         Excluir
       </Button>
     </form>
-  )
-}
-
-export function ExportRevisionista({ id }: { id: string }) {
-  return (
-    <Link href={`/dashboard/exportacao/${id}`}>
-      <Button className="rounded-md border p-2 hover:bg-gray-100 dark:bg-green-800 dark:hover:bg-green-900 dark:border-none">
-        <DocumentTextIcon className="w-5" />
-      </Button>
-    </Link>
   )
 }

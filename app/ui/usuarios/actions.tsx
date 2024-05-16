@@ -11,7 +11,7 @@ export function Actions({ id, nome }: { id: string; nome: string }) {
     <>
       <UpdateUsuario id={id} />
       <Button
-        className="rounded-md border size-9 flex items-center justify-center hover:bg-gray-100 dark:hover:bg-red-900 dark:bg-red-800 dark:border-none"
+        className="rounded border size-9 hover:bg-gray-100 dark:hover:bg-gray-500 dark:border-gray-300 dark:text-gray-100 border-gray-400 text-gray-800 grid place-items-center"
         onClick={() => setModalOpen((prev) => !prev)}>
         <span className="sr-only">Delete</span>
         <TrashIcon className="w-5" />
@@ -41,7 +41,7 @@ export function Actions({ id, nome }: { id: string; nome: string }) {
               className="
                 w-[400px]
                 h-[150px]
-                rounded-lg
+                rounded
                 bg-white
                 text-black
                 p-4

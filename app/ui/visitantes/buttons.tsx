@@ -8,7 +8,7 @@ import Button from "@/app/ui/components/Buttons"
 export function UpdateVisitante({ id }: { id: string }) {
   return (
     <Link href={`/dashboard/visitantes/${id}/edit`}>
-      <Button className="rounded-md border size-9 hover:bg-gray-100 dark:bg-blue-800 dark:hover:bg-blue-900 dark:border-none flex justify-center items-center">
+      <Button className="rounded border size-9 hover:bg-gray-100 dark:border-gray-200 dark:text-gray-100 dark:hover:bg-gray-500 border-gray-400 text-gray-800 flex justify-center items-center">
         <PencilIcon className="w-5" />
       </Button>
     </Link>
@@ -41,10 +41,10 @@ export function ChamarVisitante({
         nome.split(" ")[0]
       },%20seja%20${boasVindas}%20à%20Sara%20de%20Içara!`}
       target="_blank">
-      <Button className="rounded-md border size-9 hover:bg-gray-100 dark:bg-green-800 dark:hover:bg-green-900 dark:border-none">
+      <Button className="rounded border size-9 hover:bg-gray-100 dark:hover:bg-gray-500 dark:border-gray-300 dark:text-gray-100 border-gray-400 text-gray-800">
         <FontAwesomeIcon
           icon={faWhatsapp}
-          size="lg"
+          size="xl"
         />
       </Button>
     </Link>
