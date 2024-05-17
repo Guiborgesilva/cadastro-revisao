@@ -1,4 +1,4 @@
-import { DocumentTextIcon, PencilIcon } from "@heroicons/react/24/solid"
+import { DocumentTextIcon, PencilIcon } from "@heroicons/react/24/outline"
 import Link from "next/link"
 import { deleteRevisionista } from "@/app/lib/actions"
 import Button from "@/app/ui/components/Buttons"
@@ -6,7 +6,7 @@ import Button from "@/app/ui/components/Buttons"
 export function UpdateRevisionista({ id }: { id: string }) {
   return (
     <Link href={`/dashboard/revisionistas/${id}/edit`}>
-      <Button className="rounded border size-9 hover:bg-gray-100 dark:hover:bg-gray-500 dark:border-gray-300 dark:text-gray-100 border-gray-400 text-gray-800 grid place-items-center">
+      <Button className="rounded size-9 bg-sky-100 dark:bg-slate-300 shadow hover:brightness-90 text-slate-800 grid place-items-center transition-all">
         <PencilIcon className="w-5" />
       </Button>
     </Link>
@@ -16,7 +16,7 @@ export function UpdateRevisionista({ id }: { id: string }) {
 export function ExportRevisionista({ id }: { id: string }) {
   return (
     <Link href={`/dashboard/exportacao/${id}`}>
-      <Button className="rounded border size-9 hover:bg-gray-100 dark:hover:bg-gray-500 dark:border-gray-300 dark:text-gray-100 border-gray-400 text-gray-800 grid place-items-center">
+      <Button className="rounded size-9 bg-green-100 dark:bg-slate-300 shadow hover:brightness-90 text-slate-800 grid place-items-center transition-all">
         <DocumentTextIcon className="w-5" />
       </Button>
     </Link>

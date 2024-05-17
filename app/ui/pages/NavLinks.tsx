@@ -1,6 +1,10 @@
 "use client"
 
 import { HomeIcon, UserGroupIcon } from "@heroicons/react/24/solid"
+import {
+  HomeIcon as HomeOut,
+  UserGroupIcon as UserOut
+} from "@heroicons/react/24/outline"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Ripple } from "react-ripple-click"
@@ -10,22 +14,26 @@ const links = [
   {
     name: "Home",
     href: "/dashboard",
-    icon: HomeIcon
+    iconOut: HomeOut,
+    iconSolid: HomeIcon
   },
   {
     name: "Revisionistas",
     href: "/dashboard/revisionistas",
-    icon: UserGroupIcon
+    iconOut: UserOut,
+    iconSolid: UserGroupIcon
   },
   {
     name: "Visitantes",
     href: "/dashboard/visitantes",
-    icon: UserGroupIcon
+    iconOut: UserOut,
+    iconSolid: UserGroupIcon
   },
   {
     name: "Usuários",
     href: "/dashboard/usuarios",
-    icon: UserGroupIcon
+    iconOut: UserOut,
+    iconSolid: UserGroupIcon
   }
 ]
 
@@ -34,7 +42,8 @@ export default function NavLinks() {
   return (
     <>
       {links.map((link) => {
-        const LinkIcon = link.icon
+        const isActive = pathname === link.href
+        const LinkIcon = isActive ? link.iconSolid : link.iconOut
         return (
           <Link
             key={link.name}

@@ -6,7 +6,7 @@ import {
   UpdateVisitante
 } from "@/app/ui/visitantes/buttons"
 import Button from "@/app/ui/components/Buttons"
-import { TrashIcon } from "@heroicons/react/24/solid"
+import { TrashIcon } from "@heroicons/react/24/outline"
 import { useState } from "react"
 
 export function Actions({
@@ -31,7 +31,7 @@ export function Actions({
         sexo={sexo}
       />
       <Button
-        className="rounded border size-9 hover:bg-gray-100 dark:hover:bg-gray-500 dark:border-gray-300 dark:text-gray-100 border-gray-400 text-gray-800 grid place-items-center"
+        className="rounded size-9 bg-red-100 dark:bg-slate-300 shadow hover:brightness-90 text-slate-800 grid place-items-center transition-all"
         onClick={() => setModalOpen((prev) => !prev)}>
         <span className="sr-only">Delete</span>
         <TrashIcon className="w-5" />

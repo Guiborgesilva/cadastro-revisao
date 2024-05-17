@@ -1,7 +1,7 @@
 import Link from "next/link"
 import NavLinks from "@/app/ui/pages/NavLinks"
 import { Ripple } from "react-ripple-click"
-import { PowerIcon } from "@heroicons/react/24/solid"
+import { PowerIcon } from "@heroicons/react/24/outline"
 import { signOut } from "@/auth"
 import Image from "next/image"
 import Button from "@/app/ui/components/Buttons"

@@ -37,11 +37,11 @@ export default async function UsuariosTable({
                     </div>
                     <div className="flex w-full items-center justify-between pt-4">
                       <div>
-                        <p>
-                          <span className="text-sm text-black dark:text-slate-300">
+                        <p className="flex flex-col">
+                          <span className="text-md text-black dark:text-slate-300">
                             Email:
                           </span>
-                          {` ${usuario.email}`}
+                          <span className="text-sm">{` ${usuario.email}`}</span>
                         </p>
                       </div>
                       <div className="flex justify-end gap-2">
