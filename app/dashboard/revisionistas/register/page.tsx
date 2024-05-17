@@ -49,7 +49,7 @@ export default function Page() {
         breadcrumbs={[
           { label: "Revisionistas", href: "/dashboard/revisionistas" },
           {
-            label: "Cadastrar Revisionista",
+            label: "Cadastrar novo revisionista",
             href: "/dashboard/revisionistas/register",
             active: true
           }

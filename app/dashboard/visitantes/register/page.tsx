@@ -49,7 +49,7 @@ export default function Page() {
         breadcrumbs={[
           { label: "Visitantes", href: "/dashboard/visitantes" },
           {
-            label: "Cadastrar Visitante",
+            label: "Cadastrar novo visitante",
             href: "/dashboard/visitantes/register",
             active: true
           }

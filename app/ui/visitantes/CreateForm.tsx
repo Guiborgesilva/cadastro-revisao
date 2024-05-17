@@ -47,7 +47,7 @@ export default function Form({
                 id="nome_pessoa"
                 {...register("nome")}
                 type="text"
-                placeholder="Digite o nome completo do Visitante"
+                placeholder="Digite o nome completo do visitante"
                 className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500 dark:placeholder:text-gray-400 dark:border-none dark:bg-slate-800"
                 aria-describedby="nome_pessoa-error"
               />
@@ -201,7 +201,7 @@ export default function Form({
                 id="endereco"
                 {...register("endereco")}
                 type="text"
-                placeholder="Digite o endereço do Visitante"
+                placeholder="Digite o endereço do visitante"
                 className="peer block w-full rounded-md border border-gray-200 dark:border-none
                  dark:placeholder:text-gray-400 dark:text-white py-2 pl-10 text-sm outline-2 placeholder:text-gray-500 dark:bg-slate-800"
                 aria-describedby="email-error"
@@ -234,7 +234,7 @@ export default function Form({
                 id="bairro"
                 {...register("bairro")}
                 type="text"
-                placeholder="Digite o nome do bairro do Visitante"
+                placeholder="Digite o nome do bairro do visitante"
                 className="peer block w-full rounded-md border border-gray-200 dark:border-none
                  dark:placeholder:text-gray-400 dark:text-white py-2 pl-10 text-sm outline-2 placeholder:text-gray-500 dark:bg-slate-800"
                 aria-describedby="bairro-error"
@@ -267,7 +267,7 @@ export default function Form({
                 id="quem_convidou"
                 {...register("quem_convidou")}
                 type="text"
-                placeholder="Digite o nome de quem convidou o Visitante"
+                placeholder="Digite o nome de quem convidou o visitante"
                 className="peer block w-full rounded-md border border-gray-200 dark:border-none
                  dark:placeholder:text-gray-400 dark:text-white py-2 pl-10 text-sm outline-2 placeholder:text-gray-500 dark:bg-slate-800"
                 aria-describedby="quem_convidou-error"

@@ -29,12 +29,19 @@ export default function Rhema({
 }) {
   return (
     <>
+      <h1 className="tex-xl md:text-2xl">Exportação</h1>
+      <p className="">
+        Para exportar o Rhema deste revisionista, clique em "Exportar".
+      </p>
       <section
         id="rhema"
         className="
           bg-white
           w-[400px]
           h-[auto]
+          outline-[40px]
+          outline-dashed
+          outline-transparent
           border-[2px]
           border-black
           p-4
@@ -43,7 +50,7 @@ export default function Rhema({
           bg-no-repeat
           bg-center
           text-black
-          mx-auto
+          sr-only
 
         ">
         <header className="flex flex-col justify-center items-center">
@@ -145,7 +152,7 @@ export default function Rhema({
           </p>
         </main>
       </section>
-      <div className="flex items-center justify-between w-[400px] mt-4 mx-auto">
+      <div className="flex gap-2 w-[400px] mt-4">
         <ExportButton />
         <Link href={{ pathname: "/dashboard/revisionistas" }}>
           <Button
@@ -158,11 +165,8 @@ export default function Rhema({
               transition-all
               p-2
               rounded
-              flex
-              items-center
-              justify-center
             ">
-            Voltar
+            Cancelar
           </Button>
         </Link>
       </div>
