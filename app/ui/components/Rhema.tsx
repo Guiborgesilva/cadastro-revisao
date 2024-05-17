@@ -29,9 +29,10 @@ export default function Rhema({
 }) {
   return (
     <>
-      <h1 className="tex-xl md:text-2xl text-black">Exportação</h1>
-      <p className="text-slate-500">
-        Para exportar o Rhema deste revisionista, clique em "Exportar".
+      <h1 className="tex-xl md:text-2xl">Exportação</h1>
+      <p className="text-slate-400">
+        Para exportar o Rhema deste revisionista, clique em
+        &quot;Exportar&quot;.
       </p>
       <section
         id="rhema"
@@ -157,14 +158,20 @@ export default function Rhema({
         <Link href={{ pathname: "/dashboard/revisionistas" }}>
           <Button
             className="
-              text-white
-              border
-              bg-black
-              hover:bg-black/90
-              hover:text-white
-              transition-all
-              p-2
-              rounded
+            text-white
+            border
+            bg-black
+            dark:bg-gray-200
+            dark:hover:brightness-90
+            dark:text-black
+            dark:hover:text-black/90
+            hover:text-white
+            transition-all
+            p-2
+            rounded
+            flex
+            items-center
+            justify-center
             ">
             Cancelar
           </Button>
@@ -178,10 +185,14 @@ export function ExportButton() {
   return (
     <Button
       onClick={() => generatePDF(rhema)}
-      className="text-white
+      className="
+      text-white
       border
       bg-black
-      hover:bg-black/90
+      dark:bg-gray-200
+      dark:hover:brightness-90
+      dark:text-black
+      dark:hover:text-black/90
       hover:text-white
       transition-all
       p-2
