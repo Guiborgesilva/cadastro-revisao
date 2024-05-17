@@ -41,7 +41,12 @@ export default async function UsuariosTable({
                           <span className="text-md text-black dark:text-slate-300">
                             Email:
                           </span>
-                          <span className="text-sm">{` ${usuario.email}`}</span>
+                          <span className="text-sm">{` ${
+                            usuario.email.split("@")[0]
+                          }`}</span>
+                          <span className="text-xs">{`@${
+                            usuario.email.split("@")[1]
+                          }`}</span>
                         </p>
                       </div>
                       <div className="flex justify-end gap-2">
