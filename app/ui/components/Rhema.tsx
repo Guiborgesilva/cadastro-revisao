@@ -29,8 +29,8 @@ export default function Rhema({
 }) {
   return (
     <>
-      <h1 className="tex-xl md:text-2xl">Exportação</h1>
-      <p className="">
+      <h1 className="tex-xl md:text-2xl text-black">Exportação</h1>
+      <p className="text-slate-500">
         Para exportar o Rhema deste revisionista, clique em "Exportar".
       </p>
       <section
