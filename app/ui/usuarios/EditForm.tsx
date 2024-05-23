@@ -6,14 +6,16 @@ import { useForm } from "react-hook-form"
 import {
   UserCircleIcon,
   EnvelopeIcon,
-  LockClosedIcon
+  LockClosedIcon,
+  EyeIcon,
+  EyeSlashIcon
 } from "@heroicons/react/24/solid"
 import Link from "next/link"
 import Button from "@/app/ui/components/Buttons"
 import { useFormStatus } from "react-dom"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { ThreeDots } from "react-loader-spinner"
-import * as bcrypt from "bcrypt"
+import { useState } from "react"
 
 export default function EditUsuarioForm({
   usuario,
@@ -24,13 +26,23 @@ export default function EditUsuarioForm({
   onSubmit: (data: UserForm) => Promise<void>
   loading: boolean
 }) {
+  const [showPassword, setShowPassword] = useState(false)
   const {
     register,
     handleSubmit,
     formState: { errors }
   } = useForm<UserForm>({
-    resolver: zodResolver(RegisterUser)
+    resolver: zodResolver(RegisterUser),
+    defaultValues: {
+      name: usuario.name,
+      email: usuario.email,
+      password: ""
+    }
   })
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword)
+  }
 
   return (
     <form
@@ -49,7 +61,6 @@ export default function EditUsuarioForm({
               <input
                 id="name"
                 {...register("name")}
-                defaultValue={usuario.name}
                 type="text"
                 placeholder="Digite o nome completo do revisionista"
                 className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500 dark:placeholder:text-gray-400 dark:border-none dark:bg-slate-800"
@@ -82,7 +93,6 @@ export default function EditUsuarioForm({
               <input
                 id="email"
                 {...register("email")}
-                defaultValue={usuario.email}
                 type="email"
                 placeholder="Digite o email do usuário"
                 className="peer block w-full rounded-md border border-gray-200 dark:border-none
@@ -116,14 +126,20 @@ export default function EditUsuarioForm({
               <input
                 id="password"
                 {...register("password")}
-                defaultValue={usuario.password}
-                type="password"
+                defaultValue=""
+                type={showPassword ? "text" : "password"}
                 placeholder="Digite a senha do usuário"
                 className="peer block w-full rounded-md border border-gray-200 dark:border-none
                  dark:placeholder:text-gray-400 dark:text-white py-2 pl-10 text-sm outline-2 placeholder:text-gray-500 dark:bg-slate-800"
                 aria-describedby="email-error"
               />
               <LockClosedIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 dark:text-gray-400 peer-focus:text-gray-900 dark:peer-focus:text-white" />
+              <button
+                type="button"
+                onClick={togglePasswordVisibility}
+                className="absolute right-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 dark:text-gray-400">
+                {showPassword ? <EyeSlashIcon /> : <EyeIcon />}
+              </button>
             </div>
             <div
               id="password-error"

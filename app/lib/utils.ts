@@ -218,7 +218,17 @@ export const userSchema = z.object({
     .min(1, "Por favor, digite o nome do usuário!")
     .transform(capitalizarNome),
   email: z.string().toLowerCase().email("Por favor, digite um email válido!"),
-  password: z.string().min(6, "A senha precisa ter no mínimo 6 caracteres!"),
+  password: z
+    .string()
+    .optional()
+    .refine(
+      (password) => {
+        return password ? password.length >= 6 : true
+      },
+      {
+        message: "A senha precisa ter no mínimo 6 caracteres"
+      }
+    ),
   created_at: z.string()
 })
 
