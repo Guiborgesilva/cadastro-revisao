@@ -33,7 +33,7 @@ export default function Form({
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="rounded-md bg-gray-50 dark:bg-slate-700 p-4 md:p-6 shadow-md">
+      <div className="rounded bg-gray-50 dark:bg-slate-700 p-4 md:p-6 shadow">
         {/* Nome completo */}
         <div className="mb-4">
           <label
@@ -41,14 +41,14 @@ export default function Form({
             className="mb-2 block text-sm font-medium">
             Nome
           </label>
-          <div className="relative mt-2 rounded-md">
+          <div className="relative mt-2 rounded">
             <div className="relative">
               <input
                 id="nome_pessoa"
                 {...register("nome")}
                 type="text"
                 placeholder="Digite o nome completo do visitante"
-                className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500 dark:placeholder:text-gray-400 dark:border-none dark:bg-slate-800"
+                className="peer block w-full rounded border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500 dark:placeholder:text-gray-400 dark:border-none dark:bg-slate-800"
                 aria-describedby="nome_pessoa-error"
               />
               <UserCircleIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 dark:text-gray-400 peer-focus:text-gray-900 dark:peer-focus:text-white" />
@@ -73,13 +73,13 @@ export default function Form({
             className="mb-2 block text-sm font-medium">
             Data de nascimento
           </label>
-          <div className="relative mt-2 rounded-md">
+          <div className="relative mt-2 rounded">
             <div className="relative">
               <input
                 id="data_nascimento"
                 {...register("data_nascimento")}
                 type="date"
-                className="peer block w-full rounded-md border border-gray-200 dark:border-none py-2 pl-10 pr-2.5 text-sm outline-2 placeholder:text-gray-500 dark:placeholder:text-gray-400 dark:peer-focus:text-white dark:bg-slate-800"
+                className="peer block w-full rounded border border-gray-200 dark:border-none py-2 pl-10 pr-2.5 text-sm outline-2 placeholder:text-gray-500 dark:placeholder:text-gray-400 dark:peer-focus:text-white dark:bg-slate-800"
                 aria-describedby="data_nascimento-error"
               />
               <CalendarIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 dark:text-gray-400 peer-focus:text-gray-900 dark:peer-focus:text-white" />
@@ -100,7 +100,7 @@ export default function Form({
         {/* Sexo */}
         <fieldset className="mb-4">
           <legend className="mb-2 block text-sm font-medium">Sexo</legend>
-          <div className="rounded-md border border-gray-200 dark:border-none bg-white dark:bg-slate-600 px-[14px] py-3">
+          <div className="rounded border border-gray-200 dark:border-none bg-white dark:bg-slate-600 px-[14px] py-3">
             <div className="flex gap-4">
               <div className="flex items-center">
                 <input
@@ -161,7 +161,7 @@ export default function Form({
             className="mb-2 block text-sm font-medium">
             Telefone
           </label>
-          <div className="relative mt-2 rounded-md">
+          <div className="relative mt-2 rounded">
             <div className="relative">
               <input
                 id="telefone"
@@ -169,7 +169,7 @@ export default function Form({
                 type="tel"
                 placeholder="48999999999"
                 maxLength={11}
-                className="peer block w-full rounded-md border border-gray-200 dark:border-none
+                className="peer block w-full rounded border border-gray-200 dark:border-none
                  dark:placeholder:text-gray-400 dark:text-white py-2 pl-10 text-sm outline-2 placeholder:text-gray-500 dark:bg-slate-800"
                 aria-describedby="telefone-error"
               />
@@ -195,14 +195,14 @@ export default function Form({
             className="mb-2 block text-sm font-medium">
             Endereço
           </label>
-          <div className="relative mt-2 rounded-md">
+          <div className="relative mt-2 rounded">
             <div className="relative">
               <input
                 id="endereco"
                 {...register("endereco")}
                 type="text"
                 placeholder="Digite o endereço do visitante"
-                className="peer block w-full rounded-md border border-gray-200 dark:border-none
+                className="peer block w-full rounded border border-gray-200 dark:border-none
                  dark:placeholder:text-gray-400 dark:text-white py-2 pl-10 text-sm outline-2 placeholder:text-gray-500 dark:bg-slate-800"
                 aria-describedby="email-error"
               />
@@ -228,14 +228,14 @@ export default function Form({
             className="mb-2 block text-sm font-medium">
             Bairro
           </label>
-          <div className="relative mt-2 rounded-md">
+          <div className="relative mt-2 rounded">
             <div className="relative">
               <input
                 id="bairro"
                 {...register("bairro")}
                 type="text"
                 placeholder="Digite o nome do bairro do visitante"
-                className="peer block w-full rounded-md border border-gray-200 dark:border-none
+                className="peer block w-full rounded border border-gray-200 dark:border-none
                  dark:placeholder:text-gray-400 dark:text-white py-2 pl-10 text-sm outline-2 placeholder:text-gray-500 dark:bg-slate-800"
                 aria-describedby="bairro-error"
               />
@@ -261,14 +261,14 @@ export default function Form({
             className="mb-2 block text-sm font-medium">
             Quem convidou
           </label>
-          <div className="relative mt-2 rounded-md">
+          <div className="relative mt-2 rounded">
             <div className="relative">
               <input
                 id="quem_convidou"
                 {...register("quem_convidou")}
                 type="text"
                 placeholder="Digite o nome de quem convidou o visitante"
-                className="peer block w-full rounded-md border border-gray-200 dark:border-none
+                className="peer block w-full rounded border border-gray-200 dark:border-none
                  dark:placeholder:text-gray-400 dark:text-white py-2 pl-10 text-sm outline-2 placeholder:text-gray-500 dark:bg-slate-800"
                 aria-describedby="quem_convidou-error"
               />
@@ -294,13 +294,13 @@ export default function Form({
             className="mb-2 block text-sm font-medium">
             Como conheceu a Sara Nossa Terra
           </label>
-          <div className="relative mt-2 rounded-md">
+          <div className="relative mt-2 rounded">
             <div className="relative">
               <textarea
                 id="como_conheceu"
                 {...register("como_conheceu")}
                 placeholder="Digite como o visitante conheceu a Sara Nossa Terra"
-                className="peer block w-full rounded-md border border-gray-200 dark:border-none
+                className="peer block w-full rounded border border-gray-200 dark:border-none
                  dark:placeholder:text-gray-400 dark:text-white p-4 text-sm outline-2 placeholder:text-gray-500 dark:bg-slate-800"
                 aria-describedby="como_conheceu-error"></textarea>
             </div>
@@ -328,7 +328,7 @@ export default function Form({
             <select
               id="tipo_culto"
               {...register("tipo_culto")}
-              className="peer block w-full cursor-pointer rounded-md border border-gray-200 dark:border-none
+              className="peer block w-full cursor-pointer rounded border border-gray-200 dark:border-none
                dark:placeholder:text-gray-400 dark:text-white py-2 pl-10 text-sm outline-2 placeholder:text-gray-500 dark:bg-slate-800"
               aria-describedby="tipo_culto-error"
               defaultValue="">
@@ -370,13 +370,13 @@ export default function Form({
             className="mb-2 block text-sm font-medium">
             Data da visita
           </label>
-          <div className="relative mt-2 rounded-md">
+          <div className="relative mt-2 rounded">
             <div className="relative">
               <input
                 id="data_visita"
                 {...register("data_visita")}
                 type="date"
-                className="peer block w-full rounded-md border border-gray-200 dark:border-none py-2 pl-10 pr-2.5 text-sm outline-2 placeholder:text-gray-500 dark:placeholder:text-gray-400 dark:peer-focus:text-white dark:bg-slate-800"
+                className="peer block w-full rounded border border-gray-200 dark:border-none py-2 pl-10 pr-2.5 text-sm outline-2 placeholder:text-gray-500 dark:placeholder:text-gray-400 dark:peer-focus:text-white dark:bg-slate-800"
                 aria-describedby="data_visita-error"
               />
               <CalendarIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 dark:text-gray-400 peer-focus:text-gray-900 dark:peer-focus:text-white" />
@@ -397,7 +397,7 @@ export default function Form({
       <div className="mt-6 flex justify-start gap-4">
         <SubmitButton loading={loading} />
         <Link href="/dashboard/visitantes">
-          <Button className="flex h-10 items-center rounded-lg bg-gray-100 dark:bg-slate-500 dark:hover:bg-slate-600 dark:text-white px-4 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-200 shadow-md">
+          <Button className="flex h-10 items-center rounded bg-gray-100 dark:bg-slate-500 dark:hover:bg-slate-600 dark:text-white px-4 text-sm font-medium text-gray-600 transition-all hover:bg-gray-200 shadow">
             Cancelar
           </Button>
         </Link>
@@ -416,7 +416,7 @@ function SubmitButton({ loading }: SubmitButtonProps) {
   return (
     <Button
       type="submit"
-      className="flex h-10 items-center justify-center rounded-lg bg-blue-600 dark:bg-blue-800 dark:hover:bg-blue-900 w-[160px] text-sm font-medium text-white transition-colors hover:bg-blue-400 shadow-md"
+      className="flex h-10 items-center justify-center rounded bg-blue-600 dark:bg-blue-800 dark:hover:bg-blue-900 w-[160px] text-sm font-medium text-white transition-all hover:bg-blue-400 shadow"
       aria-disabled={pending || loading}>
       {loading ? (
         <div className="grid place-items-center w-[160px] cursor-not-allowed bg-blue-500">
@@ -427,7 +427,7 @@ function SubmitButton({ loading }: SubmitButtonProps) {
           />
         </div>
       ) : (
-        <>Cadastrar Visitante</>
+        <>Cadastrar visitante</>
       )}
     </Button>
   )

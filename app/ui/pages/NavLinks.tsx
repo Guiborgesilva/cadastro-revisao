@@ -1,9 +1,10 @@
 "use client"
 
-import { HomeIcon, UserGroupIcon } from "@heroicons/react/24/solid"
+import { HomeIcon, UserGroupIcon, UsersIcon } from "@heroicons/react/24/solid"
 import {
   HomeIcon as HomeOut,
-  UserGroupIcon as UserOut
+  UserGroupIcon as UserGroupOut,
+  UsersIcon as UsersOut
 } from "@heroicons/react/24/outline"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
@@ -20,20 +21,20 @@ const links = [
   {
     name: "Revisionistas",
     href: "/dashboard/revisionistas",
-    iconOut: UserOut,
+    iconOut: UserGroupOut,
     iconSolid: UserGroupIcon
   },
   {
     name: "Visitantes",
     href: "/dashboard/visitantes",
-    iconOut: UserOut,
+    iconOut: UserGroupOut,
     iconSolid: UserGroupIcon
   },
   {
     name: "Usuários",
     href: "/dashboard/usuarios",
-    iconOut: UserOut,
-    iconSolid: UserGroupIcon
+    iconOut: UsersOut,
+    iconSolid: UsersIcon
   }
 ]
 
@@ -49,7 +50,7 @@ export default function NavLinks() {
             key={link.name}
             href={link.href}
             className={clsx(
-              "flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 dark:bg-slate-700 dark:hover:bg-blue-800 dark:hover:text-sky-100 md:flex-none md:justify-start md:p-2 md:px-3 relative overflow-hidden isolate",
+              "flex h-[48px] grow items-center justify-center gap-2 rounded bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 dark:bg-slate-700 dark:hover:bg-blue-800 dark:hover:text-sky-100 md:flex-none md:justify-start md:p-2 md:px-3 relative overflow-hidden isolate",
               {
                 "bg-sky-100 text-blue-600 dark:text-sky-400 relative overflow-hidden isolate":
                   pathname === link.href

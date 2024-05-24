@@ -38,7 +38,7 @@ export default function EditRevisionistaForm({
     <form
       onSubmit={handleSubmit(onSubmit)}
       key={revisionista.id}>
-      <div className="rounded-md bg-gray-50 dark:bg-slate-700 p-4 md:p-6 shadow-md">
+      <div className="rounded bg-gray-50 dark:bg-slate-700 p-4 md:p-6 shadow">
         {/* Nome completo */}
         <div className="mb-4">
           <label
@@ -46,7 +46,7 @@ export default function EditRevisionistaForm({
             className="mb-2 block text-sm font-medium">
             Nome
           </label>
-          <div className="relative mt-2 rounded-md">
+          <div className="relative mt-2 rounded">
             <div className="relative">
               <input
                 id="nome_pessoa"
@@ -54,7 +54,7 @@ export default function EditRevisionistaForm({
                 defaultValue={revisionista.nome_pessoa}
                 type="text"
                 placeholder="Digite o nome completo do revisionista"
-                className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500 dark:placeholder:text-gray-400 dark:border-none dark:bg-slate-800"
+                className="peer block w-full rounded border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500 dark:placeholder:text-gray-400 dark:border-none dark:bg-slate-800"
                 aria-describedby="nome_pessoa-error"
               />
               <UserCircleIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 dark:text-gray-400 peer-focus:text-gray-900 dark:peer-focus:text-white" />
@@ -79,14 +79,14 @@ export default function EditRevisionistaForm({
             className="mb-2 block text-sm font-medium">
             Data de nascimento
           </label>
-          <div className="relative mt-2 rounded-md">
+          <div className="relative mt-2 rounded">
             <div className="relative">
               <input
                 id="data_nascimento"
                 {...register("data_nascimento")}
                 defaultValue={revisionista.data_nascimento}
                 type="date"
-                className="peer block w-full rounded-md border border-gray-200 dark:border-none py-2 pl-10 pr-2.5 text-sm outline-2 placeholder:text-gray-500 dark:placeholder:text-gray-400 dark:peer-focus:text-white dark:bg-slate-800"
+                className="peer block w-full rounded border border-gray-200 dark:border-none py-2 pl-10 pr-2.5 text-sm outline-2 placeholder:text-gray-500 dark:placeholder:text-gray-400 dark:peer-focus:text-white dark:bg-slate-800"
                 aria-describedby="data_nascimento-error"
               />
               <CalendarIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 dark:text-gray-400 peer-focus:text-gray-900 dark:peer-focus:text-white" />
@@ -107,7 +107,7 @@ export default function EditRevisionistaForm({
         {/* Sexo */}
         <fieldset className="mb-4">
           <legend className="mb-2 block text-sm font-medium">Sexo</legend>
-          <div className="rounded-md border border-gray-200 dark:border-none bg-white dark:bg-slate-600 px-[14px] py-3">
+          <div className="rounded border border-gray-200 dark:border-none bg-white dark:bg-slate-600 px-[14px] py-3">
             <div className="flex gap-4">
               <div className="flex items-center">
                 <input
@@ -175,7 +175,7 @@ export default function EditRevisionistaForm({
               id="lider_equipe"
               {...register("lider_equipe")}
               defaultValue={revisionista.lider_equipe}
-              className="peer block w-full cursor-pointer rounded-md border border-gray-200 dark:border-none py-2 pl-10 text-sm outline-2 placeholder:text-gray-500 dark:placeholder:text-gray-400 dark:bg-slate-800"
+              className="peer block w-full cursor-pointer rounded border border-gray-200 dark:border-none py-2 pl-10 text-sm outline-2 placeholder:text-gray-500 dark:placeholder:text-gray-400 dark:bg-slate-800"
               aria-describedby="lider_equipe-error">
               <option
                 value=""
@@ -216,7 +216,7 @@ export default function EditRevisionistaForm({
             className="mb-2 block text-sm font-medium">
             Telefone
           </label>
-          <div className="relative mt-2 rounded-md">
+          <div className="relative mt-2 rounded">
             <div className="relative">
               <input
                 id="telefone"
@@ -225,7 +225,7 @@ export default function EditRevisionistaForm({
                 type="tel"
                 placeholder="48999999999"
                 maxLength={11}
-                className="peer block w-full rounded-md border border-gray-200 dark:border-none
+                className="peer block w-full rounded border border-gray-200 dark:border-none
                  dark:placeholder:text-gray-400 dark:text-white py-2 pl-10 text-sm outline-2 placeholder:text-gray-500 dark:bg-slate-800"
                 aria-describedby="telefone-error"
               />
@@ -251,7 +251,7 @@ export default function EditRevisionistaForm({
             className="mb-2 block text-sm font-medium">
             E-mail
           </label>
-          <div className="relative mt-2 rounded-md">
+          <div className="relative mt-2 rounded">
             <div className="relative">
               <input
                 id="email"
@@ -259,7 +259,7 @@ export default function EditRevisionistaForm({
                 defaultValue={revisionista.email}
                 type="email"
                 placeholder="Digite o email do revisionista"
-                className="peer block w-full rounded-md border border-gray-200 dark:border-none
+                className="peer block w-full rounded border border-gray-200 dark:border-none
                  dark:placeholder:text-gray-400 dark:text-white py-2 pl-10 text-sm outline-2 placeholder:text-gray-500 dark:bg-slate-800"
                 aria-describedby="email-error"
               />
@@ -285,7 +285,7 @@ export default function EditRevisionistaForm({
             className="mb-2 block text-sm font-medium">
             Nome da mãe
           </label>
-          <div className="relative mt-2 rounded-md">
+          <div className="relative mt-2 rounded">
             <div className="relative">
               <input
                 id="nome_mae"
@@ -293,7 +293,7 @@ export default function EditRevisionistaForm({
                 defaultValue={revisionista.nome_mae}
                 type="text"
                 placeholder="Digite o nome da mãe do revisionista"
-                className="peer block w-full rounded-md border border-gray-200 dark:border-none
+                className="peer block w-full rounded border border-gray-200 dark:border-none
                  dark:placeholder:text-gray-400 dark:text-white py-2 pl-10 text-sm outline-2 placeholder:text-gray-500 dark:bg-slate-800"
                 aria-describedby="nome_mae-error"
               />
@@ -319,7 +319,7 @@ export default function EditRevisionistaForm({
             className="mb-2 block text-sm font-medium">
             Nome do pai
           </label>
-          <div className="relative mt-2 rounded-md">
+          <div className="relative mt-2 rounded">
             <div className="relative">
               <input
                 id="nome_pai"
@@ -327,7 +327,7 @@ export default function EditRevisionistaForm({
                 defaultValue={revisionista.nome_pai}
                 type="text"
                 placeholder="Digite o nome do pai do revisionista"
-                className="peer block w-full rounded-md border border-gray-200 dark:border-none
+                className="peer block w-full rounded border border-gray-200 dark:border-none
                  dark:placeholder:text-gray-400 dark:text-white py-2 pl-10 text-sm outline-2 placeholder:text-gray-500 dark:bg-slate-800"
                 aria-describedby="nome_pai-error"
               />
@@ -361,7 +361,7 @@ export default function EditRevisionistaForm({
                 revisionista.forma_pagamento ||
                 "Selecione uma forma de pagamento"
               }
-              className="peer block w-full cursor-pointer rounded-md border border-gray-200 dark:border-none
+              className="peer block w-full cursor-pointer rounded border border-gray-200 dark:border-none
                dark:placeholder:text-gray-400 dark:text-white py-2 pl-10 text-sm outline-2 placeholder:text-gray-500 dark:bg-slate-800"
               aria-describedby="forma_pagamento-error">
               <option
@@ -396,7 +396,7 @@ export default function EditRevisionistaForm({
             className="mb-2 block text-sm font-medium">
             Nome do primeiro contato
           </label>
-          <div className="relative mt-2 rounded-md">
+          <div className="relative mt-2 rounded">
             <div className="relative">
               <input
                 id="nome_contato1"
@@ -404,7 +404,7 @@ export default function EditRevisionistaForm({
                 defaultValue={revisionista.nome_contato1}
                 type="text"
                 placeholder="Digite o nome do primeiro contato"
-                className="peer block w-full rounded-md border border-gray-200 dark:border-none
+                className="peer block w-full rounded border border-gray-200 dark:border-none
                  dark:placeholder:text-gray-400 dark:text-white py-2 pl-10 text-sm outline-2 placeholder:text-gray-500 dark:bg-slate-800"
                 aria-describedby="nome_contato1-error"
               />
@@ -430,7 +430,7 @@ export default function EditRevisionistaForm({
             className="mb-2 block text-sm font-medium">
             Telefone do primeiro contato
           </label>
-          <div className="relative mt-2 rounded-md">
+          <div className="relative mt-2 rounded">
             <div className="relative">
               <input
                 id="telefone_contato1"
@@ -439,7 +439,7 @@ export default function EditRevisionistaForm({
                 type="tel"
                 placeholder="48999999999"
                 maxLength={11}
-                className="peer block w-full rounded-md border border-gray-200 dark:border-none
+                className="peer block w-full rounded border border-gray-200 dark:border-none
                  dark:placeholder:text-gray-400 dark:text-white py-2 pl-10 text-sm outline-2 placeholder:text-gray-500 dark:bg-slate-800"
                 aria-describedby="telefone_contato1-error"
               />
@@ -465,7 +465,7 @@ export default function EditRevisionistaForm({
             className="mb-2 block text-sm font-medium">
             Nome do segundo contato
           </label>
-          <div className="relative mt-2 rounded-md">
+          <div className="relative mt-2 rounded">
             <div className="relative">
               <input
                 id="nome_contato2"
@@ -473,7 +473,7 @@ export default function EditRevisionistaForm({
                 defaultValue={revisionista.nome_contato2}
                 type="text"
                 placeholder="Digite o nome do segundo contato"
-                className="peer block w-full rounded-md border border-gray-200 dark:border-none
+                className="peer block w-full rounded border border-gray-200 dark:border-none
                  dark:placeholder:text-gray-400 dark:text-white py-2 pl-10 text-sm outline-2 placeholder:text-gray-500 dark:bg-slate-800"
                 aria-describedby="nome_contato2-error"
               />
@@ -499,7 +499,7 @@ export default function EditRevisionistaForm({
             className="mb-2 block text-sm font-medium">
             Telefone do segundo contato
           </label>
-          <div className="relative mt-2 rounded-md">
+          <div className="relative mt-2 rounded">
             <div className="relative">
               <input
                 id="telefone_contato2"
@@ -508,7 +508,7 @@ export default function EditRevisionistaForm({
                 type="tel"
                 placeholder="48999999999"
                 maxLength={11}
-                className="peer block w-full rounded-md border border-gray-200 dark:border-none
+                className="peer block w-full rounded border border-gray-200 dark:border-none
                  dark:placeholder:text-gray-400 dark:text-white py-2 pl-10 text-sm outline-2 placeholder:text-gray-500 dark:bg-slate-800"
                 aria-describedby="telefone_contato2-error"
               />
@@ -534,7 +534,7 @@ export default function EditRevisionistaForm({
             className="mb-2 block text-sm font-medium">
             Nome do terceiro contato
           </label>
-          <div className="relative mt-2 rounded-md">
+          <div className="relative mt-2 rounded">
             <div className="relative">
               <input
                 id="nome_contato3"
@@ -542,7 +542,7 @@ export default function EditRevisionistaForm({
                 defaultValue={revisionista.nome_contato3}
                 type="text"
                 placeholder="Digite o nome do terceiro contato"
-                className="peer block w-full rounded-md border border-gray-200 dark:border-none
+                className="peer block w-full rounded border border-gray-200 dark:border-none
                  dark:placeholder:text-gray-400 dark:text-white py-2 pl-10 text-sm outline-2 placeholder:text-gray-500 dark:bg-slate-800"
                 aria-describedby="nome_contato3-error"
               />
@@ -568,7 +568,7 @@ export default function EditRevisionistaForm({
             className="mb-2 block text-sm font-medium">
             Telefone do terceiro contato
           </label>
-          <div className="relative mt-2 rounded-md">
+          <div className="relative mt-2 rounded">
             <div className="relative">
               <input
                 id="telefone_contato3"
@@ -577,7 +577,7 @@ export default function EditRevisionistaForm({
                 type="tel"
                 placeholder="48999999999"
                 maxLength={11}
-                className="peer block w-full rounded-md border border-gray-200 dark:border-none
+                className="peer block w-full rounded border border-gray-200 dark:border-none
                  dark:placeholder:text-gray-400 dark:text-white py-2 pl-10 text-sm outline-2 placeholder:text-gray-500 dark:bg-slate-800"
                 aria-describedby="telefone_contato3-error"
               />
@@ -599,7 +599,7 @@ export default function EditRevisionistaForm({
       <div className="mt-6 flex justify-start gap-4">
         <SubmitButton loading={loading} />
         <Link href="/dashboard/revisionistas">
-          <Button className="flex h-10 items-center rounded-lg bg-gray-100 dark:bg-slate-500 dark:hover:bg-slate-600 dark:text-white px-4 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-200 shadow-md">
+          <Button className="flex h-10 items-center rounded bg-gray-100 dark:bg-slate-500 dark:hover:bg-slate-600 dark:text-white px-4 text-sm font-medium text-gray-600 transition-all hover:bg-gray-200 shadow">
             Cancelar
           </Button>
         </Link>
@@ -618,7 +618,7 @@ function SubmitButton({ loading }: SubmitButtonProps) {
   return (
     <Button
       type="submit"
-      className="flex h-10 items-center justify-center rounded-lg bg-blue-600 dark:bg-blue-800 dark:hover:bg-blue-900 w-[146px] text-sm font-medium text-white hover:bg-blue-400 shadow-md transition-all"
+      className="flex h-10 items-center justify-center rounded bg-blue-600 dark:bg-blue-800 dark:hover:bg-blue-900 w-[146px] text-sm font-medium text-white hover:bg-blue-400 shadow transition-all"
       aria-disabled={pending || loading}>
       {loading ? (
         <ThreeDots

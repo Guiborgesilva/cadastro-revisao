@@ -40,7 +40,7 @@ export default function EditVisitanteForm({
     <form
       onSubmit={handleSubmit(onSubmit)}
       key={visitante.id}>
-      <div className="rounded-md bg-gray-50 dark:bg-slate-700 p-4 md:p-6 shadow-md">
+      <div className="rounded bg-gray-50 dark:bg-slate-700 p-4 md:p-6 shadow">
         {/* Nome completo */}
         <div className="mb-4">
           <label
@@ -48,7 +48,7 @@ export default function EditVisitanteForm({
             className="mb-2 block text-sm font-medium">
             Nome
           </label>
-          <div className="relative mt-2 rounded-md">
+          <div className="relative mt-2 rounded">
             <div className="relative">
               <input
                 id="nome_pessoa"
@@ -56,7 +56,7 @@ export default function EditVisitanteForm({
                 defaultValue={visitante.nome}
                 type="text"
                 placeholder="Digite o nome completo do revisionista"
-                className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500 dark:placeholder:text-gray-400 dark:border-none dark:bg-slate-800"
+                className="peer block w-full rounded border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500 dark:placeholder:text-gray-400 dark:border-none dark:bg-slate-800"
                 aria-describedby="nome_pessoa-error"
               />
               <UserCircleIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 dark:text-gray-400 peer-focus:text-gray-900 dark:peer-focus:text-white" />
@@ -81,14 +81,14 @@ export default function EditVisitanteForm({
             className="mb-2 block text-sm font-medium">
             Data de nascimento
           </label>
-          <div className="relative mt-2 rounded-md">
+          <div className="relative mt-2 rounded">
             <div className="relative">
               <input
                 id="data_nascimento"
                 {...register("data_nascimento")}
                 defaultValue={visitante.data_nascimento}
                 type="date"
-                className="peer block w-full rounded-md border border-gray-200 dark:border-none py-2 pl-10 pr-2.5 text-sm outline-2 placeholder:text-gray-500 dark:placeholder:text-gray-400 dark:peer-focus:text-white dark:bg-slate-800"
+                className="peer block w-full rounded border border-gray-200 dark:border-none py-2 pl-10 pr-2.5 text-sm outline-2 placeholder:text-gray-500 dark:placeholder:text-gray-400 dark:peer-focus:text-white dark:bg-slate-800"
                 aria-describedby="data_nascimento-error"
               />
               <CalendarIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 dark:text-gray-400 peer-focus:text-gray-900 dark:peer-focus:text-white" />
@@ -109,7 +109,7 @@ export default function EditVisitanteForm({
         {/* Sexo */}
         <fieldset className="mb-4">
           <legend className="mb-2 block text-sm font-medium">Sexo</legend>
-          <div className="rounded-md border border-gray-200 dark:border-none bg-white dark:bg-slate-600 px-[14px] py-3">
+          <div className="rounded border border-gray-200 dark:border-none bg-white dark:bg-slate-600 px-[14px] py-3">
             <div className="flex gap-4">
               <div className="flex items-center">
                 <input
@@ -172,7 +172,7 @@ export default function EditVisitanteForm({
             className="mb-2 block text-sm font-medium">
             Telefone
           </label>
-          <div className="relative mt-2 rounded-md">
+          <div className="relative mt-2 rounded">
             <div className="relative">
               <input
                 id="telefone"
@@ -181,7 +181,7 @@ export default function EditVisitanteForm({
                 type="tel"
                 placeholder="48999999999"
                 maxLength={11}
-                className="peer block w-full rounded-md border border-gray-200 dark:border-none
+                className="peer block w-full rounded border border-gray-200 dark:border-none
                  dark:placeholder:text-gray-400 dark:text-white py-2 pl-10 text-sm outline-2 placeholder:text-gray-500 dark:bg-slate-800"
                 aria-describedby="telefone-error"
               />
@@ -207,7 +207,7 @@ export default function EditVisitanteForm({
             className="mb-2 block text-sm font-medium">
             Endereço
           </label>
-          <div className="relative mt-2 rounded-md">
+          <div className="relative mt-2 rounded">
             <div className="relative">
               <input
                 id="endereco"
@@ -215,7 +215,7 @@ export default function EditVisitanteForm({
                 defaultValue={visitante.endereco}
                 type="text"
                 placeholder="Digite o endereço do Visitante"
-                className="peer block w-full rounded-md border border-gray-200 dark:border-none
+                className="peer block w-full rounded border border-gray-200 dark:border-none
                  dark:placeholder:text-gray-400 dark:text-white py-2 pl-10 text-sm outline-2 placeholder:text-gray-500 dark:bg-slate-800"
                 aria-describedby="email-error"
               />
@@ -241,7 +241,7 @@ export default function EditVisitanteForm({
             className="mb-2 block text-sm font-medium">
             Bairro
           </label>
-          <div className="relative mt-2 rounded-md">
+          <div className="relative mt-2 rounded">
             <div className="relative">
               <input
                 id="bairro"
@@ -249,7 +249,7 @@ export default function EditVisitanteForm({
                 defaultValue={visitante.bairro}
                 type="text"
                 placeholder="Digite o nome do bairro do Visitante"
-                className="peer block w-full rounded-md border border-gray-200 dark:border-none
+                className="peer block w-full rounded border border-gray-200 dark:border-none
                  dark:placeholder:text-gray-400 dark:text-white py-2 pl-10 text-sm outline-2 placeholder:text-gray-500 dark:bg-slate-800"
                 aria-describedby="bairro-error"
               />
@@ -275,7 +275,7 @@ export default function EditVisitanteForm({
             className="mb-2 block text-sm font-medium">
             Quem convidou
           </label>
-          <div className="relative mt-2 rounded-md">
+          <div className="relative mt-2 rounded">
             <div className="relative">
               <input
                 id="quem_convidou"
@@ -283,7 +283,7 @@ export default function EditVisitanteForm({
                 defaultValue={visitante.quem_convidou}
                 type="text"
                 placeholder="Digite o nome de quem convidou o Visitante"
-                className="peer block w-full rounded-md border border-gray-200 dark:border-none
+                className="peer block w-full rounded border border-gray-200 dark:border-none
                  dark:placeholder:text-gray-400 dark:text-white py-2 pl-10 text-sm outline-2 placeholder:text-gray-500 dark:bg-slate-800"
                 aria-describedby="quem_convidou-error"
               />
@@ -309,14 +309,14 @@ export default function EditVisitanteForm({
             className="mb-2 block text-sm font-medium">
             Como conheceu a Sara Nossa Terra
           </label>
-          <div className="relative mt-2 rounded-md">
+          <div className="relative mt-2 rounded">
             <div className="relative">
               <textarea
                 id="como_conheceu"
                 {...register("como_conheceu")}
                 defaultValue={visitante.como_conheceu}
                 placeholder="Digite o nome de quem convidou o Visitante"
-                className="peer block w-full rounded-md border border-gray-200 dark:border-none
+                className="peer block w-full rounded border border-gray-200 dark:border-none
                  dark:placeholder:text-gray-400 dark:text-white p-4 text-sm outline-2 placeholder:text-gray-500 dark:bg-slate-800"
                 aria-describedby="como_conheceu-error"></textarea>
             </div>
@@ -345,7 +345,7 @@ export default function EditVisitanteForm({
               id="tipo_culto"
               {...register("tipo_culto")}
               defaultValue={visitante.tipo_culto || "Selecione uma opção"}
-              className="peer block w-full cursor-pointer rounded-md border border-gray-200 dark:border-none
+              className="peer block w-full cursor-pointer rounded border border-gray-200 dark:border-none
                dark:placeholder:text-gray-400 dark:text-white py-2 pl-10 text-sm outline-2 placeholder:text-gray-500 dark:bg-slate-800"
               aria-describedby="tipo_culto-error">
               <option
@@ -385,14 +385,14 @@ export default function EditVisitanteForm({
             className="mb-2 block text-sm font-medium">
             Data da visita
           </label>
-          <div className="relative mt-2 rounded-md">
+          <div className="relative mt-2 rounded">
             <div className="relative">
               <input
                 id="data_visita"
                 {...register("data_visita")}
                 defaultValue={visitante.data_visita}
                 type="date"
-                className="peer block w-full rounded-md border border-gray-200 dark:border-none py-2 pl-10 pr-2.5 text-sm outline-2 placeholder:text-gray-500 dark:placeholder:text-gray-400 dark:peer-focus:text-white dark:bg-slate-800"
+                className="peer block w-full rounded border border-gray-200 dark:border-none py-2 pl-10 pr-2.5 text-sm outline-2 placeholder:text-gray-500 dark:placeholder:text-gray-400 dark:peer-focus:text-white dark:bg-slate-800"
                 aria-describedby="data_visita-error"
               />
               <CalendarIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 dark:text-gray-400 peer-focus:text-gray-900 dark:peer-focus:text-white" />
@@ -413,7 +413,7 @@ export default function EditVisitanteForm({
       <div className="mt-6 flex justify-start gap-4">
         <SubmitButton loading={loading} />
         <Link href="/dashboard/visitantes">
-          <Button className="flex h-10 items-center rounded-lg bg-gray-100 dark:bg-slate-500 dark:hover:bg-slate-600 dark:text-white px-4 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-200 shadow-md">
+          <Button className="flex h-10 items-center rounded bg-gray-100 dark:bg-slate-500 dark:hover:bg-slate-600 dark:text-white px-4 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-200 shadow">
             Cancelar
           </Button>
         </Link>
@@ -432,7 +432,7 @@ function SubmitButton({ loading }: SubmitButtonProps) {
   return (
     <Button
       type="submit"
-      className="flex h-10 items-center justify-center rounded-lg bg-blue-600 dark:bg-blue-800 dark:hover:bg-blue-900 w-[146px] text-sm font-medium text-white hover:bg-blue-400 shadow-md transition-all"
+      className="flex h-10 items-center justify-center rounded bg-blue-600 dark:bg-blue-800 dark:hover:bg-blue-900 w-[146px] text-sm font-medium text-white hover:bg-blue-400 shadow transition-all"
       aria-disabled={pending || loading}>
       {loading ? (
         <ThreeDots

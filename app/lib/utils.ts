@@ -7,9 +7,16 @@ export function capitalizarFrase(frase: string) {
 
 export function capitalizarNome(nome: string | undefined) {
   /* FUNÇÃO REGEX PARA CAPITALIZAR A PRIMEIRA LETRA DE CADA PALAVRA */
-  if (!nome) return ""
 
-  return nome.toLowerCase().replace(/(?:^|\s)\S/g, (l) => l.toUpperCase())
+  if (!nome) return "" //se não tiver nenhum nome, retornar vazio
+
+  return nome
+    .trim() // remove os espaços da direita e na esquerda
+    .split(" ") // separa as palavras por espaço
+    .map((word) => {
+      return word[0].toLocaleUpperCase().concat(word.substring(1)) // capitaliza a primeira letra de cada palavra e depois junta tudo a partir do primeiro caractere
+    })
+    .join(" ") // junta todas as palavras formatadas incluindo espaços entre elas
 }
 
 export function normalizePhoneNumber(phoneNumber: string | undefined) {
@@ -47,24 +54,24 @@ export function nomeSobrenome(nome: string) {
 
 export function initials(nome: string) {
   /* FUNÇÃO PARA PEGAR A PRIMEIRA LETRA DO NOME E SOBRE NOME */
-  const divisao = nome.split(" ")
+  const arr = nome.split(" ")
   if (
-    divisao[1] == "de" ||
-    divisao[1] == "De" ||
-    divisao[1] == "da" ||
-    divisao[1] == "Da" ||
-    divisao[1] == "do" ||
-    divisao[1] == "Do" ||
-    divisao[1] == "das" ||
-    divisao[1] == "Das" ||
-    divisao[1] == "dos" ||
-    divisao[1] == "Dos"
+    arr[1] == "de" ||
+    arr[1] == "De" ||
+    arr[1] == "da" ||
+    arr[1] == "Da" ||
+    arr[1] == "do" ||
+    arr[1] == "Do" ||
+    arr[1] == "das" ||
+    arr[1] == "Das" ||
+    arr[1] == "dos" ||
+    arr[1] == "Dos"
   ) {
-    return divisao[0].substring(0, 1) + divisao[2].substring(0, 1)
-  } else if (divisao[1] == null || divisao[1] == undefined) {
-    return divisao[0].substring(0, 1)
+    return arr[0].substring(0, 1) + arr[2].substring(0, 1)
+  } else if (arr[1] == null || arr[1] == undefined) {
+    return arr[0].substring(0, 1)
   } else {
-    return divisao[0].substring(0, 1) + divisao[1].substring(0, 1)
+    return arr[0].substring(0, 1) + arr[1].substring(0, 1)
   }
 }
 

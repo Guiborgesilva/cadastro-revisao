@@ -28,7 +28,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
         Search
       </label>
       <input
-        className="peer block w-full rounded-md border border-gray-200 dark:bg-slate-700 dark:placeholder:text-slate-300 dark:border-none dark:text-white py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+        className="peer block w-full rounded border border-gray-200 dark:bg-slate-700 dark:placeholder:text-slate-300 dark:border-none dark:text-white py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
         placeholder={placeholder}
         onChange={(e) => {
           handleSearch(e.target.value)
