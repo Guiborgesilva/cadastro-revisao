@@ -1,12 +1,24 @@
 import { z } from "zod"
 
-export function capitalizarFrase(frase: string) {
-  /* FUNÇÃO QUE DEIXA A PRIMEIRA PALAVRA DE CADA FRASE EM MAIÚSCULA' */
-  return frase.replace(/^./, frase[0].toUpperCase())
+export function capitalizarFrase(frase: string | undefined) {
+  /* FUNÇÃO QUE DEIXA A PRIMEIRA PALAVRA DE CADA FRASE EM MAIÚSCULA E REMOVE ESPAÇOS' */
+  if (!frase) {
+    return ""
+  }
+
+  const fraseSemEspacos = frase.trim()
+
+  if (fraseSemEspacos.length === 0) {
+    return fraseSemEspacos
+  }
+
+  const fraseCapitalizada =
+    fraseSemEspacos.charAt(0).toUpperCase() + fraseSemEspacos.slice(1)
+  return fraseCapitalizada
 }
 
 export function capitalizarNome(nome: string | undefined) {
-  /* FUNÇÃO REGEX PARA CAPITALIZAR A PRIMEIRA LETRA DE CADA PALAVRA */
+  /* FUNÇÃO REGEX PARA CAPITALIZAR A PRIMEIRA LETRA DE CADA PALAVRA E REMOVER ESPAÇOS */
 
   if (!nome) return "" //se não tiver nenhum nome, retornar vazio
 
@@ -182,19 +194,51 @@ export const visitanteSchema = z.object({
     .max(11),
   endereco: z
     .string()
-    .min(1, "Por favor, digite o endereço do visitante!")
+    .optional()
+    .refine(
+      (endereco) => {
+        return endereco ? endereco.length >= 3 : true
+      },
+      {
+        message: "Por favor, digite o endereço do visitante!"
+      }
+    )
     .transform(capitalizarNome),
   bairro: z
     .string()
-    .min(1, "Por favor, digite o bairro do visitante!")
+    .optional()
+    .refine(
+      (bairro) => {
+        return bairro ? bairro.length >= 3 : true
+      },
+      {
+        message: "Por favor, digite o bairro do visitante!"
+      }
+    )
     .transform(capitalizarNome),
   quem_convidou: z
     .string()
-    .min(1, "Por favor, digite o nome de quem convidou o visitante!")
+    .optional()
+    .refine(
+      (quem_convidou) => {
+        return quem_convidou ? quem_convidou.length >= 3 : true
+      },
+      {
+        message: "Por favor, digite o nome de quem convidou o visitante!"
+      }
+    )
     .transform(capitalizarNome),
   como_conheceu: z
     .string()
-    .min(1, "Por favor, escreva como o visitante conheceu nossa igreja!")
+    .optional()
+    .refine(
+      (como_conheceu) => {
+        return como_conheceu ? como_conheceu.length >= 6 : true
+      },
+      {
+        message: "Por favor, escreva como o visitante conheceu nossa igreja!"
+      }
+    )
     .transform(capitalizarFrase),
   data_visita: z.coerce.date({
     errorMap: (issue, { defaultError }) => ({
