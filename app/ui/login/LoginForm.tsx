@@ -61,7 +61,7 @@ export default function LoginForm() {
       onSubmit={handleLogin}
       className="space-y-3 animate-up">
       <Toaster />
-      <div className="flex-1 rounded-lg text-black dark:text-white dark:bg-gray-800 bg-gray-50 px-6 pb-4 pt-8 shadow-lg">
+      <div className="flex-1 rounded text-black dark:text-white dark:bg-gray-800 bg-gray-50 px-6 pb-4 pt-8 shadow">
         <h1 className={`${roboto.className} mb-3 text-2xl`}>
           Por favor, faça login para continuar!
         </h1>
@@ -74,7 +74,7 @@ export default function LoginForm() {
             </label>
             <div className="relative">
               <input
-                className="peer block w-full rounded-md border dark:border-none border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500 dark:bg-slate-900 dark:text-white"
+                className="peer block w-full rounded border dark:border-none border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500 dark:bg-slate-900 dark:text-white"
                 id="email"
                 type="email"
                 name="email"
@@ -92,7 +92,7 @@ export default function LoginForm() {
             </label>
             <div className="relative">
               <input
-                className="peer block w-full rounded-md border dark:border-none border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500 dark:bg-slate-900 dark:text-white"
+                className="peer block w-full rounded border dark:border-none border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500 dark:bg-slate-900 dark:text-white"
                 id="senha"
                 type="password"
                 name="password"
@@ -130,7 +130,7 @@ function LoginButton({ loading }: LoginButtonProps) {
   return (
     <Button
       type="submit"
-      className="mt-4 w-full "
+      className="mt-4 w-full"
       disabled={pending || loading}>
       <Ripple />
       {loading ? (
