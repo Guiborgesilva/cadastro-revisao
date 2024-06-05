@@ -59,22 +59,21 @@ export default async function UsuariosTable({
                   </div>
                 ))
               ) : (
-                <div
-                  className="
-                    flex
-                    justify-center
-                    items-center
-                    w-full
-                    col-span-2
-                    flex-col
-                    ">
-                  <p>Nenhum usuário encontrado!</p>
-                  <Link
-                    className="hover:underline"
-                    href={"/dashboard/usuarios/register"}>
-                    Clique aqui para cadastrar!
-                  </Link>
-                </div>
+                <tr className="w-full border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg">
+                  <td className="whitespace-nowrap py-3 pl-6 pr-3"></td>
+                  <td className="whitespace-nowrap px-3 py-3"></td>
+                  <td className="whitespace-nowrap px-3 py-3"></td>
+                  <td className="whitespace-nowrap px-3 py-3">
+                    <p>Nenhum usuário encontrado!</p>
+                    <Link
+                      className="hover:underline"
+                      href={"/dashboard/usuarios/register"}>
+                      Clique aqui para cadastrar!
+                    </Link>
+                  </td>
+                  <td className="whitespace-nowrap px-3 py-3"></td>
+                  <td className="whitespace-nowrap py-3 pl-6 pr-3"></td>
+                </tr>
               )}
             </div>
             <table className="hidden min-w-full text-gray-900 dark:text-white md:table">
@@ -125,22 +124,21 @@ export default async function UsuariosTable({
                     </tr>
                   ))
                 ) : (
-                  <div
-                    className="
-                      flex
-                      justify-center
-                      items-center
-                      w-full
-                      col-span-2
-                      flex-col
-                      ">
-                    <p>Nenhum revisionista encontrado!</p>
-                    <Link
-                      className="hover:underline"
-                      href={"/dashboard/revisionistas/register"}>
-                      Clique aqui para cadastrar!
-                    </Link>
-                  </div>
+                  <tr className="w-full border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg">
+                    <td className="whitespace-nowrap py-3 pl-6 pr-3"></td>
+                    <td className="whitespace-nowrap px-3 py-3"></td>
+                    <td className="whitespace-nowrap px-3 py-3"></td>
+                    <td className="whitespace-nowrap px-3 py-3">
+                      <p>Nenhum usuário encontrado!</p>
+                      <Link
+                        className="hover:underline"
+                        href={"/dashboard/usuarios/register"}>
+                        Clique aqui para cadastrar!
+                      </Link>
+                    </td>
+                    <td className="whitespace-nowrap px-3 py-3"></td>
+                    <td className="whitespace-nowrap py-3 pl-6 pr-3"></td>
+                  </tr>
                 )}
               </tbody>
             </table>
