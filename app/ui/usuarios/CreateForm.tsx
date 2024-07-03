@@ -4,7 +4,9 @@ import Link from "next/link"
 import {
   UserCircleIcon,
   LockClosedIcon,
-  EnvelopeIcon
+  EnvelopeIcon,
+  EyeSlashIcon,
+  EyeIcon
 } from "@heroicons/react/24/solid"
 import { useFormStatus } from "react-dom"
 import { useForm } from "react-hook-form"
@@ -12,6 +14,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { RegisterUser, UserForm } from "@/app/lib/utils"
 import Button from "@/app/ui/components/Buttons"
 import { ThreeDots } from "react-loader-spinner"
+import { useState } from "react"
 
 export default function Form({
   onSubmit,
@@ -20,6 +23,7 @@ export default function Form({
   onSubmit: (data: UserForm) => Promise<void>
   loading: boolean
 }) {
+  const [showPassword, setShowPassword] = useState(false)
   const {
     register,
     handleSubmit,
@@ -27,6 +31,10 @@ export default function Form({
   } = useForm<UserForm>({
     resolver: zodResolver(RegisterUser)
   })
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword)
+  }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -108,13 +116,19 @@ export default function Form({
               <input
                 id="password"
                 {...register("password")}
-                type="password"
+                type={showPassword ? "text" : "password"}
                 placeholder="Digite a senha do usuário"
                 className="peer block w-full rounded border border-gray-200 dark:border-none
                  dark:placeholder:text-gray-400 dark:text-white py-2 pl-10 text-sm outline-2 placeholder:text-gray-500 dark:bg-slate-800"
                 aria-describedby="email-error"
               />
               <LockClosedIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 dark:text-gray-400 peer-focus:text-gray-900 dark:peer-focus:text-white" />
+              <button
+                type="button"
+                onClick={togglePasswordVisibility}
+                className="absolute right-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 dark:text-gray-400">
+                {showPassword ? <EyeSlashIcon /> : <EyeIcon />}
+              </button>
             </div>
             <div
               id="password-error"

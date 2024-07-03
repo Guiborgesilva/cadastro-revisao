@@ -6,7 +6,9 @@ import {
   AtSymbolIcon,
   KeyIcon,
   ExclamationCircleIcon,
-  ArrowRightIcon
+  ArrowRightIcon,
+  EyeSlashIcon,
+  EyeIcon
 } from "@heroicons/react/24/solid"
 import Button from "@/app/ui/login/Button"
 import { useFormStatus } from "react-dom"
@@ -16,6 +18,7 @@ import { ThreeDots } from "react-loader-spinner"
 import toast, { Toaster } from "react-hot-toast"
 
 export default function LoginForm() {
+  const [showPassword, setShowPassword] = useState(false)
   const [errorMessage, setErrorMessage] = useState("")
   const [loading, setLoading] = useState<boolean>(false)
 
@@ -56,6 +59,10 @@ export default function LoginForm() {
     }
   }
 
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword)
+  }
+
   return (
     <form
       onSubmit={handleLogin}
@@ -94,12 +101,18 @@ export default function LoginForm() {
               <input
                 className="peer block w-full rounded border dark:border-none border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500 dark:bg-slate-900 dark:text-white"
                 id="senha"
-                type="password"
+                type={showPassword ? "text" : "password"}
                 name="password"
                 placeholder="Digite sua senha"
                 minLength={6}
               />
               <KeyIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 dark:peer-focus:text-white peer-focus:text-gray-900" />
+              <button
+                type="button"
+                onClick={togglePasswordVisibility}
+                className="absolute right-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 dark:text-gray-400">
+                {showPassword ? <EyeSlashIcon /> : <EyeIcon />}
+              </button>
             </div>
           </div>
         </div>

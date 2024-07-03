@@ -132,7 +132,7 @@ export default function EditUsuarioForm({
                 placeholder="Digite uma nova senha para o usuário"
                 className="peer block w-full rounded border border-gray-200 dark:border-none
                  dark:placeholder:text-gray-400 dark:text-white py-2 pl-10 text-sm outline-2 placeholder:text-gray-500 dark:bg-slate-800"
-                aria-describedby="email-error"
+                aria-describedby="password-error"
               />
               <LockClosedIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 dark:text-gray-400 peer-focus:text-gray-900 dark:peer-focus:text-white" />
               <button
