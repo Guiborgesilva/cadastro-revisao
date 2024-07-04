@@ -24,7 +24,7 @@ const links = [
     href: "/dashboard/revisionistas",
     iconOut: UserGroupOut,
     iconSolid: UserGroupIcon,
-    subtitle: "Revisionistas"
+    subtitle: "Revisão"
   },
   {
     name: "Visitantes",
