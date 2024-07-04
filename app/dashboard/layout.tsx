@@ -10,15 +10,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <div className="md:hidden px-3 py-4">
           <Link
             className="
-          mb-2
-          flex
-          h-20
-          items-center
-          justify-center
-          rounded-md
-          bg-black
-          p-4
-          md:h-40"
+            flex
+            h-20
+            items-center
+            justify-center
+            rounded
+            bg-black
+            md:h-40"
             href="/">
             <div className="w-32 text-white md:w-40">
               <Image
@@ -31,13 +29,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             </div>
           </Link>
         </div>
-        <div className="w-full flex-none md:w-64 hidden">
+        <div className="w-full flex-none md:w-64 hidden md:block">
           <SideNav />
         </div>
-        <div className="flex-grow p-6 md:overflow-y-auto md:p-12 mb-24">
+        <div className="flex-grow p-6 md:overflow-y-auto md:p-12 mb-20 md:mb-0">
           {children}
         </div>
-        <div className="w-full flex-none md:w-64 fixed bottom-0 z-50">
+        <div className="w-full flex-none md:hidden md:w-64 fixed bottom-0 z-50">
           <SideNavMobile />
         </div>
       </div>
