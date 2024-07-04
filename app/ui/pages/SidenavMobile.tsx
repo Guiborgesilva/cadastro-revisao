@@ -9,28 +9,6 @@ import Button from "@/app/ui/components/Buttons"
 export default function SideNavMobile() {
   return (
     <div className="flex h-full flex-col dark:backdrop-blur-xl backdrop-blur-md px-2">
-      {/* <Link
-        className="
-          mb-2
-          flex
-          h-20
-          items-center
-          justify-center
-          rounded-md
-          bg-black
-          p-4
-          md:h-40"
-        href="/">
-        <div className="w-32 text-white md:w-40">
-          <Image
-            width={260}
-            height={65}
-            src="/logoSaraIcara.png"
-            alt="Logo da Igreja Sara de Içara"
-            priority={true}
-          />
-        </div>
-      </Link> */}
       <div className="flex grow flex-row justify-between space-x-2 md:flex-col md:space-x-0 md:space-y-2">
         <NavLinks />
         <div className="hidden h-auto w-full grow rounded-md bg-gray-50 dark:bg-slate-700 md:block"></div>
