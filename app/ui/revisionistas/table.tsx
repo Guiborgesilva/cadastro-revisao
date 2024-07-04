@@ -138,7 +138,7 @@ export default async function RevisionistasTable({
                         {revisionista.sexo}
                       </td>
                       <td className="whitespace-nowrap py-3 pl-6 pr-3">
-                        <div className="flex justify-end gap-3">
+                        <div className="flex justify-start gap-3">
                           <Actions
                             id={revisionista.id}
                             nome={revisionista.nome_pessoa}

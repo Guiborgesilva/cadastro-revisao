@@ -91,7 +91,7 @@ export default async function UsuariosTable({
                   </th>
                   <th
                     scope="col"
-                    className="relative py-3 pl-6 pr-3">
+                    className="relative py-3 pr-3">
                     <span className="font-normal">Ações</span>
                   </th>
                 </tr>
@@ -114,7 +114,7 @@ export default async function UsuariosTable({
                         {usuario.email}
                       </td>
                       <td className="whitespace-nowrap py-3 pr-6">
-                        <div className="flex justify-end gap-3">
+                        <div className="flex justify-start gap-3">
                           <Actions
                             id={usuario.id}
                             nome={usuario.name}

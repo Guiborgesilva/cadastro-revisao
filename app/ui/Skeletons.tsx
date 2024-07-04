@@ -309,7 +309,7 @@ export function TableRowRevisionistasSkeleton() {
       </td>
       {/* Actions */}
       <td className="whitespace-nowrap py-3 pl-6 pr-3">
-        <div className="flex justify-end gap-3">
+        <div className="flex justify-start gap-3">
           <div className="h-[38px] w-[38px] rounded bg-gray-100 dark:bg-slate-300 nameLine"></div>
           <div className="h-[38px] w-[38px] rounded bg-gray-100 dark:bg-slate-300 nameLine"></div>
           <div className="h-[38px] w-[38px] rounded bg-gray-100 dark:bg-slate-300 nameLine"></div>
@@ -347,7 +347,7 @@ export function TableRowVisitantesSkeleton() {
       </td>
       {/* Ações */}
       <td className="whitespace-nowrap py-3 pl-6 pr-3">
-        <div className="flex justify-end gap-3">
+        <div className="flex justify-start gap-3">
           <div className="h-[38px] w-[38px] rounded bg-gray-100 dark:bg-slate-300 nameLine"></div>
           <div className="h-[38px] w-[38px] rounded bg-gray-100 dark:bg-slate-300 nameLine"></div>
           <div className="h-[38px] w-[38px] rounded bg-gray-100 dark:bg-slate-300 nameLine"></div>
@@ -373,7 +373,7 @@ export function TableRowUsuariosSkeleton() {
       </td>
       {/* Ações */}
       <td className="whitespace-nowrap py-3 pr-6">
-        <div className="flex justify-end gap-3">
+        <div className="flex justify-start gap-3">
           <div className="h-[38px] w-[38px] rounded bg-gray-100 dark:bg-slate-300 nameLine"></div>
           <div className="h-[38px] w-[38px] rounded bg-gray-100 dark:bg-slate-300 nameLine"></div>
         </div>
@@ -496,7 +496,7 @@ export function RevisionistasTableSkeleton() {
                 </th>
                 <th
                   scope="col"
-                  className="relative pb-4 pl-3 pr-6 pt-2 sm:pr-6">
+                  className="relative pb-4 pl-6 pr-6 pt-2 sm:pr-6">
                   <span className="font-normal">Ações</span>
                 </th>
               </tr>
@@ -559,7 +559,7 @@ export function VisitantesTableSkeleton() {
                 </th>
                 <th
                   scope="col"
-                  className="relative pb-4 pl-3 pr-6 pt-2 sm:pr-6">
+                  className="relative pb-4 pl-6 pr-6 pt-2 sm:pr-6">
                   <span className="font-normal">Ações</span>
                 </th>
               </tr>

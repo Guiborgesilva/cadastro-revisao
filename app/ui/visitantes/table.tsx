@@ -145,7 +145,7 @@ export default async function VisitantesTable({
                         {visitante.sexo}
                       </td>
                       <td className="whitespace-nowrap py-3 pl-6 pr-3">
-                        <div className="flex justify-end gap-3">
+                        <div className="flex justify-start gap-3">
                           <Actions
                             id={visitante.id}
                             sexo={visitante.sexo}
