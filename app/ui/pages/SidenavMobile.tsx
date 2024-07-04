@@ -8,7 +8,7 @@ import Button from "@/app/ui/components/Buttons"
 
 export default function SideNavMobile() {
   return (
-    <div className="flex h-full flex-col backdrop-blur-md px-3 py-4 md:px-2">
+    <div className="flex h-full flex-col dark:backdrop-blur-xl backdrop-blur-md px-2">
       {/* <Link
         className="
           mb-2
@@ -39,7 +39,7 @@ export default function SideNavMobile() {
             "use server"
             await signOut()
           }}>
-          <Button className="flex h-[70px] w-full grow items-center justify-center gap-2 rounded-md bg-gray-50 dark:bg-slate-700 p-3 text-sm font-medium dark:hover:bg-blue-800 hover:bg-sky-100 hover:text-blue-600 dark:hover:text-white md:flex-none md:justify-start md:p-2 md:px-3">
+          <Button className="flex h-[70px] w-full grow items-center justify-center gap-2 rounded-md md:bg-gray-50 md:dark:bg-slate-700 p-3 text-sm font-medium md:dark:hover:bg-blue-800 md:hover:bg-sky-100 hover:text-blue-600 dark:hover:text-sky-400 md:flex-none md:justify-start md:p-2 md:px-3">
             <PowerIcon className="w-6" />
             <Ripple />
             <div className="hidden md:block">Sign Out</div>

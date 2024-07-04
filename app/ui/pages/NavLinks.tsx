@@ -24,7 +24,7 @@ const links = [
     href: "/dashboard/revisionistas",
     iconOut: UserGroupOut,
     iconSolid: UserGroupIcon,
-    subtitle: "Revisão"
+    subtitle: "Revisionistas"
   },
   {
     name: "Visitantes",
@@ -54,15 +54,15 @@ export default function NavLinks() {
             key={link.name}
             href={link.href}
             className={clsx(
-              "flex flex-col h-[70px] grow items-center justify-center gap-2 rounded bg-gray-50 p-3 font-medium hover:bg-sky-100 hover:text-blue-600 dark:bg-slate-700 dark:hover:bg-blue-800 dark:hover:text-sky-100 md:flex-none md:justify-start md:p-2 md:px-3 relative overflow-hidden isolate",
+              "flex flex-col md:flex-row md:h-[48px] h-[65px] grow items-center justify-center md:gap-2 gap-1 md:text-sm rounded-md md:bg-gray-50 p-3 font-medium md:hover:bg-sky-100 hover:text-blue-600 md:dark:bg-slate-700 md:dark:hover:bg-blue-800 md:dark:hover:text-sky-100 dark:hover:text-sky-400 md:flex-none md:justify-start md:p-2 md:px-3 relative overflow-hidden isolate",
               {
-                "bg-sky-100 text-blue-600 dark:text-sky-400 relative overflow-hidden isolate":
+                "md:bg-sky-100 text-blue-600 dark:text-sky-400 relative overflow-hidden isolate":
                   pathname === link.href
               }
             )}>
             <Ripple />
             <LinkIcon className="w-6" />
-            <p className="text-xs">{link.subtitle}</p>
+            <p className="text-xs md:hidden">{link.subtitle}</p>
             <p className="hidden md:block">{link.name}</p>
           </Link>
         )
