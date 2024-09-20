@@ -1,49 +1,49 @@
-import { z } from "zod"
+import { z } from "zod";
 
 export function capitalizarFrase(frase: string | undefined) {
   /* FUNÇÃO QUE DEIXA A PRIMEIRA PALAVRA DE CADA FRASE EM MAIÚSCULA E REMOVE ESPAÇOS' */
   if (!frase) {
-    return ""
+    return "";
   }
 
-  const fraseSemEspacos = frase.trim()
+  const fraseSemEspacos = frase.trim();
 
   if (fraseSemEspacos.length === 0) {
-    return fraseSemEspacos
+    return fraseSemEspacos;
   }
 
   const fraseCapitalizada =
-    fraseSemEspacos.charAt(0).toUpperCase() + fraseSemEspacos.slice(1)
-  return fraseCapitalizada
+    fraseSemEspacos.charAt(0).toUpperCase() + fraseSemEspacos.slice(1);
+  return fraseCapitalizada;
 }
 
 export function capitalizarNome(nome: string | undefined) {
   /* FUNÇÃO REGEX PARA CAPITALIZAR A PRIMEIRA LETRA DE CADA PALAVRA E REMOVER ESPAÇOS */
 
-  if (!nome) return "" //se não tiver nenhum nome, retornar vazio
+  if (!nome) return ""; //se não tiver nenhum nome, retornar vazio
 
   return nome
     .trim() // remove os espaços da direita e na esquerda
     .split(" ") // separa as palavras por espaço
     .map((word) => {
-      return word[0].toLocaleUpperCase().concat(word.substring(1)) // capitaliza a primeira letra de cada palavra e depois junta tudo a partir do primeiro caractere
+      return word[0].toLocaleUpperCase().concat(word.substring(1)); // capitaliza a primeira letra de cada palavra e depois junta tudo a partir do primeiro caractere
     })
-    .join(" ") // junta todas as palavras formatadas incluindo espaços entre elas
+    .join(" "); // junta todas as palavras formatadas incluindo espaços entre elas
 }
 
 export function normalizePhoneNumber(phoneNumber: string | undefined) {
   /* FUNÇÃO REGEX PARA PADRONIZAR O TELEFONE DIGITADO */
-  if (!phoneNumber) return ""
+  if (!phoneNumber) return "";
 
   return phoneNumber
     .replace(/[\D]/g, "")
     .replace(/(\d{2})(\d)/, "($1) $2 ")
     .replace(/(\d{4})(\d)/, "$1-$2")
-    .replace(/(-\d{4})(\d+?)/, "$1")
+    .replace(/(-\d{4})(\d+?)/, "$1");
 }
 
 export function nomeSobrenome(nome: string) {
-  var arr = nome.split(" ")
+  var arr = nome.split(" ");
   if (
     arr[1] === "de" ||
     arr[1] === "De" ||
@@ -56,17 +56,17 @@ export function nomeSobrenome(nome: string) {
     arr[1] === "dos" ||
     arr[1] === "Dos"
   ) {
-    return `${arr[0]} ${arr[1]} ${arr[2]}`
+    return `${arr[0]} ${arr[1]} ${arr[2]}`;
   } else if (arr[1] === null || arr[1] === undefined) {
-    return arr[0]
+    return arr[0];
   } else {
-    return `${arr[0]} ${arr[1]}`
+    return `${arr[0]} ${arr[1]}`;
   }
 }
 
 export function initials(nome: string) {
   /* FUNÇÃO PARA PEGAR A PRIMEIRA LETRA DO NOME E SOBRE NOME */
-  const arr = nome.split(" ")
+  const arr = nome.split(" ");
   if (
     arr[1] == "de" ||
     arr[1] == "De" ||
@@ -79,11 +79,11 @@ export function initials(nome: string) {
     arr[1] == "dos" ||
     arr[1] == "Dos"
   ) {
-    return arr[0].substring(0, 1) + arr[2].substring(0, 1)
+    return arr[0].substring(0, 1) + arr[2].substring(0, 1);
   } else if (arr[1] == null || arr[1] == undefined) {
-    return arr[0].substring(0, 1)
+    return arr[0].substring(0, 1);
   } else {
-    return arr[0].substring(0, 1) + arr[1].substring(0, 1)
+    return arr[0].substring(0, 1) + arr[1].substring(0, 1);
   }
 }
 
@@ -91,19 +91,19 @@ export const generatePagination = (currentPage: number, totalPages: number) => {
   // If the total number of pages is 7 or less,
   // display all pages without any ellipsis.
   if (totalPages <= 7) {
-    return Array.from({ length: totalPages }, (_, i) => i + 1)
+    return Array.from({ length: totalPages }, (_, i) => i + 1);
   }
 
   // If the current page is among the first 3 pages,
   // show the first 3, an ellipsis, and the last 2 pages.
   if (currentPage <= 3) {
-    return [1, 2, 3, "...", totalPages - 1, totalPages]
+    return [1, 2, 3, "...", totalPages - 1, totalPages];
   }
 
   // If the current page is among the last 3 pages,
   // show the first 2, an ellipsis, and the last 3 pages.
   if (currentPage >= totalPages - 2) {
-    return [1, 2, "...", totalPages - 2, totalPages - 1, totalPages]
+    return [1, 2, "...", totalPages - 2, totalPages - 1, totalPages];
   }
 
   // If the current page is somewhere in the middle,
@@ -117,8 +117,8 @@ export const generatePagination = (currentPage: number, totalPages: number) => {
     currentPage + 1,
     "...",
     totalPages
-  ]
-}
+  ];
+};
 
 export const revisionistaSchema = z.object({
   id: z.string(),
@@ -169,7 +169,7 @@ export const revisionistaSchema = z.object({
     errorMap: () => ({ message: "Por favor, selecione uma opção!" })
   }),
   created_at: z.string()
-})
+});
 
 export const visitanteSchema = z.object({
   id: z.string(),
@@ -197,7 +197,7 @@ export const visitanteSchema = z.object({
     .optional()
     .refine(
       (endereco) => {
-        return endereco ? endereco.length >= 3 : true
+        return endereco ? endereco.length >= 3 : true;
       },
       {
         message: "Por favor, digite o endereço do visitante!"
@@ -209,7 +209,7 @@ export const visitanteSchema = z.object({
     .optional()
     .refine(
       (bairro) => {
-        return bairro ? bairro.length >= 3 : true
+        return bairro ? bairro.length >= 3 : true;
       },
       {
         message: "Por favor, digite o bairro do visitante!"
@@ -221,7 +221,7 @@ export const visitanteSchema = z.object({
     .optional()
     .refine(
       (quem_convidou) => {
-        return quem_convidou ? quem_convidou.length >= 3 : true
+        return quem_convidou ? quem_convidou.length >= 3 : true;
       },
       {
         message: "Por favor, digite o nome de quem convidou o visitante!"
@@ -233,7 +233,7 @@ export const visitanteSchema = z.object({
     .optional()
     .refine(
       (como_conheceu) => {
-        return como_conheceu ? como_conheceu.length >= 6 : true
+        return como_conheceu ? como_conheceu.length >= 6 : true;
       },
       {
         message: "Por favor, escreva como o visitante conheceu nossa igreja!"
@@ -250,17 +250,18 @@ export const visitanteSchema = z.object({
   }),
   tipo_culto: z.enum(
     [
-      "Culto de Campanha | Quinta-feira",
-      "Culto das Mulheres | Sexta-feira",
-      "Arena | Sábado",
-      "Culto da Família | Domingo"
+      "Culto de Campanha",
+      "Culto das Mulheres",
+      "Arena",
+      "Culto da Família",
+      "Célula"
     ],
     {
       errorMap: () => ({ message: "Por favor, selecione um tipo de culto!" })
     }
   ),
   created_at: z.string()
-})
+});
 
 export const userSchema = z.object({
   id: z.string(),
@@ -274,27 +275,27 @@ export const userSchema = z.object({
     .optional()
     .refine(
       (password) => {
-        return password ? password.length >= 6 : true
+        return password ? password.length >= 6 : true;
       },
       {
         message: "A senha precisa ter no mínimo 6 caracteres"
       }
     ),
   created_at: z.string()
-})
+});
 
 export const RegisterRevisionista = revisionistaSchema.omit({
   id: true,
   created_at: true
-})
+});
 
 export const RegisterVisitante = visitanteSchema.omit({
   id: true,
   created_at: true
-})
+});
 
-export const RegisterUser = userSchema.omit({ id: true, created_at: true })
+export const RegisterUser = userSchema.omit({ id: true, created_at: true });
 
-export type RevisionistaForm = z.infer<typeof RegisterRevisionista>
-export type VisitanteForm = z.infer<typeof RegisterVisitante>
-export type UserForm = z.infer<typeof RegisterUser>
+export type RevisionistaForm = z.infer<typeof RegisterRevisionista>;
+export type VisitanteForm = z.infer<typeof RegisterVisitante>;
+export type UserForm = z.infer<typeof RegisterUser>;

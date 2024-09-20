@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import { RegisterVisitante, VisitanteForm } from "@/app/lib/utils"
-import { Visitante } from "@/app/lib/definitions"
-import { useForm } from "react-hook-form"
+import { RegisterVisitante, VisitanteForm } from "@/app/lib/utils";
+import { Visitante } from "@/app/lib/definitions";
+import { useForm } from "react-hook-form";
 import {
   BuildingLibraryIcon,
   CalendarIcon,
@@ -12,21 +12,21 @@ import {
   PhoneIcon,
   UserCircleIcon,
   UserGroupIcon
-} from "@heroicons/react/24/solid"
-import Link from "next/link"
-import Button from "@/app/ui/components/Buttons"
-import { useFormStatus } from "react-dom"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { ThreeDots } from "react-loader-spinner"
+} from "@heroicons/react/24/solid";
+import Link from "next/link";
+import Button from "@/app/ui/components/Buttons";
+import { useFormStatus } from "react-dom";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { ThreeDots } from "react-loader-spinner";
 
 export default function EditVisitanteForm({
   visitante,
   onSubmit,
   loading
 }: {
-  visitante: Visitante
-  onSubmit: (data: VisitanteForm) => Promise<void>
-  loading: boolean
+  visitante: Visitante;
+  onSubmit: (data: VisitanteForm) => Promise<void>;
+  loading: boolean;
 }) {
   const {
     register,
@@ -34,7 +34,7 @@ export default function EditVisitanteForm({
     formState: { errors }
   } = useForm<VisitanteForm>({
     resolver: zodResolver(RegisterVisitante)
-  })
+  });
 
   return (
     <form
@@ -338,7 +338,7 @@ export default function EditVisitanteForm({
           <label
             htmlFor="tipo_culto"
             className="mb-2 block text-sm font-medium">
-            Tipo de culto
+            Tipo de visitante
           </label>
           <div className="relative">
             <select
@@ -351,18 +351,13 @@ export default function EditVisitanteForm({
               <option
                 defaultValue="Selecione uma opção"
                 disabled>
-                Selecione uma opção
+                Selecione o evento da visita
               </option>
-              <option value="Culto de Campanha | Quinta-feira">
-                Culto de Campanha | Quinta-feira
-              </option>
-              <option value="Culto das Mulheres | Sexta-feira">
-                Culto das Mulheres | Sexta-feira
-              </option>
-              <option value="Arena | Sábado">Arena | Sábado</option>
-              <option value="Culto da Família | Domingo">
-                Culto da Família | Domingo
-              </option>
+              <option value="Culto de Campanha">Culto de Campanha</option>
+              <option value="Culto das Mulheres">Culto das Mulheres</option>
+              <option value="Arena">Arena</option>
+              <option value="Culto da Família">Culto da Família</option>
+              <option value="Célula">Célula</option>
             </select>
             <BuildingLibraryIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 dark:text-gray-400 dark:peer-focus:text-white" />
           </div>
@@ -419,15 +414,15 @@ export default function EditVisitanteForm({
         </Link>
       </div>
     </form>
-  )
+  );
 }
 
 interface SubmitButtonProps {
-  loading: boolean
+  loading: boolean;
 }
 
 function SubmitButton({ loading }: SubmitButtonProps) {
-  const { pending } = useFormStatus()
+  const { pending } = useFormStatus();
 
   return (
     <Button
@@ -444,5 +439,5 @@ function SubmitButton({ loading }: SubmitButtonProps) {
         <>Salvar alterações</>
       )}
     </Button>
-  )
+  );
 }

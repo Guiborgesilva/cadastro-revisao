@@ -1,35 +1,34 @@
-"use client"
+"use client";
 
-import Link from "next/link"
+import Link from "next/link";
 import {
   BuildingLibraryIcon,
   CalendarIcon,
   GlobeAmericasIcon,
   PhoneIcon,
   UserCircleIcon
-} from "@heroicons/react/24/solid"
-import { useFormStatus } from "react-dom"
-import { useForm } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { RegisterVisitante, VisitanteForm } from "@/app/lib/utils"
-import Button from "@/app/ui/components/Buttons"
-import { ThreeDots } from "react-loader-spinner"
+} from "@heroicons/react/24/solid";
+import { useFormStatus } from "react-dom";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { RegisterVisitante, VisitanteForm } from "@/app/lib/utils";
+import Button from "@/app/ui/components/Buttons";
+import { ThreeDots } from "react-loader-spinner";
 
 export default function Form({
   onSubmit,
   loading
 }: {
-  onSubmit: (data: VisitanteForm) => Promise<void>
-  loading: boolean
+  onSubmit: (data: VisitanteForm) => Promise<void>;
+  loading: boolean;
 }) {
   const {
     register,
     handleSubmit,
-    setValue,
     formState: { errors }
   } = useForm<VisitanteForm>({
     resolver: zodResolver(RegisterVisitante)
-  })
+  });
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -322,7 +321,7 @@ export default function Form({
           <label
             htmlFor="tipo_culto"
             className="mb-2 block text-sm font-medium">
-            Tipo de culto
+            Tipo de visitante
           </label>
           <div className="relative">
             <select
@@ -336,18 +335,13 @@ export default function Form({
                 value=""
                 disabled
                 className="text-gray-400">
-                Selecione um tipo de culto
+                Selecione o evento da visita
               </option>
-              <option value="Culto de Campanha | Quinta-feira">
-                Culto de Campanha | Quinta-feira
-              </option>
-              <option value="Culto das Mulheres | Sexta-feira">
-                Culto das Mulheres | Sexta-feira
-              </option>
-              <option value="Arena | Sábado">Arena | Sábado</option>
-              <option value="Culto da Família | Domingo">
-                Culto da Família | Domingo
-              </option>
+              <option value="Culto de Campanha">Culto de Campanha</option>
+              <option value="Culto das Mulheres">Culto das Mulheres</option>
+              <option value="Arena">Arena</option>
+              <option value="Culto da Família">Culto da Família</option>
+              <option value="Célula">Célula</option>
             </select>
             <BuildingLibraryIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 dark:text-gray-400 dark:peer-focus:text-white" />
           </div>
@@ -403,15 +397,15 @@ export default function Form({
         </Link>
       </div>
     </form>
-  )
+  );
 }
 
 interface SubmitButtonProps {
-  loading: boolean
+  loading: boolean;
 }
 
 function SubmitButton({ loading }: SubmitButtonProps) {
-  const { pending } = useFormStatus()
+  const { pending } = useFormStatus();
 
   return (
     <Button
@@ -430,5 +424,5 @@ function SubmitButton({ loading }: SubmitButtonProps) {
         <>Cadastrar visitante</>
       )}
     </Button>
-  )
+  );
 }
