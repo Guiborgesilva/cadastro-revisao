@@ -27,6 +27,8 @@ export function ChamarVisitante({
   telefone: string
 }) {
   let boasVindas
+  let primeiroNome = nome.split(" ")[0]
+
 
   if (sexo === "Feminino") {
     boasVindas = "bem-vinda"
@@ -37,9 +39,7 @@ export function ChamarVisitante({
     <Link
       key={id}
       href={`
-        https://api.whatsapp.com/send?phone=55${telefone}&text=Oi%20${
-        nome.split(" ")[0]
-      },%20seja%20${boasVindas}%20à%20Sara%20de%20Içara!`}
+        https://api.whatsapp.com/send?phone=55${telefone}&text=Ol%C3%A1%2C%20*${primeiroNome}*!%20Seja%20muito%20${boasVindas}%20%C3%A0%20Sara%20Nossa%20Terra%20de%20I%C3%A7ara!%20%F0%9F%94%A5%0A%0AQueremos%20te convidar%20a%20participar%20dos%20nossos%20momentos%20especiais%3A%0A%E2%9C%A8%20*Quinta-feira%2C%2019h30*%3A%20Culto%20de%20Campanha%0A%F0%9F%94%A5%20*S%C3%A1bado%2C%2019h*%3A%20Arena%20Jovem%0A%F0%9F%92%96%20*Domingo%2C%2019h*%3A%20Culto%20da%20Fam%C3%ADlia%0A%0ASer%C3%A1%20uma%20alegria%20ter%20voc%C3%AA%20conosco!%20N%C3%A3o%20deixe%20de%20seguir%20nosso%20perfil%20no%20Instagram%20para%20ficar%20por%20dentro%20de%20todas%20as%20novidades%3A%0A%F0%9F%91%89%20https%3A%2F%2Fwww.instagram.com%2Fsaraicarasc%3Figsh%3DMXc3ZXBjd3o1cmY3ZQ%3D%3D%0A%0AEstamos%20ansiosos%20para%20te%20ver%20por%20aqui!%20%F0%9F%98%8A`}
       target="_blank">
       <Button className="rounded size-9 bg-green-100 dark:bg-slate-300 shadow hover:brightness-90 text-slate-800 grid place-items-center transition-all">
         <FontAwesomeIcon
